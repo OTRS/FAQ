@@ -2,7 +2,7 @@
 # Kernel/System/FAQ.pm - all faq funktions
 # Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.16 2008-03-14 15:50:44 martin Exp $
+# $Id: FAQ.pm,v 1.16.2.1 2008-08-27 09:41:34 martin Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -18,7 +18,7 @@ use Kernel::System::Group;
 use Kernel::System::CustomerGroup;
 
 use vars qw(@ISA $VERSION);
-$VERSION = '$Revision: 1.16 $';
+$VERSION = '$Revision: 1.16.2.1 $';
 $VERSION =~ s/^\$.*:\W(.*)\W.+?$/$1/;
 
 =head1 NAME
@@ -1001,25 +1001,39 @@ get the category list as hash
 =cut
 
 sub CategoryList {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
+
     # check needed stuff
-    foreach (qw()) {
-        if (!$Param{$_}) {
-            $Self->{LogObject}->Log(Priority => 'error', Message => "Need $_!");
+    for (qw()) {
+        if ( !$Param{$_} ) {
+            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $_!" );
             return {};
         }
     }
+
+    my $Valid = 0;
+    if ( defined $Param{Valid} ) {
+        $Valid = $Param{Valid};
+    }
+
+    # check cache
+    if ( $Self->{Cache}->{CategoryList}->{$Valid} ) {
+        return $Self->{Cache}->{CategoryList}->{$Valid};
+    }
+
     # sql
     my $SQL = 'SELECT id, parent_id, name FROM faq_category ';
-    if(defined($Param{Valid})) {
+    if ( $Valid ) {
         $SQL .= 'WHERE valid_id = 1';
     }
+    $Self->{DBObject}->Prepare( SQL => $SQL );
     my %Data = ();
-    $Self->{DBObject}->Prepare(SQL => $SQL);
-    while  (my @Row = $Self->{DBObject}->FetchrowArray()) {
-        $Data{$Row[1]}{$Row[0]} = $Row[2];
+    while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
+        $Data{ $Row[1] }->{ $Row[0] } = $Row[2];
     }
+
+    # cache
+    $Self->{Cache}->{CategoryList}->{$Valid} = \%Data;
 
     return \%Data;
 }
@@ -2031,31 +2045,44 @@ get all categories as tree
 =cut
 
 sub GetCategoryTree {
-    my $Self = shift;
-    my %Param = @_;
-    my %Hash = ();
-    my $SQL = '';
+    my ( $Self, %Param ) = @_;
+
+    my $Valid = 0;
+    if ( $Param{Valid} ) {
+        $Valid = $Param{Valid};
+    }
+
+    # check cache
+    if ( $Self->{Cache}->{GetCategoryTree}->{$Valid} ) {
+        return $Self->{Cache}->{GetCategoryTree}->{$Valid};
+    }
+
     # sql
-    $SQL = "SELECT id, parent_id, name FROM faq_category";
-    if ($Param{Valid}) {
-        $SQL .= " WHERE valid_id = 1";
+    my $SQL = 'SELECT id, parent_id, name FROM faq_category';
+    if ( $Valid ) {
+        $SQL .= ' WHERE valid_id = 1';
     }
-    $SQL .= " ORDER BY name";
-    $Self->{DBObject}->Prepare(SQL => $SQL);
-    # tree
+    $SQL .= ' ORDER BY name';
+    $Self->{DBObject}->Prepare( SQL => $SQL );
     my @Data;
-    while (my @Row = $Self->{DBObject}->FetchrowArray()) {
-        push (@Data, \@Row);
+    while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
+        push( @Data, \@Row );
     }
-    foreach my $Row (@Data) {
+    my %Hash = ();
+    for my $Row (@Data) {
         my @RowData = @{$Row};
-        $Hash{$RowData[1]}{$RowData[0]} = $RowData[2];
+        $Hash{ $RowData[1] }->{ $RowData[0] } = $RowData[2];
     }
+
     # return tree
-    my $Categories = $Self->_MakeTree(ParentID => 0, Parent => '', Hash => \%Hash, Tree => {},);
-    if (!$Categories) {
+    my $Categories = $Self->_MakeTree( ParentID => 0, Parent => '', Hash => \%Hash, Tree => {}, );
+    if ( !$Categories ) {
         $Categories = {};
     }
+
+    # cache
+    $Self->{Cache}->{GetCategoryTree}->{$Valid} = $Categories;
+
     return $Categories;
 }
 
@@ -2156,16 +2183,24 @@ get all category-groups
 =cut
 
 sub GetAllCategoryGroup {
-    my $Self = shift;
-    my %Param = @_;
-    my $SQL = '';
-    my %Groups = ();
-    # get groups
-    $SQL = "SELECT group_id, category_id FROM faq_category_group";
-    $Self->{DBObject}->Prepare(SQL => $SQL);
-    while  (my @Row = $Self->{DBObject}->FetchrowArray()) {
-        $Groups{$Row[1]}->{$Row[0]} = 1;
+    my ( $Self, %Param ) = @_;
+
+    # check cache
+    if ( $Self->{Cache}->{GetAllCategoryGroup} ) {
+        return $Self->{Cache}->{GetAllCategoryGroup};
     }
+
+    # get groups
+    my $SQL = "SELECT group_id, category_id FROM faq_category_group";
+    $Self->{DBObject}->Prepare( SQL => $SQL );
+    my %Groups = ();
+    while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
+        $Groups{ $Row[1] }->{ $Row[0] } = 1;
+    }
+
+    # cache
+    $Self->{Cache}->{GetAllCategoryGroup} = \%Groups;
+
     return \%Groups;
 }
 
@@ -2180,32 +2215,38 @@ get all category-groups
 =cut
 
 sub GetUserCategories {
-    my $Self = shift;
-    my %Param = @_;
+    my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    foreach (qw(UserID Type)) {
-        if (!$Param{$_}) {
-            $Self->{LogObject}->Log(Priority => 'error', Message => "Need $_!");
+    for (qw(UserID Type)) {
+        if ( !$Param{$_} ) {
+            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $_!" );
             return;
         }
     }
 
-    my $Categories = $Self->CategoryList(Valid => 1);
+    my $Categories     = $Self->CategoryList( Valid => 1 );
     my $CategoryGroups = $Self->GetAllCategoryGroup();
-    my %UserGroups = $Self->{GroupObject}->GroupMemberList(
-        UserID => $Param{UserID},
-        Type => $Param{Type},
-        Result => 'HASH',
-    );
+    my %UserGroups     = ();
+    if ( !$Self->{Cache}->{GetUserCategories}->{GroupMemberList} ) {
+        %UserGroups = $Self->{GroupObject}->GroupMemberList(
+            UserID => $Param{UserID},
+            Type   => $Param{Type},
+            Result => 'HASH',
+        );
+        $Self->{Cache}->{GetUserCategories}->{GroupMemberList} = \%UserGroups;
+    }
+    else {
+        %UserGroups = %{ $Self->{Cache}->{GetUserCategories}->{GroupMemberList} };
+    }
 
     my %Hash = ();
     $Self->_UserCategories(
-        Categories => $Categories,
+        Categories     => $Categories,
         CategoryGroups => $CategoryGroups,
-        UserGroups => \%UserGroups,
-        ParentID => 0,
-        NewHash => \%Hash,
+        UserGroups     => \%UserGroups,
+        ParentID       => 0,
+        NewHash        => \%Hash,
     );
     return \%Hash;
 }
@@ -2486,6 +2527,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.16 $ $Date: 2008-03-14 15:50:44 $
+$Revision: 1.16.2.1 $ $Date: 2008-08-27 09:41:34 $
 
 =cut
