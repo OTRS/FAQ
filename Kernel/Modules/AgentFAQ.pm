@@ -2,7 +2,7 @@
 # Kernel/Modules/AgentFAQ.pm - faq module
 # Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
 # --
-# $Id: AgentFAQ.pm,v 1.12 2008-03-26 08:42:27 martin Exp $
+# $Id: AgentFAQ.pm,v 1.12.2.1 2008-09-23 10:27:11 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -20,7 +20,7 @@ use Kernel::System::Group;
 use Kernel::System::Valid;
 
 use vars qw($VERSION @ISA);
-$VERSION = qw($Revision: 1.12 $) [1];
+$VERSION = qw($Revision: 1.12.2.1 $) [1];
 
 @ISA = qw(Kernel::Modules::FAQ);
 
@@ -528,7 +528,7 @@ sub Run {
         $Frontend{StateOption} = $Self->{LayoutObject}->OptionStrgHashRef(
             Data => { $Self->{FAQObject}->StateList() },
             Name => 'StateID',
-            Selected => 'internal (agent)',
+            Selected => $Self->{ConfigObject}->Get('FAQ::Default::State') || 'internal (agent)',
         );
 
         $Self->{LayoutObject}->Block(
