@@ -2,7 +2,7 @@
 # AgentFAQ.dtl - provides HTML view for faq articles
 # Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
 # --
-# $Id: AgentFAQ.dtl,v 1.16 2008-06-09 11:38:17 rk Exp $
+# $Id: AgentFAQ.dtl,v 1.16.2.1 2008-10-07 12:03:29 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -446,7 +446,7 @@ function submit_compose()
 <!-- dtl:block:FAQItemField -->
               <tr>
                 <td class="contentkey">$Text{"$Data{"Caption"}"}:  <br> <i class="small">($Text{"$Data{"StateName"}"})</i> </td>
-                <td class="contentvalue"><textarea name="$Data{"Key"}" rows="12" cols="75" wrap="$Env{"BrowserWrap"}">$Data{"Value"}</textarea></td>
+                <td class="contentvalue"><textarea name="$Data{"Key"}" rows="12" cols="75" wrap="off">$Data{"Value"}</textarea></td>
               </tr>
               <tr>
                 <td colspan="2"><hr></td>
@@ -570,7 +570,7 @@ function submit_compose()
 <!-- dtl:block:FAQItemField -->
                   <tr>
                     <td class="contentkey">$Text{"$Data{"Caption"}"}:  <br> <i class="small">($Text{"$Data{"StateName"}"})</i> </td>
-                    <td class="contentvalue"><textarea name="$Data{"Key"}" rows="12" cols="75" wrap="$Env{"BrowserWrap"}">$QData{"Value"}</textarea></td>
+                    <td class="contentvalue"><textarea name="$Data{"Key"}" rows="12" cols="75" wrap="off">$QData{"Value"}</textarea></td>
                   </tr>
                   <tr>
                     <td colspan="2"><hr></td>
