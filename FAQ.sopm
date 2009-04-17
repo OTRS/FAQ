@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
-    <CVS>$Id: FAQ.sopm,v 1.58.2.1 2009-04-07 09:40:41 ub Exp $</CVS>
+    <CVS>$Id: FAQ.sopm,v 1.58.2.2 2009-04-17 17:34:01 mh Exp $</CVS>
     <Name>FAQ</Name>
     <Version>0.0.0</Version>
     <Framework>2.3.x</Framework>
@@ -105,15 +105,12 @@
             </Unique>
         </TableCreate>
         <Insert Table="faq_state_type">
-            <Data Key="id">1</Data>
             <Data Key="name" Type="Quote">internal</Data>
         </Insert>
         <Insert Table="faq_state_type">
-            <Data Key="id">2</Data>
             <Data Key="name" Type="Quote">external</Data>
         </Insert>
         <Insert Table="faq_state_type">
-            <Data Key="id">3</Data>
             <Data Key="name" Type="Quote">public</Data>
         </Insert>
         <TableCreate Name="faq_state">
@@ -125,17 +122,14 @@
             </Unique>
         </TableCreate>
         <Insert Table="faq_state">
-            <Data Key="id">1</Data>
             <Data Key="name" Type="Quote">internal (agent)</Data>
             <Data Key="type_id">1</Data>
         </Insert>
         <Insert Table="faq_state">
-            <Data Key="id">2</Data>
             <Data Key="name" Type="Quote">external (customer)</Data>
             <Data Key="type_id">2</Data>
         </Insert>
         <Insert Table="faq_state">
-            <Data Key="id">3</Data>
             <Data Key="name" Type="Quote">public (all)</Data>
             <Data Key="type_id">3</Data>
         </Insert>
