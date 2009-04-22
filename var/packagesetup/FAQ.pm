@@ -1,8 +1,8 @@
 # --
 # FAQ.pm - code to excecute during package installation
-# Copyright (C) 2001-2008 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.3 2008-10-09 08:16:46 ub Exp $
+# $Id: FAQ.pm,v 1.3.2.1 2009-04-22 20:12:09 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Valid;
 use Kernel::System::FAQ;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
+$VERSION = qw($Revision: 1.3.2.1 $) [1];
 
 =head1 NAME
 
@@ -153,6 +153,9 @@ run the code install part
 sub CodeInstall {
     my ( $Self, %Param ) = @_;
 
+    # insert the faq states
+    $Self->_InsertFAQStates();
+
     # add the group faq
     $Self->_GroupAdd(
         Name        => 'faq',
@@ -183,6 +186,9 @@ run the code reinstall part
 
 sub CodeReinstall {
     my ( $Self, %Param ) = @_;
+
+    # insert the faq states
+    $Self->_InsertFAQStates();
 
     # add the group faq
     $Self->_GroupAdd(
@@ -267,6 +273,41 @@ sub CodeUninstall {
     $Self->{StatsObject}->StatsUninstall(
         FilePrefix => $Self->{FilePrefix},
     );
+
+    return 1;
+}
+
+=item _InsertFAQStates()
+
+inserts needed FAQ states into table
+
+    my $Result = $CodeObject->_InsertFAQStates();
+
+=cut
+
+sub _InsertFAQStates {
+    my ( $Self, %Param ) = @_;
+
+    # define faq_state_types => faq_states
+    my %State = (
+        'internal' => 'internal (agent)',
+        'external' => 'external (customer)',
+        'public'   => 'public (all)',
+    );
+
+    for my $Type ( qw( internal external public ) ) {
+
+        # get the state type
+        my $StateTypeRef = $Self->{FAQObject}->StateTypeGet(
+            Name => $Type,
+        );
+
+        # add the state
+        $Self->{FAQObject}->StateAdd(
+            Name   => $State{$Type},
+            TypeID => $StateTypeRef->{ID},
+        );
+    }
 
     return 1;
 }
@@ -481,6 +522,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.3 $ $Date: 2008-10-09 08:16:46 $
+$Revision: 1.3.2.1 $ $Date: 2009-04-22 20:12:09 $
 
 =cut
