@@ -2,7 +2,7 @@
 # Kernel/System/FAQ.pm - all faq funktions
 # Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.67.2.1 2009-04-17 18:20:48 mh Exp $
+# $Id: FAQ.pm,v 1.67.2.2 2009-04-22 20:10:51 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.67.2.1 $) [1];
+$VERSION = qw($Revision: 1.67.2.2 $) [1];
 
 =head1 NAME
 
@@ -1657,7 +1657,6 @@ sub StateUpdate {
 add a state
 
     my $ID = $FAQObject->StateAdd(
-        ID     => 1,
         Name   => 'public',
         TypeID => 1,
     );
@@ -1732,9 +1731,9 @@ sub StateGet {
 
 =item StateTypeGet()
 
-get a state as hash
+get a state as hashref
 
-    my %State = $FAQObject->StateTypeGet(
+    my $StateTypeHashRef = $FAQObject->StateTypeGet(
         ID   => 1, # or
         Name => 'internal',
     );
@@ -3532,6 +3531,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.67.2.1 $ $Date: 2009-04-17 18:20:48 $
+$Revision: 1.67.2.2 $ $Date: 2009-04-22 20:10:51 $
 
 =cut
