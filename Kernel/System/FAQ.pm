@@ -2,7 +2,7 @@
 # Kernel/System/FAQ.pm - all faq funktions
 # Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.67.2.2 2009-04-22 20:10:51 ub Exp $
+# $Id: FAQ.pm,v 1.67.2.3 2009-07-13 15:56:45 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.67.2.2 $) [1];
+$VERSION = qw($Revision: 1.67.2.3 $) [1];
 
 =head1 NAME
 
@@ -1299,7 +1299,9 @@ sub CategoryGet {
 get all subcategory ids of of a category
 
     my @SubCategoryIDs = $FAQObject->CategorySubCategoryIDList(
-        ParentID   => 1,
+        ParentID     => 1,
+        Mode         => 'Public', # (Agent, Customer, Public)
+        CustomerUser => 'tt',
     );
 
 =cut
@@ -2458,6 +2460,12 @@ sub GetCustomerCategories {
         }
     }
 
+    # check cache
+    my $CacheKey = 'GetCustomerCategories::CustomerUser::' . $Param{CustomerUser};
+    if ( defined $Self->{Cache}->{$CacheKey} ) {
+        return $Self->{Cache}->{$CacheKey};
+    }
+
     my $Categories = $Self->CategoryList( Valid => 1 );
     my $CategoryGroups = $Self->GetAllCategoryGroup();
 
@@ -2472,6 +2480,9 @@ sub GetCustomerCategories {
         CategoryGroups => $CategoryGroups,
         UserGroups     => \%UserGroups,
     );
+
+    # cache
+    $Self->{Cache}->{$CacheKey} = $CustomerCategories;
 
     return $CustomerCategories;
 }
@@ -2595,6 +2606,7 @@ get the category search as hash
     my $CategoryIDArrayRef = @{$FAQObject->CustomerCategorySearch(
         CustomerUser  => 'tt',
         ParentID      => 3,   # (optional, default 0)
+        Mode          => 'Customer',
     )};
 
 =cut
@@ -2621,42 +2633,61 @@ sub CustomerCategorySearch {
     my @CategoryIDs = sort { $Category{$a} cmp $Category{$b} } ( keys %Category );
     my @AllowedCategoryIDs = ();
 
+    my %Articles = ();
+
+    # check cache
+    my $CacheKey = 'CustomerCategorySearch::Articles';
+    if ( $Self->{Cache}->{$CacheKey} ) {
+        %Articles = %{ $Self->{Cache}->{$CacheKey} };
+    }
+    else {
+
+        my $SQL;
+        $SQL  = 'SELECT faq_item.id, faq_item.category_id ';
+        $SQL .= 'FROM faq_item, faq_state_type ';
+        $SQL .= 'WHERE faq_state_type.id = faq_item.state_id ';
+        $SQL .= "AND faq_state_type.name != 'internal' ";
+        $SQL .= 'AND approved = 1';
+
+        $Self->{DBObject}->Prepare(
+            SQL   => $SQL,
+        );
+        while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
+            $Articles{$Row[1]}++;
+        }
+
+        # cache
+        $Self->{Cache}->{$CacheKey} = \%Articles;
+    }
+
     for my $CategoryID ( @CategoryIDs ) {
 
         # get all subcategory ids for this category
         my $SubCategoryIDs = $Self->CategorySubCategoryIDList(
-            ParentID => $CategoryID,
+            ParentID     => $CategoryID,
+            Mode         => $Param{Mode},
+            CustomerUser => $Param{CustomerUser},
         );
 
         # add this category id
         my @IDs = ( $CategoryID, @{ $SubCategoryIDs } );
 
         # check if category contains articles with state external or public
-        my $FoundArticle = 0;
-        my $SQL;
-        $SQL  = 'SELECT faq_item.id FROM faq_item, faq_state_type ';
-        $SQL .= 'WHERE faq_item.category_id = ? ';
-        $SQL .= 'AND faq_state_type.id = faq_item.state_id ';
-        $SQL .= "AND faq_state_type.name != 'internal' ";
-        $SQL .= 'AND approved = 1';
-
+#        my $FoundArticle = 0;
         ID:
         for my $ID ( @IDs ) {
-            $Self->{DBObject}->Prepare(
-                SQL   => $SQL,
-                Bind  => [ \$ID ],
-                Limit => 1,
-            );
-            while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
-                $FoundArticle = $Row[0];
-            }
-            last ID if $FoundArticle;
-        }
-
-        # an article was found
-        if ( $FoundArticle ) {
+            next ID if !$Articles{$ID};
             push @AllowedCategoryIDs, $CategoryID;
+            last ID;
         }
+#            $FoundArticle = $Articles{$ID};
+#            last ID if $FoundArticle;
+#        }
+#
+#        # an article was found
+#        if ( $FoundArticle ) {
+#            push @AllowedCategoryIDs, $CategoryID;
+#        }
     }
 
     return \@AllowedCategoryIDs;
@@ -2668,6 +2699,7 @@ get the category search as hash
 
     my @CategorieIDs = @{$FAQObject->PublicCategorySearch(
         ParentID      => 3,   # (optional, default 0)
+        Mode          => 'Public',
     )};
 
 =cut
@@ -2693,7 +2725,9 @@ sub PublicCategorySearch {
 
         # get all subcategory ids for this category
         my $SubCategoryIDs = $Self->CategorySubCategoryIDList(
-            ParentID => $CategoryID,
+            ParentID     => $CategoryID,
+            Mode         => $Param{Mode},
+            CustomerUser => $Param{CustomerUser},
         );
 
         # add this category id
@@ -3531,6 +3565,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.67.2.2 $ $Date: 2009-04-22 20:10:51 $
+$Revision: 1.67.2.3 $ $Date: 2009-07-13 15:56:45 $
 
 =cut
