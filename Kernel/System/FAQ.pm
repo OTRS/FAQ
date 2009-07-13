@@ -2,7 +2,7 @@
 # Kernel/System/FAQ.pm - all faq funktions
 # Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.67.2.3 2009-07-13 15:56:45 ub Exp $
+# $Id: FAQ.pm,v 1.67.2.4 2009-07-13 16:04:52 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.67.2.3 $) [1];
+$VERSION = qw($Revision: 1.67.2.4 $) [1];
 
 =head1 NAME
 
@@ -2673,21 +2673,12 @@ sub CustomerCategorySearch {
         my @IDs = ( $CategoryID, @{ $SubCategoryIDs } );
 
         # check if category contains articles with state external or public
-#        my $FoundArticle = 0;
         ID:
         for my $ID ( @IDs ) {
             next ID if !$Articles{$ID};
             push @AllowedCategoryIDs, $CategoryID;
             last ID;
         }
-#            $FoundArticle = $Articles{$ID};
-#            last ID if $FoundArticle;
-#        }
-#
-#        # an article was found
-#        if ( $FoundArticle ) {
-#            push @AllowedCategoryIDs, $CategoryID;
-#        }
     }
 
     return \@AllowedCategoryIDs;
@@ -3565,6 +3556,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.67.2.3 $ $Date: 2009-07-13 15:56:45 $
+$Revision: 1.67.2.4 $ $Date: 2009-07-13 16:04:52 $
 
 =cut
