@@ -2,7 +2,7 @@
 # Kernel/System/FAQ.pm - all faq funktions
 # Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.67.2.4 2009-07-13 16:04:52 ub Exp $
+# $Id: FAQ.pm,v 1.67.2.5 2009-07-22 10:28:40 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.67.2.4 $) [1];
+$VERSION = qw($Revision: 1.67.2.5 $) [1];
 
 =head1 NAME
 
@@ -2028,9 +2028,11 @@ sub FAQSearch {
         }
         $Ext .= " LOWER(i.f_subject) LIKE LOWER('" . $Param{Title} . "')";
     }
-    if ( $Param{LanguageIDs} && ref( $Param{LanguageIDs} ) eq 'ARRAY' && @{ $Param{LanguageIDs} } )
-    {
-        $Ext .= ' AND i.f_language_id IN (';
+    if ( $Param{LanguageIDs} && ref( $Param{LanguageIDs} ) eq 'ARRAY' && @{ $Param{LanguageIDs} } ) {
+        if ($Ext) {
+            $Ext .= ' AND';
+        }
+        $Ext .= ' i.f_language_id IN (';
         for my $LanguageID ( @{ $Param{LanguageIDs} } ) {
             $Ext .= $Self->{DBObject}->Quote( $LanguageID, 'Integer' ) . ',';
         }
@@ -3556,6 +3558,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.67.2.4 $ $Date: 2009-07-13 16:04:52 $
+$Revision: 1.67.2.5 $ $Date: 2009-07-22 10:28:40 $
 
 =cut
