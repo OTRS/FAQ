@@ -2,7 +2,7 @@
 # FAQ.pm - code to excecute during package installation
 # Copyright (C) 2001-2009 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.3.2.1 2009-04-22 20:12:09 ub Exp $
+# $Id: FAQ.pm,v 1.3.2.2 2009-09-01 15:35:04 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -21,10 +21,11 @@ use Kernel::System::Group;
 use Kernel::System::Stats;
 use Kernel::System::User;
 use Kernel::System::Valid;
+use Kernel::System::LinkObject;
 use Kernel::System::FAQ;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.3.2.1 $) [1];
+$VERSION = qw($Revision: 1.3.2.2 $) [1];
 
 =head1 NAME
 
@@ -127,6 +128,7 @@ sub new {
     $Self->{GroupObject}  = Kernel::System::Group->new( %{$Self} );
     $Self->{UserObject}   = Kernel::System::User->new( %{$Self} );
     $Self->{ValidObject}  = Kernel::System::Valid->new( %{$Self} );
+    $Self->{LinkObject}   = Kernel::System::LinkObject->new( %{$Self} );
     $Self->{StatsObject}  = Kernel::System::Stats->new(
         %{$Self},
         UserID => 1,
@@ -273,6 +275,9 @@ sub CodeUninstall {
     $Self->{StatsObject}->StatsUninstall(
         FilePrefix => $Self->{FilePrefix},
     );
+
+    # delete all links with FAQ articles
+    $Self->_LinkDelete();
 
     return 1;
 }
@@ -506,6 +511,39 @@ sub _GroupDeactivate {
     return 1;
 }
 
+=item _LinkDelete()
+
+delete all existing links to faq articles
+
+    my $Result = $CodeObject->_LinkDelete();
+
+=cut
+
+sub _LinkDelete {
+    my ( $Self, %Param ) = @_;
+
+    # get all faq article ids
+    my @FAQIDs = ();
+    $Self->{DBObject}->Prepare(
+        SQL => 'SELECT id FROM faq_item'
+    );
+    while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
+        push @FAQIDs, $Row[0];
+    }
+    return if !@FAQIDs;
+
+    # delete the faq article links
+    for my $FAQID ( @FAQIDs ) {
+        $Self->{LinkObject}->LinkDeleteAll(
+            Object => 'FAQ',
+            Key    => $FAQID,
+            UserID => 1,
+        );
+    }
+
+    return 1;
+}
+
 1;
 
 =back
@@ -522,6 +560,6 @@ did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
 
 =head1 VERSION
 
-$Revision: 1.3.2.1 $ $Date: 2009-04-22 20:12:09 $
+$Revision: 1.3.2.2 $ $Date: 2009-09-01 15:35:04 $
 
 =cut
