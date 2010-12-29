@@ -2,11 +2,11 @@
 # Kernel/Modules/AgentFAQ.pm - faq module
 # Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
 # --
-# $Id: AgentFAQ.pm,v 1.34 2010-02-23 18:39:51 ub Exp $
+# $Id: AgentFAQ.pm,v 1.34.2.1 2010-12-29 16:57:14 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-# the enclosed file COPYING for license information (GPL). If you
-# did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 # --
 
 package Kernel::Modules::AgentFAQ;
@@ -23,7 +23,7 @@ use Kernel::System::Valid;
 use Kernel::System::Web::UploadCache;
 
 use vars qw($VERSION @ISA);
-$VERSION = qw($Revision: 1.34 $) [1];
+$VERSION = qw($Revision: 1.34.2.1 $) [1];
 
 @ISA = qw(Kernel::Modules::FAQ);
 
@@ -346,11 +346,11 @@ sub Run {
 
         # dtl
         $Frontend{CategoryLongOption} = $Self->{LayoutObject}->AgentFAQCategoryListOption(
-            CategoryList => { %CategoryList },
-            Size         => 10,
-            Name         => 'CategoryID',
-            SelectedID   => $CategoryData{CategoryID},
-            HTMLQuote    => 1,
+            CategoryList        => {%CategoryList},
+            Size                => 10,
+            Name                => 'CategoryID',
+            SelectedID          => $CategoryData{CategoryID},
+            HTMLQuote           => 1,
             LanguageTranslation => 0,
         );
 
@@ -358,11 +358,11 @@ sub Run {
         delete $CategoryList{ $CategoryData{ParentID} }->{ $CategoryData{CategoryID} };
 
         $Frontend{CategoryOption} = $Self->{LayoutObject}->AgentFAQCategoryListOption(
-            CategoryList => { %CategoryList },
-            Size         => 1,
-            Name         => 'ParentID',
-            SelectedID   => $CategoryData{ParentID},
-            HTMLQuote    => 1,
+            CategoryList        => {%CategoryList},
+            Size                => 1,
+            Name                => 'ParentID',
+            SelectedID          => $CategoryData{ParentID},
+            HTMLQuote           => 1,
             LanguageTranslation => 0,
             RootElement         => 1,
         );
@@ -644,7 +644,7 @@ sub Run {
                 );
                 $Self->{LayoutObject}->Block(
                     Name => 'AddApproval',
-                    Data => { %Data },
+                    Data => {%Data},
                 );
             }
         }
@@ -692,25 +692,30 @@ sub Run {
 
         # search faq articles with same title and keywords
         my @IDs = $Self->{FAQObject}->FAQSearch(
-            Title     => $ParamData{Title},
-            Keyword   => $ParamData{Keywords},
-            Order     => 'Changed',
-            Sort      => 'down',
-            Limit     => 1,
+            Title   => $ParamData{Title},
+            Keyword => $ParamData{Keywords},
+            Order   => 'Changed',
+            Sort    => 'down',
+            Limit   => 1,
         );
-        if ( @IDs ) {
+        if (@IDs) {
             my $ItemID = $IDs[0];
+
             # get faq data
             my %FAQ = $Self->{FAQObject}->FAQGet(
                 ItemID => $ItemID,
             );
+
             # check if data is the same
-            if (   ( $FAQ{Title}      eq $ParamData{Title} )
+            if (
+                ( $FAQ{Title} eq $ParamData{Title} )
                 && ( $FAQ{Keywords}   eq $ParamData{Keywords} )
                 && ( $FAQ{CategoryID} eq $ParamData{CategoryID} )
                 && ( $FAQ{StateID}    eq $ParamData{StateID} )
                 && ( $FAQ{LanguageID} eq $ParamData{LanguageID} )
-            ){
+                )
+            {
+
                 # convert faq change time to system time format
                 my $FAQChangeTime = $Self->{TimeObject}->TimeStamp2SystemTime(
                     String => $FAQ{Changed},
@@ -801,6 +806,14 @@ sub Run {
             return $Self->{LayoutObject}->ErrorScreen();
         }
 
+        my $Permission = $Self->{FAQObject}->CheckCategoryUserPermission(
+            UserID     => $Self->{UserID},
+            CategoryID => $ItemData{CategoryID},
+        );
+        if ( $Permission eq '' ) {
+            $Self->{LayoutObject}->FatalError( Message => "Permission denied!" );
+        }
+
         # dtl
         $Frontend{LanguageOption} = $Self->{LayoutObject}->OptionStrgHashRef(
             Data                => { $Self->{FAQObject}->LanguageList() },
@@ -853,7 +866,7 @@ sub Run {
                 );
                 $Self->{LayoutObject}->Block(
                     Name => 'UpdateApproval',
-                    Data => { %Data },
+                    Data => {%Data},
                 );
             }
         }
@@ -915,11 +928,19 @@ sub Run {
             ItemID => $ParamData{ItemID},
         );
 
+        my $Permission = $Self->{FAQObject}->CheckCategoryUserPermission(
+            UserID     => $Self->{UserID},
+            CategoryID => $ItemData{CategoryID},
+        );
+        if ( $Permission eq '' ) {
+            $Self->{LayoutObject}->FatalError( Message => "Permission denied!" );
+        }
+
         # attachment delete
         my @AttachmentIndex = $Self->{FAQObject}->AttachmentIndex(
             ItemID => $ParamData{ItemID},
         );
-        for my $Attachment ( @AttachmentIndex ) {
+        for my $Attachment (@AttachmentIndex) {
             my $FileID = $Attachment->{FileID};
             $ParamData{"AttachmentDelete$FileID"} = $Self->{ParamObject}->GetParam(
                 Param => "AttachmentDelete$FileID",
@@ -1038,6 +1059,14 @@ sub Run {
             return $Self->{LayoutObject}->ErrorScreen();
         }
 
+        my $Permission = $Self->{FAQObject}->CheckCategoryUserPermission(
+            UserID     => $Self->{UserID},
+            CategoryID => $ItemData{CategoryID},
+        );
+        if ( $Permission eq '' ) {
+            $Self->{LayoutObject}->FatalError( Message => "Permission denied!" );
+        }
+
         # dtl
         $Self->{LayoutObject}->Block(
             Name => 'Delete',
@@ -1080,6 +1109,14 @@ sub Run {
             return $Self->{LayoutObject}->ErrorScreen();
         }
 
+        my $Permission = $Self->{FAQObject}->CheckCategoryUserPermission(
+            UserID     => $Self->{UserID},
+            CategoryID => $ItemData{CategoryID},
+        );
+        if ( $Permission eq '' ) {
+            $Self->{LayoutObject}->FatalError( Message => "Permission denied!" );
+        }
+
         my $Delete = $Self->{FAQObject}->FAQDelete(
             %ItemData,
             UserID => $Self->{UserID},
@@ -1120,6 +1157,14 @@ sub Run {
 
         if ( !%ItemData ) {
             return $Self->{LayoutObject}->ErrorScreen();
+        }
+
+        my $Permission = $Self->{FAQObject}->CheckCategoryUserPermission(
+            UserID     => $Self->{UserID},
+            CategoryID => $ItemData{CategoryID},
+        );
+        if ( $Permission eq '' ) {
+            $Self->{LayoutObject}->FatalError( Message => "Permission denied!" );
         }
 
         # get attachments
@@ -1175,6 +1220,14 @@ sub Run {
             = $Self->{FAQObject}->FAQGet( ItemID => $ParamData{ItemID}, UserID => $Self->{UserID} );
         if ( !%ItemData ) {
             return $Self->{LayoutObject}->ErrorScreen();
+        }
+
+        my $Permission = $Self->{FAQObject}->CheckCategoryUserPermission(
+            UserID     => $Self->{UserID},
+            CategoryID => $ItemData{CategoryID},
+        );
+        if ( $Permission eq '' ) {
+            $Self->{LayoutObject}->FatalError( Message => "Permission denied!" );
         }
 
         # dtl
@@ -1287,7 +1340,7 @@ sub Run {
 
             # log access to this FAQ item
             $Self->{FAQObject}->FAQLogAdd(
-                ItemID    => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
+                ItemID => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
                 Interface => $Self->{Interface}{Name},
             );
         }
