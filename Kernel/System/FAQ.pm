@@ -1,8 +1,8 @@
 # --
 # Kernel/System/FAQ.pm - all faq funktions
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.83.2.2 2010-10-29 12:17:08 cr Exp $
+# $Id: FAQ.pm,v 1.83.2.3 2011-12-16 00:08:10 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -25,7 +25,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.83.2.2 $) [1];
+$VERSION = qw($Revision: 1.83.2.3 $) [1];
 
 =head1 NAME
 
@@ -49,7 +49,6 @@ create a faq object
     use Kernel::System::Encode;
     use Kernel::System::Log;
     use Kernel::System::Main;
-    use Kernel::System::DB;
     use Kernel::System::FAQ;
 
     my $ConfigObject = Kernel::Config->new();
@@ -1567,17 +1566,18 @@ sub KeywordList {
     return if !$Self->{DBObject}->Prepare( SQL => $SQL );
     my %Data;
     while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
-        for my $Keyword (split(/,/,lc($Row[0]))) {
-        # remove leading/tailing spaces
-        $Keyword =~ s/^\s+//g;
-        $Keyword =~ s/\s+$//g;
+        for my $Keyword ( split( /,/, lc( $Row[0] ) ) ) {
 
-        $Data{$Keyword}++;
+            # remove leading/tailing spaces
+            $Keyword =~ s/^\s+//g;
+            $Keyword =~ s/\s+$//g;
+
+            $Data{$Keyword}++;
         }
     }
 
     # cache
-#    $Self->{Cache}->{CategoryList}->{$Valid} = \%Data;
+    #    $Self->{Cache}->{CategoryList}->{$Valid} = \%Data;
 
     return %Data;
 }
@@ -2648,12 +2648,12 @@ sub CustomerCategorySearch {
     }
     else {
 
-        my $SQL;
-        $SQL = 'SELECT faq_item.id, faq_item.category_id ';
-        $SQL .= 'FROM faq_item, faq_state_type ';
-        $SQL .= 'WHERE faq_state_type.id = faq_item.state_id ';
-        $SQL .= "AND faq_state_type.name != 'internal' ";
-        $SQL .= 'AND approved = 1';
+        my $SQL = 'SELECT faq_item.id, faq_item.category_id '
+            . 'FROM faq_item, faq_state_type, faq_state '
+            . 'WHERE faq_state.id = faq_item.state_id '
+            . 'AND faq_state.type_id = faq_state_type.id '
+            . "AND faq_state_type.name != 'internal' "
+            . 'AND approved = 1';
 
         return if !$Self->{DBObject}->Prepare(
             SQL => $SQL,
@@ -2732,12 +2732,13 @@ sub PublicCategorySearch {
 
         # check if category contains articles with state public
         my $FoundArticle = 0;
-        my $SQL;
-        $SQL = 'SELECT faq_item.id FROM faq_item, faq_state_type ';
-        $SQL .= 'WHERE faq_item.category_id = ? ';
-        $SQL .= 'AND faq_state_type.id = faq_item.state_id ';
-        $SQL .= "AND faq_state_type.name = 'public' ";
-        $SQL .= 'AND approved = 1';
+        my $SQL          = 'SELECT faq_item.id '
+            . 'FROM faq_item, faq_state_type, faq_state '
+            . 'WHERE faq_item.category_id = ? '
+            . 'AND faq_state.id = faq_item.state_id '
+            . 'AND faq_state.type_id = faq_state_type.id '
+            . "AND faq_state_type.name = 'public' "
+            . 'AND approved = 1';
 
         ID:
         for my $ID (@IDs) {
@@ -2864,18 +2865,18 @@ sub FAQTop10Get {
         . 'AND faq_state.type_id = faq_state_type.id ';
 
     # filter just categories with at least ro permission
-    if ( $Param{CategoryIDs} ){
+    if ( $Param{CategoryIDs} ) {
 
-       $SQL .= "AND faq_item.category_id IN (";
+        $SQL .= "AND faq_item.category_id IN (";
 
-       for my $Category ( @{ $Param{CategoryIDs} } ){
-           $SQL .= " '$Category'";
-           if ($Category ne $Param{CategoryIDs}->[-1]){
-               $SQL .= ',';
-           }
-       }
+        for my $Category ( @{ $Param{CategoryIDs} } ) {
+            $SQL .= " '$Category'";
+            if ( $Category ne $Param{CategoryIDs}->[-1] ) {
+                $SQL .= ',';
+            }
+        }
 
-       $SQL .= ")";
+        $SQL .= ")";
     }
 
     # filter results for public and customer interface
@@ -3176,12 +3177,12 @@ This software is part of the OTRS project (http://otrs.org/).
 
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you
-did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =cut
 
 =head1 VERSION
 
-$Revision: 1.83.2.2 $ $Date: 2010-10-29 12:17:08 $
+$Revision: 1.83.2.3 $ $Date: 2011-12-16 00:08:10 $
 
 =cut
