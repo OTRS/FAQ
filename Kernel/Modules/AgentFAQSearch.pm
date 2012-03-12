@@ -1,8 +1,8 @@
 # --
 # Kernel/Modules/AgentFAQSearch.pm - module for FAQ search
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
-# $Id: AgentFAQSearch.pm,v 1.30 2011-10-08 17:55:21 cr Exp $
+# $Id: AgentFAQSearch.pm,v 1.30.2.1 2012-03-12 16:14:37 des Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -19,7 +19,7 @@ use Kernel::System::SearchProfile;
 use Kernel::System::CSV;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.30 $) [1];
+$VERSION = qw($Revision: 1.30.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -141,6 +141,9 @@ sub Run {
                 $GetParam{$ParamName} =~ s{ \A \s+ }{}xms;
                 $GetParam{$ParamName} =~ s{ \s+ \z }{}xms;
             }
+
+            # db quote to prevent SQL injection
+            $GetParam{$ParamName} = $Self->{DBObject}->Quote( $GetParam{$ParamName} );
         }
 
         # get array search params

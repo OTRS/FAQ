@@ -1,8 +1,8 @@
 # --
 # Kernel/System/FAQ.pm - all faq functions
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.152.2.1 2011-12-16 11:22:23 ub Exp $
+# $Id: FAQ.pm,v 1.152.2.2 2012-03-12 16:14:37 des Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.152.2.1 $) [1];
+$VERSION = qw($Revision: 1.152.2.2 $) [1];
 
 =head1 NAME
 
@@ -4594,6 +4594,11 @@ sub FAQTop10Get {
     # filter just categories with at least ro permission
     if ( $Param{CategoryIDs} && ref $Param{CategoryIDs} eq 'ARRAY' && @{ $Param{CategoryIDs} } ) {
 
+        # integer quote the category ids
+        for my $CategoryID ( @{ $Param{CategoryIDs} } ) {
+            $CategoryID = $Self->{DBObject}->Quote( $CategoryID, 'Integer' );
+        }
+
         # build category id string
         my $CategoryIDString = join ', ', @{ $Param{CategoryIDs} };
         $SQL .= "AND faq_item.category_id IN ($CategoryIDString)";
@@ -5008,6 +5013,6 @@ did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =head1 VERSION
 
-$Revision: 1.152.2.1 $ $Date: 2011-12-16 11:22:23 $
+$Revision: 1.152.2.2 $ $Date: 2012-03-12 16:14:37 $
 
 =cut
