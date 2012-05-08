@@ -1,8 +1,8 @@
 # --
 # Kernel/Modules/AgentFAQExplorer.pm - show the faq explorer
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
 # --
-# $Id: AgentFAQExplorer.pm,v 1.15 2011-10-07 04:47:34 cr Exp $
+# $Id: AgentFAQExplorer.pm,v 1.15.2.1 2012-05-08 21:14:35 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -17,7 +17,7 @@ use warnings;
 use Kernel::System::FAQ;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.15 $) [1];
+$VERSION = qw($Revision: 1.15.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -248,6 +248,11 @@ sub Run {
         for my $Name ( keys %PossibleColumn ) {
             next COLUMNNAME if !$PossibleColumn{$Name};
             push @ShowColumns, $Name;
+        }
+
+        # enforce FAQ number column since is the link MasterAction hook
+        if ( !$PossibleColumn{'Number'} ) {
+            push @ShowColumns, 'Number';
         }
     }
 
