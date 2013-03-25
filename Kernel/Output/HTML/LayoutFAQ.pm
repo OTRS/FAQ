@@ -1,8 +1,8 @@
 # --
 # Kernel/Output/HTML/LayoutFAQ.pm - provides generic agent HTML output
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
 # --
-# $Id: LayoutFAQ.pm,v 1.49 2011-10-07 04:47:34 cr Exp $
+# $Id: LayoutFAQ.pm,v 1.49.2.1 2013-03-25 17:51:01 ub Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,7 +15,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.49 $) [1];
+$VERSION = qw($Revision: 1.49.2.1 $) [1];
 
 sub GetFAQItemVotingRateColor {
     my ( $Self, %Param ) = @_;
@@ -427,6 +427,22 @@ sub FAQContentShow {
 
         my $Caption = $Fields{$Field}->{'Caption'};
         my $Content = $Param{FAQData}->{$Field} || '';
+
+        # remove active html content (scripts, applets, etc...)
+        my %SafeContent = $Self->{HTMLUtilsObject}->Safety(
+            String       => $Content,
+            NoApplet     => 1,
+            NoObject     => 1,
+            NoEmbed      => 1,
+            NoIntSrcLoad => 0,
+            NoExtSrcLoad => 0,
+            NoJavaScript => 1,
+        );
+
+        # take the safe content if neccessary
+        if ( $SafeContent{Replace} ) {
+            $Content = $SafeContent{String};
+        }
 
         # show the field
         $Self->Block(
