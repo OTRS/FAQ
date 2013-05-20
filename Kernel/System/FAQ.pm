@@ -1,8 +1,8 @@
 # --
 # Kernel/System/FAQ.pm - all faq functions
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
 # --
-# $Id: FAQ.pm,v 1.157 2012-03-12 16:32:24 des Exp $
+# $Id: FAQ.pm,v 1.157.2.1 2013-05-20 18:13:05 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -24,7 +24,7 @@ use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
 
 use vars qw($VERSION);
-$VERSION = qw($Revision: 1.157 $) [1];
+$VERSION = qw($Revision: 1.157.2.1 $) [1];
 
 =head1 NAME
 
@@ -3958,7 +3958,7 @@ sub GetCustomerCategoriesLongNames {
                 Mode         => 'Customer',
                 UserID       => $Param{UserID},
                 )
-            };
+        };
     }
 
     # build customer category hash
@@ -4050,7 +4050,7 @@ sub GetPublicCategoriesLongNames {
                 Mode     => 'Public',
                 UserID   => $Param{UserID},
                 )
-            };
+        };
     }
 
     # build public category hash
@@ -4993,7 +4993,7 @@ sub _FAQApprovalTicketCreate {
             SenderType  => 'system',
             Subject     => $Subject,
             Body        => $Body,
-            ContentType => "text/plain; charset=$Self->{ConfigObject}->Get('DefaultCharset')",
+            ContentType => 'text/plain; charset=utf-8',
             UserID      => 1,
             HistoryType => 'SystemRequest',
             HistoryComment =>
@@ -5025,6 +5025,6 @@ did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =head1 VERSION
 
-$Revision: 1.157 $ $Date: 2012-03-12 16:32:24 $
+$Revision: 1.157.2.1 $ $Date: 2013-05-20 18:13:05 $
 
 =cut
