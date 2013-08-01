@@ -23,7 +23,7 @@
     <div class="Content">
         <div class="FAQHeader">
             <h2 title="$QData{"Title"}">
-                $QData{"Title","40"}
+                $QData{"Title","65"}
                 <span class="FAQHook">$QData{"Number"}</span>
             </h2>
             <ul id="FAQOptions">
