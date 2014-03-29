@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
-    <CVS>$Id: FAQ.sopm,v 1.130 2013-04-24 13:58:27 cr Exp $</CVS>
     <Name>FAQ</Name>
     <Version>0.0.0</Version>
     <Framework>3.2.x</Framework>
@@ -66,6 +65,7 @@
         <File Permission="644" Location="Kernel/Output/HTML/LinkObjectFAQ.pm"/>
         <File Permission="644" Location="Kernel/Output/HTML/OutputFilterFAQ.pm"/>
         <File Permission="644" Location="Kernel/Output/HTML/PublicHeaderMetaFAQSearch.pm"/>
+        <File Permission="644" Location="Kernel/Output/HTML/Standard/AAAFAQ.dtl"/>
         <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentFAQAdd.dtl"/>
         <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentDashboardFAQOverview.dtl"/>
         <File Permission="644" Location="Kernel/Output/HTML/Standard/AgentFAQCategory.dtl"/>
@@ -108,6 +108,9 @@
         <File Permission="644" Location="scripts/test/FAQ.t"/>
         <File Permission="644" Location="scripts/test/sample/FAQ-Test1.doc"/>
         <File Permission="644" Location="scripts/test/sample/FAQ-Test1.pdf"/>
+        <!-- this file should not be insluced
+        <File Permission="644" Location="scripts/webservices/GenericFAQConnector.wsdl"/>
+        -->
         <File Permission="644" Location="var/httpd/htdocs/js/FAQ.Agent.ConfirmationDialog.js"/>
         <File Permission="644" Location="var/httpd/htdocs/js/FAQ.Agent.FAQZoom.js"/>
         <File Permission="644" Location="var/httpd/htdocs/js/FAQ.Agent.TicketCompose.js"/>

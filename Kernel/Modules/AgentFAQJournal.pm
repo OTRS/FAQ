@@ -1,8 +1,6 @@
 # --
 # Kernel/Modules/AgentFAQJournal.pm - module for FAQ journal
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQJournal.pm,v 1.11 2012-12-06 21:34:28 cr Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +13,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.11 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

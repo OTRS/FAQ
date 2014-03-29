@@ -1,8 +1,6 @@
 # --
 # Kernel/GenericInterface/Operation/FAQ/LanguageList.pm - GenericInterface FAQ LanguageList operation backend
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: LanguageList.pm,v 1.5 2012-12-06 21:34:29 cr Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -19,7 +17,6 @@ use Kernel::GenericInterface::Operation::Common;
 use Kernel::System::VariableCheck qw(IsArrayRefWithData IsHashRefWithData IsStringWithData);
 
 use vars qw(@ISA $VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
 
 =head1 NAME
 
@@ -147,11 +144,5 @@ This software is part of the OTRS project (L<http://otrs.org/>).
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you
 did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
-
-=cut
-
-=head1 VERSION
-
-$Revision: 1.5 $ $Date: 2012-12-06 21:34:29 $
 
 =cut

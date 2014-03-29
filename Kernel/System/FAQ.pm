@@ -1,8 +1,6 @@
 # --
 # Kernel/System/FAQ.pm - all faq functions
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQ.pm,v 1.166 2013-05-20 18:13:25 cr Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -23,9 +21,6 @@ use Kernel::System::LinkObject;
 use Kernel::System::Ticket;
 use Kernel::System::Valid;
 use Kernel::System::Web::UploadCache;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.166 $) [1];
 
 =head1 NAME
 
@@ -379,7 +374,7 @@ sub FAQGet {
     return %Data;
 }
 
-sub ItemFieldGet() {
+sub ItemFieldGet {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
@@ -3638,7 +3633,7 @@ sub FAQSearch {
 
                 # add all internal, external and public fields
                 if (
-                    $FieldState    eq 'internal'
+                    $FieldState eq 'internal'
                     || $FieldState eq 'external'
                     || $FieldState eq 'public'
                     )
@@ -5355,11 +5350,5 @@ This software is part of the OTRS project (http://otrs.org/).
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you
 did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
-
-=cut
-
-=head1 VERSION
-
-$Revision: 1.166 $ $Date: 2013-05-20 18:13:25 $
 
 =cut

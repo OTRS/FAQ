@@ -1,8 +1,6 @@
 # --
 # Kernel/Modules/AgentFAQExplorer.pm - show the faq explorer
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQExplorer.pm,v 1.22 2012-12-19 14:44:06 ub Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +13,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.22 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -395,9 +390,9 @@ sub Run {
 
     # check if all InfoBoxes are empty and hide the Sidebar
     if (
-        $InfoBoxResults{LastCreate}    eq -1
+        $InfoBoxResults{LastCreate} eq -1
         && $InfoBoxResults{LastChange} eq -1
-        && $InfoBoxResults{Top10}      eq -1
+        && $InfoBoxResults{Top10} eq -1
         )
     {
         $SidebarClass = 'Hidden';

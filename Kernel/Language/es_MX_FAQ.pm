@@ -1,9 +1,7 @@
 # --
 # Kernel/Language/es_MX_FAQ.pm - translation file
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # Copyright (C) 2013 Enrique Matías Sánchez <quique@unizar.es>
-# --
-# $Id: es_MX_FAQ.pm,v 1.24 2013-03-14 23:22:24 cr Exp $
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

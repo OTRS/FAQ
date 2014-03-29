@@ -1,8 +1,6 @@
 # --
 # Kernel/Output/HTML/HeaderMetaFAQSearch.pm
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: HeaderMetaFAQSearch.pm,v 1.13 2012-11-20 13:06:56 mh Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -13,9 +11,6 @@ package Kernel::Output::HTML::HeaderMetaFAQSearch;
 
 use strict;
 use warnings;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.13 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

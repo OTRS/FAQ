@@ -1,8 +1,6 @@
 # --
 # Kernel/Language/fi_FAQ.pm - translation file for Finnish
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
-# --
-# $Id: fi_FAQ.pm,v 1.1 2013-02-20 21:41:12 mb Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

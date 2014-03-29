@@ -1,8 +1,6 @@
 # --
 # Kernel/Modules/PublicFAQPrint.pm - print layout for agent interface
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
-# --
-# $Id: PublicFAQPrint.pm,v 1.14 2013-01-22 14:14:48 mh Exp $
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -17,9 +15,6 @@ use warnings;
 use Kernel::System::HTMLUtils;
 use Kernel::System::PDF;
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.14 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
