@@ -1,0 +1,11 @@
+# --
+# CHANGES-FAQ - change log of the FAQ module for OTRS
+# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
+# --
+# This software comes with ABSOLUTELY NO WARRANTY. For details, see
+# the enclosed file COPYING for license information (AGPL). If you
+# did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+# --
+2.3.3 - 2014-XX-XX
+- Added Swedish translation thanks to Andreas Berger
+- Fixed Bug# 9995 - Search in FAQ does not respect category permissions.
