@@ -1219,17 +1219,42 @@ sub FAQCount {
         }
     }
 
-    # build category id string
-    my $CategoryIDString = join ', ', @{ $Param{CategoryIDs} };
+    my $CategoryIDString = '';
+    if ( $Param{CategoryIDs} && ref $Param{CategoryIDs} eq 'ARRAY' && @{ $Param{CategoryIDs} } ) {
+
+        # integer quote the category ids
+        for my $CategoryID ( @{ $Param{CategoryIDs} } ) {
+            $Self->{DBObject}->Quote( $CategoryID, 'Integer' );
+        }
+
+        my @SortedIDs = sort @{ $Param{CategoryIDs} };
+
+        # split IN statement with more than 900 elements in more statements bombined with OR
+        # because Oracle doesn't support more than 1000 elements in one IN statement.
+        my @SQLStrings;
+        LOOP:
+        while ( scalar @SortedIDs ) {
+
+            my @SortedIDsPart = splice @SortedIDs, 0, 900;
+
+            my $IDString = join ',', @SortedIDsPart;
+
+            push @SQLStrings, " i.category_id IN ($IDString) ";
+        }
+
+        my $SQLString = join ' OR ', @SQLStrings;
+
+        $CategoryIDString .= 'AND ( ' . $SQLString . ' ) ';
+    }
 
     # build valid id string
     my $ValidIDsString = join ', ', $Self->{ValidObject}->ValidIDsGet();
 
     my $SQL = 'SELECT COUNT(*) '
         . 'FROM faq_item i, faq_state s '
-        . "WHERE i.category_id IN ($CategoryIDString) "
+        . 'WHERE i.state_id = s.id '
         . "AND i.valid_id IN ($ValidIDsString) "
-        . 'AND i.state_id = s.id';
+        . $CategoryIDString;
 
     # count only approved articles
     if ( $Param{OnlyApproved} ) {
@@ -3726,16 +3751,30 @@ sub FAQSearch {
 
         # integer quote the category ids
         for my $CategoryID ( @{ $Param{CategoryIDs} } ) {
-            $CategoryID = $Self->{DBObject}->Quote( $CategoryID, 'Integer' );
+            $Self->{DBObject}->Quote( $CategoryID, 'Integer' );
         }
 
-        # create string
-        my $InString = join ', ', @{ $Param{CategoryIDs} };
+        my @SortedIDs = sort @{ $Param{CategoryIDs} };
+
+        # split IN statement with more than 900 elements in more statements bombined with OR
+        # because Oracle doesn't support more than 1000 elements in one IN statement.
+        my @SQLStrings;
+        LOOP:
+        while ( scalar @SortedIDs ) {
+
+            my @SortedIDsPart = splice @SortedIDs, 0, 900;
+
+            my $IDString = join ',', @SortedIDsPart;
+
+            push @SQLStrings, " i.category_id IN ($IDString) ";
+        }
+
+        my $SQLString = join ' OR ', @SQLStrings;
 
         if ($Ext) {
             $Ext .= ' AND';
         }
-        $Ext .= ' i.category_id IN (' . $InString . ')';
+        $Ext .= ' ( ' . $SQLString . ' ) ';
     }
 
     # set default value for ValidIDs (only search for valid FAQs)
@@ -4893,12 +4932,27 @@ sub FAQTop10Get {
 
         # integer quote the category ids
         for my $CategoryID ( @{ $Param{CategoryIDs} } ) {
-            $CategoryID = $Self->{DBObject}->Quote( $CategoryID, 'Integer' );
+            $Self->{DBObject}->Quote( $CategoryID, 'Integer' );
         }
 
-        # build category id string
-        my $CategoryIDString = join ', ', @{ $Param{CategoryIDs} };
-        $SQL .= "AND faq_item.category_id IN ($CategoryIDString)";
+        my @SortedIDs = sort @{ $Param{CategoryIDs} };
+
+        # split IN statement with more than 900 elements in more statements bombined with OR
+        # because Oracle doesn't support more than 1000 elements in one IN statement.
+        my @SQLStrings;
+        LOOP:
+        while ( scalar @SortedIDs ) {
+
+            my @SortedIDsPart = splice @SortedIDs, 0, 900;
+
+            my $IDString = join ',', @SortedIDsPart;
+
+            push @SQLStrings, " faq_item.category_id IN ($IDString) ";
+        }
+
+        my $SQLString = join ' OR ', @SQLStrings;
+
+        $SQL .= ' AND ( ' . $SQLString . ' ) ';
     }
 
     # filter results for public and customer interface
