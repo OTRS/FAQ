@@ -1391,7 +1391,11 @@ sub FAQHistoryGet {
     }
 
     return if !$Self->{DBObject}->Prepare(
-        SQL  => 'SELECT name, created, created_by FROM faq_history WHERE item_id = ?',
+        SQL => '
+            SELECT name, created, created_by
+            FROM faq_history
+            WHERE item_id = ?
+            ORDER BY created, id',
         Bind => [ \$Param{ItemID} ],
     );
 
