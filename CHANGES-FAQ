@@ -7,6 +7,9 @@
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 2.3.3 - 2014-XX-XX
-- 2014-07-31 Fixed bug#10452 - FAQ history isn't sorted by created.
-- Added Swedish translation thanks to Andreas Berger
-- Fixed Bug# 9995 - Search in FAQ does not respect category permissions.
+ - 2014-07-31 Fixed bug#10452 - FAQ history isn't sorted by created.
+ - Added Swedish translation thanks to Andreas Berger
+ - Fixed bug#9995 - Search in FAQ does not respect category permissions.
+
+2.3.2. - 2014-XX-XX
+EOF
