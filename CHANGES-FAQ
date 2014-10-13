@@ -1,12 +1,13 @@
 # --
 # CHANGES-FAQ - change log of the FAQ module for OTRS
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
+# Copyright (C) 2001-2014 OTRS AG, http://otrs.org/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 2.3.3 - 2014-XX-XX
+ - 2014-10-13 Fixed bug#10557 - Piece of article disappears, when using images.
  - 2014-07-31 Fixed bug#10452 - FAQ history isn't sorted by created.
  - Added Swedish translation thanks to Andreas Berger
  - Fixed bug#9995 - Search in FAQ does not respect category permissions.
