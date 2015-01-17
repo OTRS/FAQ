@@ -6,7 +6,10 @@
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
-2.3.3 - 2014-XX-XX
+2.3.4 - 2015-??-??
+ - 2015-01-16 Fixed bug#11008 - FAQ content size iframes is wrong calculated.
+
+2.3.3 - 2014-09-23
  - 2014-10-13 Fixed bug#10557 - Piece of article disappears, when using images.
  - 2014-07-31 Fixed bug#10452 - FAQ history isn't sorted by created.
  - Added Swedish translation thanks to Andreas Berger
