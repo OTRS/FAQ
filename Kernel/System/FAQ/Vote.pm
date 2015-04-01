@@ -1,6 +1,6 @@
 # --
 # Kernel/System/FAQ/Vote.pm - faq vote functions
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -238,7 +238,7 @@ sub VoteSearch {
             SELECT id
             FROM faq_voting
             WHERE item_id = ?',
-        Bind => [ \$Param{ItemID} ],
+        Bind  => [ \$Param{ItemID} ],
         Limit => $Param{Limit} || 500,
     );
 
@@ -296,7 +296,7 @@ sub ItemVoteDataGet {
             SELECT count(*), avg(rate)
             FROM faq_voting
             WHERE item_id = ?',
-        Bind => [ \$Param{ItemID} ],
+        Bind  => [ \$Param{ItemID} ],
         Limit => $Param{Limit} || 500,
     );
 

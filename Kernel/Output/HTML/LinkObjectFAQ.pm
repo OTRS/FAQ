@@ -1,6 +1,6 @@
 # --
 # Kernel/Output/HTML/LinkObjectFAQ.pm - layout backend module
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -457,7 +457,7 @@ sub SearchOptionList {
             $Self->{LayoutObject}->Block(
                 Name => 'InputText',
                 Data => {
-                    Key => $Row->{FormKey},
+                    Key   => $Row->{FormKey},
                     Value => $Row->{FormData} || '',
                 },
             );

@@ -1,6 +1,6 @@
 # --
 # Kernel/Modules/PublicFAQRSS.pm - public FAQ explorer
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -115,8 +115,7 @@ sub Run {
             $Title = $Self->{LayoutObject}->{LanguageObject}->Get('FAQ Articles (new created)');
         }
         elsif ( $Type eq 'Changed' ) {
-            $Title
-                = $Self->{LayoutObject}->{LanguageObject}->Get('FAQ Articles (recently changed)');
+            $Title = $Self->{LayoutObject}->{LanguageObject}->Get('FAQ Articles (recently changed)');
         }
     }
 

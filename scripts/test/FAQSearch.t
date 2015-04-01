@@ -1,6 +1,6 @@
 # --
 # FAQSearch.t - FAQ search tests
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -462,7 +462,7 @@ my @Tests = (
         Config => {
             %SearchConfigTemplate,
             Rate => {
-                GreaterThan => [ 50, 60 ],
+                GreaterThan       => [ 50, 60 ],
                 SmallerThanEquals => 67,
             },
         },
@@ -477,7 +477,7 @@ my @Tests = (
         Config => {
             %SearchConfigTemplate,
             Votes => {
-                Equals => [ 2, 3, 4 ],
+                Equals            => [ 2, 3, 4 ],
                 GreaterThanEquals => [3],
             },
             Rate => {

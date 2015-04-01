@@ -1,6 +1,6 @@
 # --
 # Kernel/Modules/PublicFAQSearch.pm - public FAQ search
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -253,8 +253,7 @@ sub Run {
                     && $GetParam{ $TimeType . 'TimeStartYear' }
                     )
                 {
-                    $GetParam{ $TimeType . 'TimeNewerDate' }
-                        = $GetParam{ $TimeType . 'TimeStartYear' } . '-'
+                    $GetParam{ $TimeType . 'TimeNewerDate' } = $GetParam{ $TimeType . 'TimeStartYear' } . '-'
                         . $GetParam{ $TimeType . 'TimeStartMonth' } . '-'
                         . $GetParam{ $TimeType . 'TimeStartDay' }
                         . ' 00:00:00';
@@ -265,8 +264,7 @@ sub Run {
                     && $GetParam{ $TimeType . 'TimeStopYear' }
                     )
                 {
-                    $GetParam{ $TimeType . 'TimeOlderDate' }
-                        = $GetParam{ $TimeType . 'TimeStopYear' } . '-'
+                    $GetParam{ $TimeType . 'TimeOlderDate' } = $GetParam{ $TimeType . 'TimeStopYear' } . '-'
                         . $GetParam{ $TimeType . 'TimeStopMonth' } . '-'
                         . $GetParam{ $TimeType . 'TimeStopDay' }
                         . ' 23:59:59';
@@ -655,9 +653,8 @@ sub Run {
                                 . ' 00:00:00', 'DateFormatShort'
                         );
 
-                        $Attribute = 'Created between';
-                        $AttributeValue
-                            = $StartDate . ' '
+                        $Attribute      = 'Created between';
+                        $AttributeValue = $StartDate . ' '
                             . $Self->{LayoutObject}->{LanguageObject}->Get('and') . ' '
                             . $StopDate;
                     }
@@ -668,24 +665,21 @@ sub Run {
                             'Before' => 'Created more than ... ago',
                         };
 
-                        $Attribute = $Mapping->{ $GetParam{ItemCreateTimePointStart} };
-                        $AttributeValue
-                            = $GetParam{ItemCreateTimePoint} . ' '
+                        $Attribute      = $Mapping->{ $GetParam{ItemCreateTimePointStart} };
+                        $AttributeValue = $GetParam{ItemCreateTimePoint} . ' '
                             . $Self->{LayoutObject}->{LanguageObject}
                             ->Get( $GetParam{ItemCreateTimePointFormat} . '(s)' );
                     }
                 }
                 elsif ( $Attribute eq 'VoteSearchType' ) {
                     next ATTRIBUTE if !$GetParam{VoteSearchOption};
-                    $AttributeValue
-                        = $Self->{LayoutObject}->{LanguageObject}
-                        ->Get( $GetParam{VoteSearchType} ) . ' ' . $GetParam{VoteSearch};
+                    $AttributeValue = $Self->{LayoutObject}->{LanguageObject}->Get( $GetParam{VoteSearchType} ) . ' '
+                        . $GetParam{VoteSearch};
                 }
                 elsif ( $Attribute eq 'RateSearchType' ) {
                     next ATTRIBUTE if !$GetParam{RateSearchOption};
-                    $AttributeValue
-                        = $Self->{LayoutObject}->{LanguageObject}
-                        ->Get( $GetParam{RateSearchType} ) . ' ' . $GetParam{RateSearch} . '%';
+                    $AttributeValue = $Self->{LayoutObject}->{LanguageObject}->Get( $GetParam{RateSearchType} ) . ' '
+                        . $GetParam{RateSearch} . '%';
                 }
 
                 $Self->{LayoutObject}->Block(

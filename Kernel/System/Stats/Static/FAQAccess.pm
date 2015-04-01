@@ -1,6 +1,6 @@
 # --
 # Kernel/System/Stats/Static/FAQAccess.pm.pm
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -174,7 +174,9 @@ sub Run {
                 . $Self->{ConfigObject}->Get(
                 "FAQ::Explorer::ItemList::VotingResultDecimalPlaces"
                 )
-                . "f", $VoteData->{Result} || 0
+                . "f",
+            $VoteData->{Result}
+                || 0
         );
         my $Votes = $VoteData->{Votes} || 0;
 
@@ -189,8 +191,7 @@ sub Run {
     }
 
     # set report title
-    my $Title
-        = "$Param{StartYear}-$Param{StartMonth}-$StartDay - $Param{EndYear}-$Param{EndMonth}-$EndDay";
+    my $Title = "$Param{StartYear}-$Param{StartMonth}-$StartDay - $Param{EndYear}-$Param{EndMonth}-$EndDay";
 
     # table headlines
     my @HeadData = (

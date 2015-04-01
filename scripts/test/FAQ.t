@@ -1,6 +1,6 @@
 # --
 # FAQ.t - FAQ tests
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -423,8 +423,8 @@ my $CheckFields = sub {
             Key  => "ItemFieldGet::ItemID::$FAQID",
         );
 
-       # on before first Get cche should be undef, after firs cache exist, but the Field key must be
-       # undef
+        # on before first Get cche should be undef, after firs cache exist, but the Field key must be
+        # undef
         if ( ref $Cache eq 'HASH' ) {
             $Self->Is(
                 $Cache->{$Field},
@@ -710,7 +710,7 @@ $Self->Is(
 );
 
 $StateTypeList = $FAQObject->StateTypeList(
-    Types => [ 'public', 'external' ],
+    Types  => [ 'public', 'external' ],
     UserID => 1,
 );
 

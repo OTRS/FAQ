@@ -1,6 +1,6 @@
 # --
 # FAQ.pm - code to excecute during package installation
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -177,7 +177,7 @@ sub CodeInstall {
     # add the faq groups to the category 'Misc'
     $Self->_CategoryGroupSet(
         Category => 'Misc',
-        Groups => [ 'faq', 'faq_admin', 'faq_approval' ],
+        Groups   => [ 'faq', 'faq_admin', 'faq_approval' ],
     );
 
     # create aditional FAQ languages

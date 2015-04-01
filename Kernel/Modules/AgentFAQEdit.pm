@@ -1,6 +1,6 @@
 # --
 # Kernel/Modules/AgentFAQEdit.pm - agent frontend to edit faq articles
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -218,8 +218,8 @@ sub Run {
             if ( !$ApprovalQueueID ) {
                 $Output .= $Self->{LayoutObject}->Notify(
                     Priority => 'Error',
-                    Info => "FAQ Approval is enabled but queue '$ApprovalQueue' does not exists",
-                    Link => '$Env{"Baselink"}Action=AdminSysConfig;Subaction=Edit;'
+                    Info     => "FAQ Approval is enabled but queue '$ApprovalQueue' does not exists",
+                    Link     => '$Env{"Baselink"}Action=AdminSysConfig;Subaction=Edit;'
                         . 'SysConfigSubGroup=Core%3A%3AApproval;SysConfigGroup=FAQ',
                 );
             }

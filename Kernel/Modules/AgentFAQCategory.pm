@@ -1,6 +1,6 @@
 # --
 # Kernel/Modules/AgentFAQCategory.pm - the faq language management module
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2015 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -60,8 +60,7 @@ sub Run {
     $GetParam{ParentID} ||= 0;
 
     # get array parameters
-    @{ $GetParam{PermissionGroups} }
-        = $Self->{ParamObject}->GetArray( Param => 'PermissionGroups' );
+    @{ $GetParam{PermissionGroups} } = $Self->{ParamObject}->GetArray( Param => 'PermissionGroups' );
 
     # ------------------------------------------------------------ #
     # change
@@ -707,8 +706,7 @@ sub _Overview {
         my %ValidList = $Self->{ValidObject}->ValidList();
 
         # sort the category ids by the long category name
-        my @CategoryIDsSorted
-            = sort { $CategoryTree->{$a} cmp $CategoryTree->{$b} } keys %{$CategoryTree};
+        my @CategoryIDsSorted = sort { $CategoryTree->{$a} cmp $CategoryTree->{$b} } keys %{$CategoryTree};
 
         # show all categories
         for my $CategoryID (@CategoryIDsSorted) {
