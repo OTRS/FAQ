@@ -95,7 +95,6 @@ FAQ.Customer.FAQZoom = (function (TargetNS) {
                 var Data = {
                     Action: 'CustomerFAQZoom',
                     Subaction: 'BrowserLinkMessage',
-                    ItemID: $('input[name=ItemID]').val()
                 };
 
                 $('.FAQMessageBrowser').fadeOut("slow");

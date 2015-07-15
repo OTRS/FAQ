@@ -89,6 +89,23 @@ sub Run {
     $GetParam{ItemID} = $Self->{ParamObject}->GetParam( Param => 'ItemID' );
     $GetParam{Rate}   = $Self->{ParamObject}->GetParam( Param => 'Rate' );
 
+    # save, if browser link message was closed
+    if ( $Self->{Subaction} eq 'BrowserLinkMessage' ) {
+
+        $Self->{UserObject}->SetPreferences(
+            UserID => $Self->{UserID},
+            Key    => 'UserCustomerDoNotShowBrowserLinkMessage',
+            Value  => 1,
+        );
+
+        return $Self->{LayoutObject}->Attachment(
+            ContentType => 'text/html',
+            Content     => 1,
+            Type        => 'inline',
+            NoCache     => 1,
+        );
+    }
+
     # check needed stuff
     if ( !$GetParam{ItemID} ) {
         return $Self->{LayoutObject}->CustomerFatalError( Message => 'Need ItemID!' );
@@ -219,23 +236,6 @@ sub Run {
             );
             return $Self->{LayoutObject}->CustomerFatalError();
         }
-    }
-
-    # save, if browser link message was closed
-    elsif ( $Self->{Subaction} eq 'BrowserLinkMessage' ) {
-
-        $Self->{UserObject}->SetPreferences(
-            UserID => $Self->{UserID},
-            Key    => 'UserCustomerDoNotShowBrowserLinkMessage',
-            Value  => 1,
-        );
-
-        return $Self->{LayoutObject}->Attachment(
-            ContentType => 'text/html',
-            Content     => 1,
-            Type        => 'inline',
-            NoCache     => 1,
-        );
     }
 
     # output header
