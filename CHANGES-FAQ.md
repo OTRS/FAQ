@@ -1,4 +1,5 @@
 #4.0.3 - 2015-??-??
+ - 2015-09-03 Updated translations, thanks to all translators.
  - 2015-08-25 Fixed bug#[11445](http://bugs.otrs.org/show_bug.cgi?id=11445) - Search results in Public and Customer interface can be sorted only by FAQID.
  - 2015-07-31 Fixed bug#[10542](http://bugs.otrs.org/show_bug.cgi?id=10542) - Customer opens FAQ page with empty fields.
  - 2015-07-15 Fixed bug#[11395](http://bugs.otrs.org/show_bug.cgi?id=11395) - Communications error after closing link message in customer interface.
