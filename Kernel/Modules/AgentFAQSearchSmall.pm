@@ -589,13 +589,15 @@ sub Run {
             . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
             . ';SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
             . ';OrderBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
-            . ';Profile=' . $Self->{Profile} . ';TakeLastSearch=1;Subaction=Search'
+            . ';Profile=' . $Self->{LayoutObject}->LinkEncode( $Self->{Profile} )
+            . ';TakeLastSearch=1;Subaction=Search'
             . ';Nav=' . $Nav
             . ';';
         my $LinkSort = 'Filter='
             . $Self->{LayoutObject}->LinkEncode( $Self->{Filter} )
             . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
-            . ';Profile=' . $Self->{Profile} . ';TakeLastSearch=1;Subaction=Search'
+            . ';Profile=' . $Self->{LayoutObject}->LinkEncode( $Self->{Profile} )
+            . ';TakeLastSearch=1;Subaction=Search'
             . ';Nav=' . $Nav
 
             . ';';
@@ -611,7 +613,8 @@ sub Run {
         my $FilterLink = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
             . ';OrderBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
             . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
-            . ';Profile=' . $Self->{Profile} . ';TakeLastSearch=1;Subaction=Search'
+            . ';Profile=' . $Self->{LayoutObject}->LinkEncode( $Self->{Profile} )
+            . ';TakeLastSearch=1;Subaction=Search'
             . ';Nav=' . $Nav
             . ';';
 
