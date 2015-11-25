@@ -1,4 +1,6 @@
-#4.0.3 - 2015-??-??
+#4.0.4 - 2015-??-??
+
+#4.0.3 - 2015-12-01
  - 2015-11-24 Fixed bug#[11687](http://bugs.otrs.org/show_bug.cgi?id=11687) - XSS injection vulnerability in modules AgentFAQSearch and AgentFAQSearchSmall on parameter profile.
  - 2015-10-30 Fixed bug#[11195](http://bugs.otrs.org/show_bug.cgi?id=11195) - FAQ-Zoom Template contains unused links to ticket zoom.
  - 2015-09-03 Updated translations, thanks to all translators.
