@@ -6,7 +6,9 @@
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
-2.3.4 - 2015-??-??
+2.3.5 - 2015-??-??
+
+2.3.4 - 2015-12-01
  - 2015-11-24 Fixed bug#11687 - XSS injection vulnerability in modules AgentFAQSearch and AgentFAQSearchSmall on parameter profile.
  - 2015-04-29 Fixed bug#11125 - Top 10 is ordered by count for all interface even in Customer Interface.
  - 2015-04-01 Fixed bug#10962 - Invalid or wrong session on FAQ dasboard link.
