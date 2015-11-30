@@ -130,7 +130,7 @@
 
 <!-- dtl:block:MenuItem -->
                     <li>
-                        <a href="$Env{"Baselink"}$LQData{"Link"}" id="$QData{"MenuID"}" class="$QData{"Class"}" $Data{"LinkParam"} title="$Text{"$Data{"Description"}"}">$Text{"$Data{"Name"}"}</a>
+                        <a href="$Env{"Baselink"}$Data{"Link"}" id="$QData{"MenuID"}" class="$QData{"Class"}" $Data{"LinkParam"} title="$Text{"$Data{"Description"}"}">$Text{"$Data{"Name"}"}</a>
                     </li>
 
 <!-- dtl:block:ShowConfirmationDialog -->
