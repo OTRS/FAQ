@@ -21,12 +21,12 @@
 [% RenderBlockStart("OverviewNavBarFilterItem") %]
 [% RenderBlockStart("OverviewNavBarFilterItemSelected") %]
                     <li class="Active [% Data.CSS | html %]">
-                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.FilterLink | uri %]Filter=[% Data.Filter | uri %]">[% Translate(Data.Name) | html %]<span>[% Data.Count | html %]</span></a>
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.FilterLink %]Filter=[% Data.Filter | uri %]">[% Translate(Data.Name) | html %]<span>[% Data.Count | html %]</span></a>
                     </li>
 [% RenderBlockEnd("OverviewNavBarFilterItemSelected") %]
 [% RenderBlockStart("OverviewNavBarFilterItemSelectedNot") %]
                     <li class="[% Data.CSS | html %]">
-                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.FilterLink | uri %]Filter=[% Data.Filter | uri %]">[% Translate(Data.Name) | html %]<span>[% Data.Count | html %]</span></a>
+                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.FilterLink %]Filter=[% Data.Filter | uri %]">[% Translate(Data.Name) | html %]<span>[% Data.Count | html %]</span></a>
                     </li>
 [% RenderBlockEnd("OverviewNavBarFilterItemSelectedNot") %]
 [% RenderBlockStart("OverviewNavBarFilterItemSplit") %]
@@ -38,7 +38,7 @@
 [% RenderBlockStart("OverviewNavBarPageBack") %]
                 <ul class="Tabs">
                     <li>
-                        <a id="[% Data.LinkBackID | uri %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkBack | uri %]">[% Translate("Change search options") | html %]</a>
+                        <a id="[% Data.LinkBackID | uri %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];[% Data.LinkBack | html %]">[% Translate("Change search options") | html %]</a>
                     </li>
                 </ul>
 [% WRAPPER JSOnDocumentComplete %]
@@ -107,14 +107,14 @@
 [% RenderBlockStart("OverviewNavBarViewMode") %]
 [% RenderBlockStart("OverviewNavBarViewModeSelected") %]
                         <li class="Active">
-                            <a class="[% Data.Name | html %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];Filter=[% Data.Filter | uri %];View=[% Data.View | uri %];[% Data.LinkFilter | uri %]" title="[% Translate(Data.Name) | html %]">
+                            <a class="[% Data.Name | html %]" href="[% Env("Baselink") %]Action=[% Env("Action") %];Filter=[% Data.Filter | uri %];View=[% Data.View | uri %];[% Data.LinkFilter | html %]" title="[% Translate(Data.Name) | html %]">
                                 [% Translate(Data.NameShort) | html %]
                             </a>
                         </li>
 [% RenderBlockEnd("OverviewNavBarViewModeSelected") %]
 [% RenderBlockStart("OverviewNavBarViewModeNotSelected") %]
                         <li>
-                            <a class="[% Data.Name | html %]" name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];Filter=[% Data.Filter | uri %];View=[% Data.View | uri %];[% Data.LinkFilter | uri %]" title="[% Translate(Data.Name) | html %]">
+                            <a class="[% Data.Name | html %]" name="OverviewControl" href="[% Env("Baselink") %]Action=[% Env("Action") %];Filter=[% Data.Filter | uri %];View=[% Data.View | uri %];[% Data.LinkFilter %]" title="[% Translate(Data.Name) | html %]">
                                 <span class="ImageMode">
                                     <span class="NameShort">[% Translate(Data.NameShort) | html %]</span>
                                     <span class="NameLong">[% Translate(Data.Name) | html %]</span>

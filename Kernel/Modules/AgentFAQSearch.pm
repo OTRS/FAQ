@@ -268,8 +268,13 @@ sub Run {
         }
 
         # store last overview screen
-        my $URL = "Action=AgentFAQSearch;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
-            . ";OrderBy=$Self->{OrderBy};TakeLastSearch=1;StartHit=$Self->{StartHit}";
+        my $URL = "Action=AgentFAQSearch;Subaction=Search"
+            . ";Profile=" . $Self->{LayoutObject}->LinkEncode( $Self->{Profile} )
+            . ";SortBy=" . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
+            . ";OrderBy=" . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
+            . ";TakeLastSearch=1"
+            . ";StartHit=" . $Self->{LayoutObject}->LinkEncode( $Self->{StartHit} );
+
         $Self->{SessionObject}->UpdateSessionID(
             SessionID => $Self->{SessionID},
             Key       => 'LastScreenOverview',
