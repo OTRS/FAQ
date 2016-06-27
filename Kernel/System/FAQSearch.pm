@@ -12,6 +12,8 @@ package Kernel::System::FAQSearch;
 use strict;
 use warnings;
 
+use Kernel::System::VariableCheck qw(:all);
+
 =head1 NAME
 
 Kernel::System::FAQSearch - FAQ search lib
@@ -193,25 +195,21 @@ sub FAQSearch {
         Result => 'vrate',
     );
 
-    # check types of given arguments
-    ARGUMENT:
-    for my $Key (qw(LanguageIDs CategoryIDs ValidIDs CreatedUserIDs LastChangedUserIDs)) {
-
-        next ARGUMENT if !$Param{$Key};
-        next ARGUMENT if ref $Param{$Key} eq 'ARRAY' && @{ $Param{$Key} };
-
-        # log error
-        $Self->{LogObject}->Log(
-            Priority => 'error',
-            Message  => "The given param '$Key' is invalid or an empty array reference!",
-        );
-        return;
-    }
-
     # quote id array elements
     ARGUMENT:
     for my $Key (qw(LanguageIDs CategoryIDs ValidIDs CreatedUserIDs LastChangedUserIDs)) {
         next ARGUMENT if !$Param{$Key};
+
+        if ( !IsArrayRefWithData( $Param{$Key} ) ) {
+
+            # log error
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "The given param '$Key' is invalid or an empty array reference!",
+            );
+
+            return;
+        }
 
         # quote elements
         for my $Element ( @{ $Param{$Key} } ) {
@@ -881,7 +879,7 @@ sub _InConditionGet {
         return;
     }
 
-    if ( !$Param{IDRef} || ref $Param{IDRef} ne 'ARRAY' || !@{ $Param{IDRef} } ) {
+    if ( !IsArrayRefWithData( $Param{IDRef} ) ) {
         $Self->{LogObject}->Log(
             Priority => 'error',
             Message  => "Need IDRef!",
