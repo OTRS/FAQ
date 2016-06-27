@@ -1561,7 +1561,7 @@ shell> bin/otrs.PackageManager.pl -a install -p /path/to/$Name-$Version.opm
             command on the command line:
         </para>
         <screen>
-shell> perl bin/otrs.UnitTest.pl -n FAQ:FAQSearch:GenericInterface/FAQConnector
+shell> perl bin/otrs.UnitTest.pl -n FAQ:FAQSearch:FAQSearch/InConditionGet:GenericInterface/FAQConnector
         </screen>
         <para>Run all available unit tests</para>
         <para>

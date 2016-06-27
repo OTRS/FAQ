@@ -218,6 +218,43 @@ sub FAQSearch {
         Result => 'vrate',
     );
 
+    # check types of given arguments
+    ARGUMENT:
+    for my $Key (qw(LanguageIDs CategoryIDs ValidIDs CreatedUserIDs LastChangedUserIDs)) {
+
+        next ARGUMENT if !$Param{$Key};
+        next ARGUMENT if ref $Param{$Key} eq 'ARRAY' && @{ $Param{$Key} };
+
+        # log error
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "The given param '$Key' is invalid or an empty array reference!",
+        );
+        return;
+    }
+
+    # get database object
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    # quote id array elements
+    ARGUMENT:
+    for my $Key (qw(LanguageIDs CategoryIDs ValidIDs CreatedUserIDs LastChangedUserIDs)) {
+        next ARGUMENT if !$Param{$Key};
+
+        # quote elements
+        for my $Element ( @{ $Param{$Key} } ) {
+            if ( !defined $DBObject->Quote( $Element, 'Integer' ) ) {
+
+                # log error
+                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                    Priority => 'error',
+                    Message  => "The given param '$Element' in '$Key' is invalid!",
+                );
+                return;
+            }
+        }
+    }
+
     my $FAQDynamicFields = [];
     my %ValidDynamicFieldParams;
     my %FAQDynamicFieldName2Config;
@@ -298,7 +335,6 @@ sub FAQSearch {
     my $Ext = '';
 
     # get needed objects
-    my $DBObject     = $Kernel::OM->Get('Kernel::System::DB');
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
     # full-text search
@@ -442,7 +478,9 @@ sub FAQSearch {
     # search for states
     if ( $Param{States} && ref $Param{States} eq 'HASH' && %{ $Param{States} } ) {
 
-        my @States = map {$_} keys %{ $Param{States} };
+        my @States = map { $DBObject->Quote( $_, 'Integer' ) } keys %{ $Param{States} };
+
+        return if scalar @States != keys $Param{States};
 
         my $InString = $Self->_InConditionGet(
             TableColumn => 's.type_id',
@@ -1019,16 +1057,20 @@ condition string from an array.
 sub _InConditionGet {
     my ( $Self, %Param ) = @_;
 
-    # check needed stuff
-    for my $Key (qw(TableColumn IDRef)) {
-        if ( !$Param{$Key} ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => "Need $Key!",
-            );
+    if ( !$Param{TableColumn} ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Need TableColumn!",
+        );
+        return;
+    }
 
-            return;
-        }
+    if ( !$Param{IDRef} || ref $Param{IDRef} ne 'ARRAY' || !@{ $Param{IDRef} } ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Need IDRef!",
+        );
+        return;
     }
 
     # sort ids to cache the SQL query
@@ -1037,10 +1079,9 @@ sub _InConditionGet {
     # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-    # quote values
-    for my $Value (@SortedIDs) {
-        $DBObject->Quote( $Value, 'Integer' );
-    }
+    # Error out if some values were not integers.
+    @SortedIDs = map { $Kernel::OM->Get('Kernel::System::DB')->Quote( $_, 'Integer' ) } @SortedIDs;
+    return if scalar @SortedIDs != scalar @{ $Param{IDRef} };
 
     # split IN statement with more than 900 elements in more statements combined with OR
     # because Oracle doesn't support more than 1000 elements in one IN statement.
@@ -1050,7 +1091,7 @@ sub _InConditionGet {
 
         my @SortedIDsPart = splice @SortedIDs, 0, 900;
 
-        my $IDString = join ',', @SortedIDsPart;
+        my $IDString = join ', ', @SortedIDsPart;
 
         push @SQLStrings, " $Param{TableColumn} IN ($IDString) ";
     }
