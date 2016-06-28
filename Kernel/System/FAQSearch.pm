@@ -478,7 +478,7 @@ sub FAQSearch {
 
         my @States = map { $DBObject->Quote( $_, 'Integer' ) } keys %{ $Param{States} };
 
-        return if scalar @States != keys $Param{States};
+        return if scalar @States != keys %{ $Param{States} };
 
         my $InString = $Self->_InConditionGet(
             TableColumn => 's.type_id',
