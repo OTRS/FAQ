@@ -1,5 +1,7 @@
-#4.0.4 - 2015-??-??
-- 2016-06-27 Fixed issue with not correctly quoted search parameters.
+#4.0.5 - 2016-??-??
+
+#4.0.4 - 2016-06-30
+ - 2016-06-27 Fixed issue with not correctly quoted search parameters.
 
 #4.0.3 - 2015-12-01
  - 2015-11-24 Fixed bug#[11687](http://bugs.otrs.org/show_bug.cgi?id=11687) - XSS injection vulnerability in modules AgentFAQSearch and AgentFAQSearchSmall on parameter profile.
