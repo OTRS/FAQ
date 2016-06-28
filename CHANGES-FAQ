@@ -6,8 +6,10 @@
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
-2.3.5 - 2015-??-??
-- 2016-06-27 Fixed issue with not correctly quoted search parameters.
+2.3.6 - 2016-??-??
+
+2.3.5 - 2016-06-30
+ - 2016-06-27 Fixed issue with not correctly quoted search parameters.
 
 2.3.4 - 2015-12-01
  - 2015-11-24 Fixed bug#11687 - XSS injection vulnerability in modules AgentFAQSearch and AgentFAQSearchSmall on parameter profile.
