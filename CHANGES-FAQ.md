@@ -1,6 +1,9 @@
-#4.0.5 - 2016-??-??
+#4.0.6 - 2016-??-??
 
-#4.0.4 - 2016-06-30
+#4.0.5 - 2016-06-29
+ - 2016-06-27 Fixed perl warning.
+
+#4.0.4 - 2016-06-29
  - 2016-06-27 Fixed issue with not correctly quoted search parameters.
 
 #4.0.3 - 2015-12-01
