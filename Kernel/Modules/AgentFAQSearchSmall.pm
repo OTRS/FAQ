@@ -491,7 +491,7 @@ sub Run {
         # Values are the Category names.
 
         my $UserCatGroup = $Self->{FAQObject}->GetUserCategories(
-            Type   => 'rw',
+            Type   => 'ro',
             UserID => $Self->{UserID},
         );
 
@@ -727,7 +727,7 @@ sub _MaskForm {
 
     # get categories (with category long names) where user has rights
     my $UserCategoriesLongNames = $Self->{FAQObject}->GetUserCategoriesLongNames(
-        Type   => 'rw',
+        Type   => 'ro',
         UserID => $Self->{UserID},
     );
 
