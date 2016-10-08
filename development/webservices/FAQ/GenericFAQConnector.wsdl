@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="GenericFAQConnector" targetNamespace="http://www.example.org/GenericFAQConnector/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/GenericFAQConnector/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
     <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/GenericFAQConnector/">
+    <!-- nofilter(TidyAll::Plugin::OTRS::XML::WSDL::XSDValidator) -->
     <xsd:element name="LanguageList">
         <xsd:complexType>
             <xsd:sequence>
