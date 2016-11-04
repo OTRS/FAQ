@@ -38,7 +38,11 @@ sub new {
     # create needed objects
     $Self->{FAQObject}       = Kernel::System::FAQ->new(%Param);
     $Self->{HTMLUtilsObject} = Kernel::System::HTMLUtils->new(%Param);
-    $Self->{RSSObject}       = XML::RSS::SimpleGen->new( 'http://' . $ENV{HTTP_HOST} );
+    $Self->{RSSObject}       = XML::RSS::SimpleGen->new(
+        $Self->{ConfigObject}->Get("HttpType")
+            . '://'
+            . $Self->{ConfigObject}->Get("FQDN")
+    );
 
     # get config of frontend module
     $Self->{Config} = $Self->{ConfigObject}->Get("FAQ::Frontend::$Self->{Action}");
@@ -149,7 +153,11 @@ sub Run {
 
         # build the RSS item
         $Self->{RSSObject}->item(
-            "http://$ENV{HTTP_HOST}$Self->{LayoutObject}->{Baselink}Action=PublicFAQZoom&ItemID=$ItemID",
+            $Self->{ConfigObject}->Get('HttpType')
+                . "://"
+                . $Self->{ConfigObject}->Get("FQDN")
+                . $Self->{LayoutObject}->{Baselink}
+                . "Action=PublicFAQZoom;ItemID=$ItemID",
             $ItemData{Title},
             $Preview,
         );
