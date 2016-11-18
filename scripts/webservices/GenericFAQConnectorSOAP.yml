@@ -3,7 +3,7 @@ Debugger:
   DebugThreshold: debug
   TestMode: 0
 Description: ''
-FrameworkVersion: 3.2.x CVS
+FrameworkVersion: 4.0.x git
 Provider:
   Operation:
     LanguageList:

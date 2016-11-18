@@ -139,7 +139,8 @@
         <File Permission="644" Location="Kernel/GenericInterface/Operation/FAQ/LanguageList.pm" />
         <File Permission="644" Location="Kernel/GenericInterface/Operation/FAQ/PublicFAQSearch.pm" />
         <File Permission="644" Location="Kernel/GenericInterface/Operation/FAQ/PublicFAQGet.pm" />
-        <File Permission="644" Location="scripts/webservices/GenericFAQConnector.yaml" />
+        <File Permission="644" Location="scripts/webservices/GenericFAQConnectorREST.yml" />
+        <File Permission="644" Location="scripts/webservices/GenericFAQConnectorSOAP.yml" />
         <File Permission="644" Location="scripts/test/GenericInterface/FAQConnector.t" />
         <File Permission="644" Location="scripts/test/Selenium/Public/PublicFAQRSS.t" />
         <File Permission="644" Location="scripts/test/sample/GenericInterface/FAQ/GI-FAQ-Test-utf8-1.bin" />
