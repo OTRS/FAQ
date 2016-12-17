@@ -1054,4 +1054,265 @@ $Self->True(
         );
     }
 }
+{
+    my %Keywords = (
+        Keyword1 => "some1$RandomID",
+        Keyword2 => "some2$RandomID",
+        Keyword3 => "some3$RandomID",
+        Keyword4 => "some4$RandomID",
+        Keyword5 => "some5$RandomID",
+    );
+
+    my $FAQID3 = $FAQObject->FAQAdd(
+        Title       => 'Test FAQ-3',
+        CategoryID  => 1,
+        StateID     => 1,
+        LanguageID  => 1,
+        Keywords    => "$Keywords{Keyword1} $Keywords{Keyword2} $Keywords{Keyword3} $Keywords{Keyword5}",
+        UserID      => 1,
+        ContentType => 'text/html',
+    );
+    $Self->True(
+        $FAQID3,
+        "FAQAdd() - 3",
+    );
+
+    my $FAQID4 = $FAQObject->FAQAdd(
+        Title      => 'Test FAQ-4',
+        CategoryID => 1,
+        StateID    => 1,
+        LanguageID => 1,
+        Keywords   => "$Keywords{Keyword1},$Keywords{Keyword2},$Keywords{Keyword3},$Keywords{Keyword4}",
+        ,
+        UserID      => 1,
+        ContentType => 'text/html',
+    );
+
+    $Self->True(
+        $FAQID4,
+        "FAQAdd() - 4",
+    );
+
+    my $FAQID5 = $FAQObject->FAQAdd(
+        Title      => 'Test FAQ-4',
+        CategoryID => 1,
+        StateID    => 1,
+        LanguageID => 1,
+        Keywords   => "$Keywords{Keyword1};$Keywords{Keyword2};$Keywords{Keyword3};$Keywords{Keyword4}",
+        ,
+        UserID      => 1,
+        ContentType => 'text/html',
+    );
+
+    $Self->True(
+        $FAQID5,
+        "FAQAdd() - 5",
+    );
+
+    @Tests = (
+        # {
+        #     Name   => 'Keywords',
+        #     Config => {
+        #         What    => '*s*',
+        #         Keyword => "some$RandomID*",
+        #         OrderBy => ['Votes'],
+        #     },
+        #     ExpectedResults => [
+        #         $FAQID1
+        #     ],
+        # },
+        {
+            Name   => 'Keywords with spaces - all',
+            Config => {
+                Keyword => "$Keywords{Keyword1} $Keywords{Keyword2}",
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords with comma - all',
+            Config => {
+                Keyword => "$Keywords{Keyword2},$Keywords{Keyword1}",
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords with semicolon - all',
+            Config => {
+                Keyword => "$Keywords{Keyword1};$Keywords{Keyword2}",
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords1 Keywords3  with spaces - all',
+            Config => {
+                Keyword => "$Keywords{Keyword1} $Keywords{Keyword3}",
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords1 Keywords3 with comma - all',
+            Config => {
+                Keyword => "$Keywords{Keyword1},$Keywords{Keyword3}",
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords1 Keywords3 with semicolon - all',
+            Config => {
+                Keyword => "$Keywords{Keyword1};$Keywords{Keyword3}",
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords common keyword',
+            Config => {
+                Keyword => $Keywords{Keyword3},
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords common keyword with wildcards',
+            Config => {
+                Keyword => '*' . $Keywords{Keyword3} . '*',
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4,
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords only Keyword5',
+            Config => {
+                Keyword => $Keywords{Keyword5},
+            },
+            ExpectedResults => [
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords only Keyword4',
+            Config => {
+                Keyword => $Keywords{Keyword4},
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4
+            ],
+        },
+        {
+            Name   => 'Keywords only Keyword5 - uppercase string',
+            Config => {
+                Keyword => uc $Keywords{Keyword5},
+            },
+            ExpectedResults => [
+                $FAQID3
+            ],
+        },
+        {
+            Name   => 'Keywords only Keyword4 - first character uppercase',
+            Config => {
+                Keyword => ucfirst $Keywords{Keyword4},
+            },
+            ExpectedResults => [
+                $FAQID5,
+                $FAQID4
+            ],
+        },
+        # {
+        #     Name   => 'Title',
+        #     Config => {
+        #         Title   => 'tITLe',
+        #         What    => 'l',
+        #         OrderBy => ['Created'],
+        #     },
+        #     ExpectedResults => [
+        #         $FAQID2
+        #     ],
+        # },
+        # {
+        #     Name   => 'What (Literal)',
+        #     Config => {
+        #         Title   => '',
+        #         What    => 'solution found',
+        #         OrderBy => ['Created'],
+        #     },
+        #     ExpectedResults => [
+        #         $FAQID1
+        #     ],
+        # },
+        # {
+        #     Name   => 'What (AND)',
+        #     Config => {
+        #         Title   => '',
+        #         What    => 'solution+found',
+        #         OrderBy => ['Created'],
+        #     },
+        #     ExpectedResults => [
+        #         $FAQID2,
+        #         $FAQID1
+        #     ],
+        # },
+    );
+
+    for my $Test (@Tests) {
+
+        my @FAQIDs = $FAQObject->FAQSearch(
+            Number           => '*',
+            States           => [ 'public', 'internal' ],
+            OrderByDirection => ['Up'],
+            Limit            => 150,
+            UserID           => 1,
+            %{ $Test->{Config} },
+        );
+
+        $Self->IsDeeply(
+            \@FAQIDs,
+            $Test->{ExpectedResults},
+            "$Test->{Name}, FAQSearch()",
+        );
+    }
+
+    # cleanup the system
+    for my $FAQID ( $FAQID3, $FAQID4, $FAQID5 ) {
+        my $Success = $FAQObject->FAQDelete(
+            ItemID => $FAQID,
+            UserID => 1,
+        );
+
+        $Self->True(
+            $Success,
+            "FAQDelete() for FAQID:'$FAQID' with True",
+        );
+    }
+}
+
 1;
