@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # --
-# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -46,7 +46,7 @@ getopt( 'hisq', \%Opts );
 if ( exists $Opts{h} ) {
     print STDOUT "\n";
     print STDOUT "otrs.FAQImport.pl - a FAQ import tool\n";
-    print STDOUT "Copyright (C) 2001-2016 OTRS AG, http://otrs.com/\n";
+    print STDOUT "Copyright (C) 2001-2017 OTRS AG, http://otrs.com/\n";
     print STDOUT "   usage: \n";
     print STDOUT "      otrs.FAQImport.pl -i <ImportFile> [-s <separator>] [-q <quote>]\n";
     print STDOUT "\n";
