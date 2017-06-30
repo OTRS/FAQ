@@ -883,8 +883,7 @@ sub Run {
                 $PageParam{FooterLeft}      = $Url;
                 $PageParam{HeadlineLeft}    = $Title;
                 $PageParam{HeadlineRight}   = $PrintedBy . ' '
-                    . $Self->{UserFirstname} . ' '
-                    . $Self->{UserLastname} . ' ('
+                    . $Self->{UserFullname} . ' ('
                     . $Self->{UserEmail} . ') '
                     . $Time;
 

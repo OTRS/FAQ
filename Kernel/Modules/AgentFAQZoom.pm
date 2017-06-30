@@ -402,13 +402,13 @@ sub Run {
     my %UserInfo = $Self->{UserObject}->GetUserData(
         UserID => $FAQData{CreatedBy}
     );
-    $Param{CreatedByUser} = "$UserInfo{UserFirstname} $UserInfo{UserLastname}";
+    $Param{CreatedByUser} = "$UserInfo{UserFullname}";
 
     # get user info (ChangedBy)
     %UserInfo = $Self->{UserObject}->GetUserData(
         UserID => $FAQData{ChangedBy}
     );
-    $Param{ChangedByUser} = "$UserInfo{UserFirstname} $UserInfo{UserLastname}";
+    $Param{ChangedByUser} = "$UserInfo{UserFullname}";
 
     # set voting results
     $Param{VotingResultColor} = $Self->{LayoutObject}->GetFAQItemVotingRateColor(

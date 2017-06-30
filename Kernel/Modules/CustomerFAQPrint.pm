@@ -170,8 +170,7 @@ sub Run {
         $Page{HeaderRight}   = $HeaderRight;
         $Page{HeadlineLeft}  = $HeadlineLeft;
         $Page{HeadlineRight} = $PrintedBy . ' '
-            . $Self->{UserFirstname} . ' '
-            . $Self->{UserLastname} . ' ('
+            . $Self->{UserFullname} . ' ('
             . $Self->{UserEmail} . ') '
             . $Time;
         $Page{FooterLeft} = $Url;
