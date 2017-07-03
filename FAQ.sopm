@@ -117,6 +117,7 @@
         <File Permission="644" Location="Kernel/System/FAQSearch.pm" />
         <File Permission="644" Location="Kernel/System/LinkObject/FAQ.pm" />
         <File Permission="644" Location="Kernel/System/Stats/Static/FAQAccess.pm" />
+        <File Permission="644" Location="scripts/test/FAQ/Category/CheckCategoryUserPermission.t" />
         <File Permission="644" Location="scripts/test/FAQSearch/InConditionGet.t" />
         <File Permission="644" Location="scripts/test/FAQ.t" />
         <File Permission="644" Location="scripts/test/FAQSearch.t" />
