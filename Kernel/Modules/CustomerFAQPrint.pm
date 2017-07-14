@@ -136,7 +136,8 @@ sub Run {
     $Page{MarginLeft}    = 40;
     $Page{HeaderRight}   = $HeaderRight;
     $Page{HeadlineRight} = $PrintedBy . ' '
-        . $Self->{UserFullname} . ' ('
+        . $Self->{UserFirstname} . ' '
+        . $Self->{UserLastname} . ' ('
         . $Self->{UserEmail} . ') '
         . $Time;
     $Page{PageText}  = $LayoutObject->{LanguageObject}->Translate('Page');
@@ -175,7 +176,8 @@ sub Run {
     # output "printed by"
     $PDFObject->Text(
         Text => $PrintedBy . ' '
-            . $Self->{UserFullname} . ' ('
+            . $Self->{UserFirstname} . ' '
+            . $Self->{UserLastname} . ' ('
             . $Self->{UserEmail} . ')'
             . ', ' . $Time,
         FontSize => 9,

@@ -96,7 +96,7 @@ sub Run {
             UserID => $HistoryEntry->{CreatedBy},
             Cached => 1,
         );
-        $HistoryEntry->{CreatedBy} = "$User{UserLogin} ($User{UserFullname})";
+        $HistoryEntry->{CreatedBy} = "$User{UserLogin} ($User{UserFirstname} $User{UserLastname})";
 
         # call Row block
         $LayoutObject->Block(

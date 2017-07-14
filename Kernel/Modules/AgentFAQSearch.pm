@@ -942,7 +942,8 @@ sub Run {
             # output "printed by"
             $PDFObject->Text(
                 Text => $PrintedBy . ' '
-                    . $Self->{UserFullname} . ' ('
+                    . $Self->{UserFirstname} . ' '
+                    . $Self->{UserLastname} . ' ('
                     . $Self->{UserEmail} . ')'
                     . ', ' . $Time,
                 FontSize => 9,

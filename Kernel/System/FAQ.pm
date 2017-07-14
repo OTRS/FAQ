@@ -2661,7 +2661,7 @@ sub _FAQApprovalTicketCreate {
         );
 
         # create from string
-        my $From = "\"$User{UserFullname}\" <$User{UserEmail}>";
+        my $From = "\"$User{UserFirstname} $User{UserLastname}\" <$User{UserEmail}>";
 
         # create article
         my $ArticleID = $TicketObject->ArticleCreate(
