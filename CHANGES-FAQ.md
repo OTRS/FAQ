@@ -1,4 +1,5 @@
 #5.0.10 2017-??-??
+ - 2017-08-31 Fixed bug#[12433](https://bugs.otrs.org/show_bug.cgi?id=12433)(PR#67) - Dynamic Fields for FAQ don't work as Link.
  - 2017-08-21 Fixed bug#[12935](https://bugs.otrs.org/show_bug.cgi?id=12935) - SQL Error in Systemlog "Server gone away" and "you have an error ".
  - 2017-08-04 Updated translations, thanks to all translators.
  - 2017-08-04 Fixed bug#[12964](https://bugs.otrs.org/show_bug.cgi?id=12964)(PR#73) - FAQ types are not translated, Thanks to Balázs Úr.
