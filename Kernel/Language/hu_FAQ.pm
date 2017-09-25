@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = 'Értékelések a szavazáshoz. A kulcsnak százalékban kell lennie.';
     $Self->{Translation}->{'S'} = 'S';
     $Self->{Translation}->{'Search FAQ'} = 'GyIK keresése';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         'A beágyazott HTML mezők alapértelmezett magasságának beállítása (képpontban) az ügyintézői GyIK-nagyítás nézeten.';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

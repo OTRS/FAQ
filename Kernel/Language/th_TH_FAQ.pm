@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = 'เรตสำหรับการโหวตต้องกำหนดเป็นร้อยละ';
     $Self->{Translation}->{'S'} = '';
     $Self->{Translation}->{'Search FAQ'} = 'ค้นหา FAQ';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         'เซตค่าความสูงเริ่มต้น(พิกเซล) ของฟิลด์HTML แบบอินไลน์ใน AgentFAQZoom.';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

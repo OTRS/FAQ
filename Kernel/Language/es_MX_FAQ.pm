@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = 'Ponderación para la votación. La clave debe expresarse en porcentaje.';
     $Self->{Translation}->{'S'} = 'P';
     $Self->{Translation}->{'Search FAQ'} = 'Búsqueda de FAQ';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         'Establecer la altura predeterminada (en píxeles) de los campos HTML «inline» de AgentFAQZoom';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

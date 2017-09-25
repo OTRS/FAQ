@@ -3,6 +3,7 @@
 # Gaudin vincent <vincent.gaudin@cprpsncf.fr>, 2016
 # Marc De Spiegeleer <marcds@scarlet.be>, 2016
 # Matthieu HUTIN, 2015
+# Patrick Lentz, 2017
 # Richard BARET <inactive+rbaret@transifex.com>, 2015
 # ShevAbam, 2016
 # Vincent SAOUT <v.saout@atool-dev.fr>, 2016
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTRS\n"
 "POT-Creation-Date: 2017-08-04 19:00+0000\n"
-"PO-Revision-Date: 2017-08-05 00:04+0000\n"
-"Last-Translator: Carlos Rodríguez <carlos.rodriguez@otrs.com>\n"
+"PO-Revision-Date: 2017-09-20 11:02+0000\n"
+"Last-Translator: Patrick Lentz\n"
 "Language-Team: French (http://www.transifex.com/otrs/OTRS/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -45,7 +46,7 @@ msgstr "Ajout Catégorie"
 
 #. Template: AgentFAQCategory
 msgid "Delete Category"
-msgstr "Effacer Catégorie"
+msgstr "Supprimer Catégorie"
 
 #. Template: AgentFAQCategory
 msgid "Ok"
@@ -77,13 +78,13 @@ msgstr "Sera affiché comme un commentaire dans l'Explorer."
 
 #. Template: AgentFAQCategory
 msgid "Do you really want to delete this category?"
-msgstr "Voulez-vous vraiment effacer cette catégorie?"
+msgstr "Voulez-vous vraiment supprimer cette catégorie ?"
 
 #. Template: AgentFAQCategory
 msgid ""
 "You can not delete this category. It is used in at least one FAQ article "
 "and/or is parent of at least one other category"
-msgstr "Impossible d'effacer cette catégorie. Elle est utilisée dans au moins un article de FAQ et/ou est parente d'au moins une autre catégorie."
+msgstr "Vous ne pouvez pas supprimer cette catégorie. Elle est utilisée dans au moins un article de FAQ et/ou est parente d'au moins une autre catégorie."
 
 #. Template: AgentFAQCategory
 msgid "This category is used in the following FAQ article(s)"
@@ -95,7 +96,7 @@ msgstr "Cette catégorie est parente"
 
 #. Template: AgentFAQDelete
 msgid "Do you really want to delete this FAQ article?"
-msgstr "Voulez-vous vraiment effacer cet article de FAQ?"
+msgstr "Voulez-vous vraiment supprimer cet article de FAQ ?"
 
 #. Template: AgentFAQEdit
 msgid "FAQ"
@@ -151,7 +152,7 @@ msgstr "Ajouter une langue"
 
 #. Template: AgentFAQLanguage
 msgid "Delete Language %s"
-msgstr "Effacer une langue %s"
+msgstr "Supprimer la langue %s"
 
 #. Template: AgentFAQLanguage
 msgid "Add Language"
@@ -163,12 +164,12 @@ msgstr "Editer la langue"
 
 #. Template: AgentFAQLanguage
 msgid "Do you really want to delete this language?"
-msgstr "Voulez-vous vraiment effacer cette langue"
+msgstr "Voulez-vous vraiment supprimer cette langue ?"
 
 #. Template: AgentFAQLanguage
 msgid ""
 "You can not delete this language. It is used in at least one FAQ article!"
-msgstr "Impossible d'effacer cette langue. Elle est utilisée dans au moins un article de FAQ"
+msgstr "Vous ne pouvez pas supprimer cette langue. Elle est utilisée dans au moins un article de FAQ !"
 
 #. Template: AgentFAQLanguage
 msgid "This language is used in the following FAQ Article(s)"

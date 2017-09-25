@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = '好评率, 键值必须以百分比表示。';
     $Self->{Translation}->{'S'} = '简洁';
     $Self->{Translation}->{'Search FAQ'} = '搜索FAQ';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         '在”AgentFAQZoom“中，设置内置HTML字段的默认高度（单位：像素）。';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

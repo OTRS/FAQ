@@ -135,8 +135,8 @@ sub Data {
 
     # Template: CustomerFAQRelatedArticles
     $Self->{Translation}->{'This might be helpful'} = 'Ово може да буде од помоћи';
-    $Self->{Translation}->{'Found no helpful resources for the subject and text.'} = '';
-    $Self->{Translation}->{'Type a subject or text to get a list of helpful resources.'} = '';
+    $Self->{Translation}->{'Found no helpful resources for the subject and text.'} = 'Корисни ресурси за унети предмет и текст нису пронађени.';
+    $Self->{Translation}->{'Type a subject or text to get a list of helpful resources.'} = 'За листу корисних ресурса, молимо унесите предмет или текст.';
 
     # Template: CustomerFAQSearch
     $Self->{Translation}->{'Fulltext search in FAQ articles (e. g. "John*n" or "Will*")'} = 'Потпуна текстуална претрага у ЧПП чланцима (нпр. "John*n" или "Will*")';
@@ -160,7 +160,7 @@ sub Data {
 
     # Perl Module: Kernel/Modules/AgentFAQAdd.pm
     $Self->{Translation}->{'You need rw permission!'} = 'Потребна вам је „rw” дозвола!';
-    $Self->{Translation}->{'No categories found where user has read/write permissions!'} = '';
+    $Self->{Translation}->{'No categories found where user has read/write permissions!'} = 'Категорије у којој корисник има приступ без ограничења нису пронађене!';
     $Self->{Translation}->{'No default language found and can\'t create a new one.'} = 'Није пронађен подразумевани језик и не може се креирати нов.';
 
     # Perl Module: Kernel/Modules/AgentFAQCategory.pm
@@ -187,9 +187,9 @@ sub Data {
 
     # Perl Module: Kernel/Modules/AgentFAQJournal.pm
     $Self->{Translation}->{'FAQ Journal'} = 'ЧПП дневник';
-    $Self->{Translation}->{'Need config option FAQ::Frontend::Overview'} = '';
+    $Self->{Translation}->{'Need config option FAQ::Frontend::Overview'} = 'Потребна конфигурациона опција FAQ::Frontend::Overview';
     $Self->{Translation}->{'Config option FAQ::Frontend::Overview needs to be a HASH ref!'} =
-        '';
+        'Конфигурациона опција FAQ::Frontend::Overview мора да буде HASH референца!';
     $Self->{Translation}->{'No config option found for the view "%s"!'} = 'Није пронађена конфигурациона ставка за преглед "%s"!';
 
     # Perl Module: Kernel/Modules/AgentFAQLanguage.pm
@@ -246,8 +246,8 @@ sub Data {
 
     # Perl Module: Kernel/Modules/PublicFAQRSS.pm
     $Self->{Translation}->{'No Type is given!'} = 'Није дат Тип!';
-    $Self->{Translation}->{'Type must be either LastCreate or LastChange or Top10!'} = '';
-    $Self->{Translation}->{'Can\'t create RSS file!'} = '';
+    $Self->{Translation}->{'Type must be either LastCreate or LastChange or Top10!'} = 'Type мора бити LastCreate, LastChange или Top10!';
+    $Self->{Translation}->{'Can\'t create RSS file!'} = 'RSS датотека не моће бити снимљена!';
 
     # Perl Module: Kernel/Output/HTML/HeaderMeta/AgentFAQSearch.pm
     $Self->{Translation}->{'%s (FAQFulltext)'} = '%s (ЧПП комплетан текст)';
@@ -286,7 +286,7 @@ sub Data {
     $Self->{Translation}->{'Customer FAQ Zoom.'} = 'Детаљи клијентских ЧПП.';
     $Self->{Translation}->{'Customer FAQ search.'} = 'Претрага клијентских ЧПП.';
     $Self->{Translation}->{'Customer FAQ.'} = 'Клијентска ЧПП.';
-    $Self->{Translation}->{'CustomerFAQRelatedArticles.'} = '';
+    $Self->{Translation}->{'CustomerFAQRelatedArticles.'} = 'CustomerFAQRelatedArticles.';
     $Self->{Translation}->{'Decimal places of the voting result.'} = 'Број децимала у резултату гласања.';
     $Self->{Translation}->{'Default category name.'} = 'Назив подразумеване категорије.';
     $Self->{Translation}->{'Default language for FAQ articles on single language mode.'} = 'Подразумевани језик ЧПП чланака у једнојезичком начину рада.';
@@ -463,7 +463,7 @@ sub Data {
     $Self->{Translation}->{'Number of shown items in last created.'} = 'Број приказаних ставки у последње креираним.';
     $Self->{Translation}->{'Number of shown items in the top 10 feature.'} = 'Број приказаних ставки у "првих 10" .';
     $Self->{Translation}->{'Output filter to add Java-script to CustomerTicketMessage screen.'} =
-        '';
+        'Излазни филтер за убацивање JavaScript у CustomerTicketMessage екран.';
     $Self->{Translation}->{'Output limit for the related FAQ articles.'} = 'Ограничење излаза за повезане ЧПП чланаке.';
     $Self->{Translation}->{'Parameters for the pages (in which the FAQ items are shown) of the small FAQ journal overview.'} =
         'Параметри страница (на којима су ЧПП ставке приказане) на малом приказу прегледа ЧПП дневника.';
@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = 'Оцене за гласање. Кључ мора бити у процентима.';
     $Self->{Translation}->{'S'} = 'С';
     $Self->{Translation}->{'Search FAQ'} = 'Претражи ЧПП';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         'Подеси подразумевану висину (у пикселима) инлине HTML поља у AgentFAQZoom.';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

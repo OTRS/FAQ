@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = 'Thaminisho la kura. Funguo lazima iwe kwenye asilimia.';
     $Self->{Translation}->{'S'} = '';
     $Self->{Translation}->{'Search FAQ'} = 'Tafuta maswali';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         'Seti urefu wa chaguo-msingi (katika pikseli) ya ndani ya mstari wa ugo wa HTML katika ukuzaji wa maswali yanayoulizwa mara kwa mara ya wakala.';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FAQ\n"
-"POT-Creation-Date: 2017-08-04 19:46+0000\n"
+"POT-Creation-Date: 2017-09-25 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1208,6 +1208,14 @@ msgstr ""
 
 #. SysConfig
 msgid "Search FAQ"
+msgstr ""
+
+#. SysConfig
+msgid "Select how many items should be shown in Journal Overview \"Small\" by default."
+msgstr ""
+
+#. SysConfig
+msgid "Select how many items should be shown in Overview \"Small\" by default."
 msgstr ""
 
 #. SysConfig

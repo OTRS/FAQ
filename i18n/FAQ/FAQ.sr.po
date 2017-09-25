@@ -1,13 +1,14 @@
 # 
 # Translators:
+# Dusan Vuckovic, 2017
 # Jaroslav Balaz <balazj315@gmail.com>, 2015
 # Милорад Јовановић <j.milorad@gmail.com>, 2014-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: OTRS\n"
 "POT-Creation-Date: 2017-08-04 19:00+0000\n"
-"PO-Revision-Date: 2017-08-05 00:04+0000\n"
-"Last-Translator: Carlos Rodríguez <carlos.rodriguez@otrs.com>\n"
+"PO-Revision-Date: 2017-09-23 07:25+0000\n"
+"Last-Translator: Dusan Vuckovic\n"
 "Language-Team: Serbian (http://www.transifex.com/otrs/OTRS/language/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -353,11 +354,11 @@ msgstr "Ово може да буде од помоћи"
 
 #. Template: CustomerFAQRelatedArticles
 msgid "Found no helpful resources for the subject and text."
-msgstr ""
+msgstr "Корисни ресурси за унети предмет и текст нису пронађени."
 
 #. Template: CustomerFAQRelatedArticles
 msgid "Type a subject or text to get a list of helpful resources."
-msgstr ""
+msgstr "За листу корисних ресурса, молимо унесите предмет или текст."
 
 #. Template: CustomerFAQSearch
 msgid "Fulltext search in FAQ articles (e. g. \"John*n\" or \"Will*\")"
@@ -413,7 +414,7 @@ msgstr "Потребна вам је „rw” дозвола!"
 
 #. Perl Module: Kernel/Modules/AgentFAQAdd.pm
 msgid "No categories found where user has read/write permissions!"
-msgstr ""
+msgstr "Категорије у којој корисник има приступ без ограничења нису пронађене!"
 
 #. Perl Module: Kernel/Modules/AgentFAQAdd.pm
 msgid "No default language found and can't create a new one."
@@ -481,11 +482,11 @@ msgstr "ЧПП дневник"
 
 #. Perl Module: Kernel/Modules/AgentFAQJournal.pm
 msgid "Need config option FAQ::Frontend::Overview"
-msgstr ""
+msgstr "Потребна конфигурациона опција FAQ::Frontend::Overview"
 
 #. Perl Module: Kernel/Modules/AgentFAQJournal.pm
 msgid "Config option FAQ::Frontend::Overview needs to be a HASH ref!"
-msgstr ""
+msgstr "Конфигурациона опција FAQ::Frontend::Overview мора да буде HASH референца!"
 
 #. Perl Module: Kernel/Modules/AgentFAQJournal.pm
 msgid "No config option found for the view \"%s\"!"
@@ -633,11 +634,11 @@ msgstr "Није дат Тип!"
 
 #. Perl Module: Kernel/Modules/PublicFAQRSS.pm
 msgid "Type must be either LastCreate or LastChange or Top10!"
-msgstr ""
+msgstr "Type мора бити LastCreate, LastChange или Top10!"
 
 #. Perl Module: Kernel/Modules/PublicFAQRSS.pm
 msgid "Can't create RSS file!"
-msgstr ""
+msgstr "RSS датотека не моће бити снимљена!"
 
 #. Perl Module: Kernel/Output/HTML/HeaderMeta/AgentFAQSearch.pm
 msgid "%s (FAQFulltext)"
@@ -737,7 +738,7 @@ msgstr "Клијентска ЧПП."
 
 #. SysConfig
 msgid "CustomerFAQRelatedArticles."
-msgstr ""
+msgstr "CustomerFAQRelatedArticles."
 
 #. SysConfig
 msgid "Decimal places of the voting result."
@@ -1296,7 +1297,7 @@ msgstr "Број приказаних ставки у \"првих 10\" ."
 
 #. SysConfig
 msgid "Output filter to add Java-script to CustomerTicketMessage screen."
-msgstr ""
+msgstr "Излазни филтер за убацивање JavaScript у CustomerTicketMessage екран."
 
 #. SysConfig
 msgid "Output limit for the related FAQ articles."

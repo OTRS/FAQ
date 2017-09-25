@@ -24,7 +24,7 @@ sub Data {
     # Template: AgentFAQCategory
     $Self->{Translation}->{'FAQ Category Management'} = 'Gestion Catégories de FAQ';
     $Self->{Translation}->{'Add category'} = 'Ajout Catégorie';
-    $Self->{Translation}->{'Delete Category'} = 'Effacer Catégorie';
+    $Self->{Translation}->{'Delete Category'} = 'Supprimer Catégorie';
     $Self->{Translation}->{'Ok'} = 'Ok';
     $Self->{Translation}->{'Add Category'} = 'Ajout Catégorie';
     $Self->{Translation}->{'Edit Category'} = 'Editer Catégorie';
@@ -32,14 +32,14 @@ sub Data {
     $Self->{Translation}->{'Please select at least one permission group.'} = 'Merci de Sélectionner au moins un groupe de permission.';
     $Self->{Translation}->{'Agent groups that can access articles in this category.'} = 'Groupes d\'agents pouvant accéder aux articles de cette catégorie.';
     $Self->{Translation}->{'Will be shown as comment in Explorer.'} = 'Sera affiché comme un commentaire dans l\'Explorer.';
-    $Self->{Translation}->{'Do you really want to delete this category?'} = 'Voulez-vous vraiment effacer cette catégorie?';
+    $Self->{Translation}->{'Do you really want to delete this category?'} = 'Voulez-vous vraiment supprimer cette catégorie ?';
     $Self->{Translation}->{'You can not delete this category. It is used in at least one FAQ article and/or is parent of at least one other category'} =
-        'Impossible d\'effacer cette catégorie. Elle est utilisée dans au moins un article de FAQ et/ou est parente d\'au moins une autre catégorie.';
+        'Vous ne pouvez pas supprimer cette catégorie. Elle est utilisée dans au moins un article de FAQ et/ou est parente d\'au moins une autre catégorie.';
     $Self->{Translation}->{'This category is used in the following FAQ article(s)'} = 'Cette catégorie est utilisée dans les articles de FAQ suivants';
     $Self->{Translation}->{'This category is parent of the following subcategories'} = 'Cette catégorie est parente';
 
     # Template: AgentFAQDelete
-    $Self->{Translation}->{'Do you really want to delete this FAQ article?'} = 'Voulez-vous vraiment effacer cet article de FAQ?';
+    $Self->{Translation}->{'Do you really want to delete this FAQ article?'} = 'Voulez-vous vraiment supprimer cet article de FAQ ?';
 
     # Template: AgentFAQEdit
     $Self->{Translation}->{'FAQ'} = 'FAQ';
@@ -64,12 +64,12 @@ sub Data {
     $Self->{Translation}->{'Use this feature if you want to work with multiple languages.'} =
         'Utiliser cette fonction afin de travailler avec de multiples langues';
     $Self->{Translation}->{'Add language'} = 'Ajouter une langue';
-    $Self->{Translation}->{'Delete Language %s'} = 'Effacer une langue %s';
+    $Self->{Translation}->{'Delete Language %s'} = 'Supprimer la langue %s';
     $Self->{Translation}->{'Add Language'} = 'Ajouter une langue';
     $Self->{Translation}->{'Edit Language'} = 'Editer la langue';
-    $Self->{Translation}->{'Do you really want to delete this language?'} = 'Voulez-vous vraiment effacer cette langue';
+    $Self->{Translation}->{'Do you really want to delete this language?'} = 'Voulez-vous vraiment supprimer cette langue ?';
     $Self->{Translation}->{'You can not delete this language. It is used in at least one FAQ article!'} =
-        'Impossible d\'effacer cette langue. Elle est utilisée dans au moins un article de FAQ';
+        'Vous ne pouvez pas supprimer cette langue. Elle est utilisée dans au moins un article de FAQ !';
     $Self->{Translation}->{'This language is used in the following FAQ Article(s)'} = 'Cette langue est utilisée dans les articles FAQ suivants';
 
     # Template: AgentFAQOverviewNavBar
@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = '';
     $Self->{Translation}->{'S'} = 'S';
     $Self->{Translation}->{'Search FAQ'} = 'Recherche dans FAQ';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =

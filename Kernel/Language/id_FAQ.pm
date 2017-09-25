@@ -478,6 +478,10 @@ sub Data {
     $Self->{Translation}->{'Rates for voting. Key must be in percent.'} = 'Peringkatkan untuk memilih.  Kunci harus dalam persentase.';
     $Self->{Translation}->{'S'} = '';
     $Self->{Translation}->{'Search FAQ'} = 'Cari FAQ';
+    $Self->{Translation}->{'Select how many items should be shown in Journal Overview "Small" by default.'} =
+        '';
+    $Self->{Translation}->{'Select how many items should be shown in Overview "Small" by default.'} =
+        '';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in AgentFAQZoom.'} =
         'Tentukan tinggi default (dalam piksel)  pada bidang sebaris HTML pada AgentFAQZoom.';
     $Self->{Translation}->{'Set the default height (in pixels) of inline HTML fields in CustomerFAQZoom (and PublicFAQZoom).'} =
