@@ -75,7 +75,9 @@ $Selenium->RunTest(
         $Selenium->find_element( "#Field2", 'css' )->send_keys($FAQProblem);
         $Selenium->find_element( "#Field3", 'css' )->send_keys($FAQSolution);
         $Selenium->find_element( "#Field6", 'css' )->send_keys($FAQComment);
-        $Selenium->find_element( "#Title",  'css' )->VerifiedSubmit();
+        $Selenium->execute_script('$("#FAQSubmit").click();');
+
+        $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $("#FAQBody").length' );
 
         # verify test FAQ is created
         $Self->True(
