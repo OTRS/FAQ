@@ -1,6 +1,5 @@
 # --
-# Kernel/Language/ru_FAQ.pm - translation file
-# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # Copyright (C) 2013 Andrey N. Burdin <BurdinAN at it-sakh.net>
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see

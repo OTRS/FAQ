@@ -1,6 +1,5 @@
 # --
-# Kernel/Language/zh_CN_FAQ.pm - translation file
-# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # Copyright (C) 2013 Michael Shi <micshi at 163.com>
 # --

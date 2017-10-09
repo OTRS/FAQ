@@ -1,6 +1,5 @@
 # --
-# FAQ.t - FAQ tests
-# Copyright (C) 2001-2016 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -639,9 +638,9 @@ $Self->Is(
     "Cache for FAQ With ItemFields After FAQGet(): Complete cache ref",
 );
 
-# -------------------------
+#
 # FAQ State tests
-# -------------------------
+#
 my %States = $FAQObject->StateList(
     UserID => 1,
 );
@@ -748,8 +747,6 @@ $Self->Is(
     'internal',
     "StateTypeList() 1 is internal",
 );
-
-# -------------------------
 
 # clean the system
 $FAQDelete = $FAQObject->FAQDelete(
