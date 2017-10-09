@@ -1,9 +1,5 @@
 // --
-// FAQ.Agent.ConfirmationDialog.js - provides the special module functions for the
-// confirmation dialogs
-// Copyright (C) 2001-2010 OTRS AG, http://otrs.org/\n";
-// --
-// $Id: FAQ.Agent.ConfirmationDialog.js,v 1.2 2010-12-07 17:25:52 ub Exp $
+// Copyright (C) 2001-2017 OTRS AG, http://otrs.com/\n";
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (AGPL). If you

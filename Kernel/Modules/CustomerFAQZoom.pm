@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/CustomerFAQZoom.pm - to get a closer view
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: CustomerFAQZoom.pm,v 1.21 2011-05-25 14:46:26 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +12,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.21 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -388,7 +382,7 @@ sub Run {
 
     # log access to this FAQ item
     $Self->{FAQObject}->FAQLogAdd(
-        ItemID => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
+        ItemID    => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
         Interface => $Self->{Interface}->{Name},
         UserID    => $Self->{UserID},
     );

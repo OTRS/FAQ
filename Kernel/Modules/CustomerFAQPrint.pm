@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/CustomerFAQPrint.pm - print layout for agent interface
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: CustomerFAQPrint.pm,v 1.17 2011-05-25 14:46:26 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -17,9 +14,6 @@ use warnings;
 use Kernel::System::HTMLUtils;
 use Kernel::System::PDF;
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.17 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -160,14 +154,13 @@ sub Run {
             $Title .= ' / ' . $FAQData{Title};
         }
 
-        $Page{MarginTop}    = 30;
-        $Page{MarginRight}  = 40;
-        $Page{MarginBottom} = 40;
-        $Page{MarginLeft}   = 40;
-        $Page{HeaderRight}  = $HeaderRight;
-        $Page{HeadlineLeft} = $HeadlineLeft;
-        $Page{HeadlineRight}
-            = $PrintedBy . ' '
+        $Page{MarginTop}     = 30;
+        $Page{MarginRight}   = 40;
+        $Page{MarginBottom}  = 40;
+        $Page{MarginLeft}    = 40;
+        $Page{HeaderRight}   = $HeaderRight;
+        $Page{HeadlineLeft}  = $HeadlineLeft;
+        $Page{HeadlineRight} = $PrintedBy . ' '
             . $Self->{UserFirstname} . ' '
             . $Self->{UserLastname} . ' ('
             . $Self->{UserEmail} . ') '
@@ -184,7 +177,8 @@ sub Run {
 
         # create first pdf page
         $Self->{PDFObject}->PageNew(
-            %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+            %Page,
+            FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
         );
         $Page{PageCount}++;
 
@@ -279,7 +273,10 @@ sub _PDFOutputFAQHeaderInfo {
     # check needed stuff
     for my $Needed (qw(PageData FAQData)) {
         if ( !defined( $Param{$Needed} ) ) {
-            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $Needed!" );
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
             return;
         }
     }
@@ -378,7 +375,8 @@ sub _PDFOutputFAQHeaderInfo {
         }
         else {
             $Self->{PDFObject}->PageNew(
-                %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                %Page,
+                FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
             );
             $Page{PageCount}++;
         }
@@ -392,7 +390,10 @@ sub _PDFOutputKeywords {
     # check needed stuff
     for my $Needed (qw(PageData FAQData)) {
         if ( !defined( $Param{$Needed} ) ) {
-            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $Needed!" );
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
             return;
         }
     }
@@ -446,7 +447,8 @@ sub _PDFOutputKeywords {
         }
         else {
             $Self->{PDFObject}->PageNew(
-                %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                %Page,
+                FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
             );
             $Page{PageCount}++;
         }
@@ -556,7 +558,8 @@ sub _PDFOuputFAQContent {
             }
             else {
                 $Self->{PDFObject}->PageNew(
-                    %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                    %Page,
+                    FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
                 );
                 $Page{PageCount}++;
             }

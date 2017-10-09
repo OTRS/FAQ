@@ -1,8 +1,5 @@
 # --
-# Kernel/Output/HTML/LayoutFAQ.pm - provides generic agent HTML output
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
-# --
-# $Id: LayoutFAQ.pm,v 1.49.2.1 2013-03-25 17:51:01 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -14,18 +11,14 @@ package Kernel::Output::HTML::LayoutFAQ;
 use strict;
 use warnings;
 
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.49.2.1 $) [1];
-
 sub GetFAQItemVotingRateColor {
     my ( $Self, %Param ) = @_;
 
     if ( !defined $Param{Rate} ) {
         return $Self->FatalError( Message => 'Need rate!' );
     }
-    my $CssTmp = '';
-    my $VotingResultColors
-        = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultColors');
+    my $CssTmp             = '';
+    my $VotingResultColors = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultColors');
 
     for my $Key ( sort { $b <=> $a } keys %{$VotingResultColors} ) {
         if ( $Param{Rate} <= $Key ) {
@@ -759,8 +752,8 @@ sub FAQShowLatestNewsBox {
             OrderBy          => [$OrderBy],
             OrderByDirection => ['Down'],
             Interface        => $Param{Interface},
-            Limit  => $Self->{ConfigObject}->Get("FAQ::Explorer::$Param{Type}::Limit") || 5,
-            UserID => $Param{UserID},
+            Limit            => $Self->{ConfigObject}->Get("FAQ::Explorer::$Param{Type}::Limit") || 5,
+            UserID           => $Param{UserID},
             %CategorySearchParam,
         );
 
@@ -1031,7 +1024,7 @@ sub FAQShowQuickSearch {
             Name => 'QuickSearch',
             Data => {
                 Action => $Action,
-                Nav => $Param{Nav} || '',
+                Nav    => $Param{Nav} || '',
             },
         );
     }

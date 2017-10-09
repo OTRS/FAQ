@@ -1,9 +1,6 @@
 #!/usr/bin/perl -w
 # --
-# FAQImport.pl - FAQ import script
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQImport.pl,v 1.6 2011-10-17 15:09:57 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU AFFERO General Public License as published by
@@ -12,13 +9,13 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-# or see L<http://www.gnu.org/licenses/agpl.txt>.
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+# or see http://www.gnu.org/licenses/agpl.txt.
 # --
 
 use strict;
@@ -41,7 +38,6 @@ use Kernel::System::Group;
 use Kernel::System::FAQ;
 
 use vars qw($VERSION $RealBin);
-$VERSION = qw($Revision: 1.6 $) [1];
 
 # get options
 my %Opts;
@@ -49,8 +45,8 @@ getopt( 'hisq', \%Opts );
 
 if ( exists $Opts{h} ) {
     print STDOUT "\n";
-    print STDOUT "FAQImport.pl <Revision $VERSION> - a FAQ import tool\n";
-    print STDOUT "Copyright (C) 2001-2011 OTRS AG, http://otrs.org/\n";
+    print STDOUT "FAQImport.pl - a FAQ import tool\n";
+    print STDOUT "Copyright (C) 2001-2017 OTRS AG, http://otrs.com/\n";
     print STDOUT "   usage: \n";
     print STDOUT "      FAQImport.pl -i <ImportFile> [-s <separator>] [-q <quote>]\n";
     print STDOUT "\n";
@@ -157,7 +153,7 @@ for my $RowRef ( @{$DataRef} ) {
         $CommonObject{DBObject}->Prepare(
             SQL => 'SELECT id FROM faq_category '
                 . 'WHERE valid_id = 1 AND name = ? AND parent_id = ?',
-            Bind => [ \$Category, \$ParentID ],
+            Bind  => [ \$Category, \$ParentID ],
             Limit => 1,
         );
         my @Result;
@@ -228,13 +224,9 @@ exit 0;
 This Software is part of the OTRS project (http://otrs.org/).
 
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
-the enclosed file COPYING for license information (GPL). If you
-did not receive this file, see http://www.gnu.org/licenses/gpl-2.0.txt.
+the enclosed file COPYING for license information (AGPL). If you
+did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =cut
-
-=head1 VERSION
-
-$Revision: 1.6 $ $Date: 2011-10-17 15:09:57 $
 
 =cut

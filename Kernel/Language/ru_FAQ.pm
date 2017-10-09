@@ -1,9 +1,6 @@
 # --
-# Kernel/Language/ru_FAQ.pm - translation file
 # Copyright (C) 2011 Alex Savvin <savvin at mail.ru>
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: ru_FAQ.pm,v 1.2 2011-08-12 21:48:22 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -13,6 +10,7 @@
 package Kernel::Language::ru_FAQ;
 
 use strict;
+use warnings;
 
 sub Data {
     my $Self = shift;

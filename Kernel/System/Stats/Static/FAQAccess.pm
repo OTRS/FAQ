@@ -1,8 +1,5 @@
 # --
-# Kernel/System/Stats/Static/FAQAccess.pm.pm
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQAccess.pm,v 1.6 2011-08-12 21:48:22 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +12,6 @@ use strict;
 use warnings;
 use Date::Pcalc qw(Days_in_Month);
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.6 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -177,7 +171,9 @@ sub Run {
                 . $Self->{ConfigObject}->Get(
                 "FAQ::Explorer::ItemList::VotingResultDecimalPlaces"
                 )
-                . "f", $VoteData->{Result} || 0
+                . "f",
+            $VoteData->{Result}
+                || 0
         );
         my $Votes = $VoteData->{Votes} || 0;
 
@@ -192,8 +188,7 @@ sub Run {
     }
 
     # set report title
-    my $Title
-        = "$Param{StartYear}-$Param{StartMonth}-$StartDay - $Param{EndYear}-$Param{EndMonth}-$EndDay";
+    my $Title = "$Param{StartYear}-$Param{StartMonth}-$StartDay - $Param{EndYear}-$Param{EndMonth}-$EndDay";
 
     # table headlines
     my @HeadData = (

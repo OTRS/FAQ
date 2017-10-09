@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/CustomerFAQSearch.pm - customer FAQ search
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: CustomerFAQSearch.pm,v 1.22.2.1 2012-03-12 16:14:37 des Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -17,9 +14,6 @@ use warnings;
 use Kernel::System::FAQ;
 use Kernel::System::SearchProfile;
 use Kernel::System::CSV;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.22.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

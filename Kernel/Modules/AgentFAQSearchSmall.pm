@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQSearchSmall.pm - module for FAQ search
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQSearchSmall.pm,v 1.3.2.1 2012-03-12 16:14:37 des Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -16,9 +13,6 @@ use warnings;
 
 use Kernel::System::FAQ;
 use Kernel::System::SearchProfile;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -140,8 +134,7 @@ sub Run {
         }
 
         # store last queue screen
-        my $URL
-            = "Action=AgentFAQSearchSmall;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
+        my $URL = "Action=AgentFAQSearchSmall;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
             . ";OrderBy=$Self->{OrderBy};TakeLastSearch=1;StartHit=$Self->{StartHit};Nav=$Nav";
         $Self->{SessionObject}->UpdateSessionID(
             SessionID => $Self->{SessionID},
@@ -233,8 +226,7 @@ sub Run {
             . ';Nav=' . $Nav
             . ';TakeLastSearch=1;';
 
-        my $FilterLink
-            = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
+        my $FilterLink = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
             . ';OrderBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
             . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
             . ';Profile=' . $Self->{Profile} . ';TakeLastSearch=1;Subaction=Search'

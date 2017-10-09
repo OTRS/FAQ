@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQLanguage.pm - the faq language management module
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQLanguage.pm,v 1.14 2010-12-27 16:30:05 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +12,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.14 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
