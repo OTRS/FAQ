@@ -1,6 +1,5 @@
 # --
-# Kernel/Modules/CustomerFAQSearch.pm - customer FAQ search
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -193,8 +192,7 @@ sub Run {
         }
 
         # store last overview screen
-        my $URL
-            = "Action=CustomerFAQSearch;Subaction=Search;Profile=$Self->{Profile}"
+        my $URL = "Action=CustomerFAQSearch;Subaction=Search;Profile=$Self->{Profile}"
             . ";SortBy=$Self->{SortBy};OrderBy=$Self->{OrderBy};TakeLastSearch=1"
             . ";StartHit=$Self->{StartHit}";
 

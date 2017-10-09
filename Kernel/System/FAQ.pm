@@ -1,6 +1,5 @@
 # --
-# Kernel/System/FAQ.pm - all faq functions
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -111,8 +110,7 @@ sub new {
     $Self->{Voting} = $Self->{ConfigObject}->Get('FAQ::Voting');
 
     # get the cache TTL (in seconds)
-    $Self->{CacheTTL}
-        = int( $Self->{ConfigObject}->Get('FAQ::CacheTTL') || 60 * 60 * 24 * 2 );
+    $Self->{CacheTTL} = int( $Self->{ConfigObject}->Get('FAQ::CacheTTL') || 60 * 60 * 24 * 2 );
 
     return $Self;
 }
@@ -320,7 +318,7 @@ sub FAQGet {
             my $Number = $Self->{ConfigObject}->Get('SystemID') . '00' . $Data{ItemID};
 
             return if !$Self->{DBObject}->Do(
-                SQL => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
+                SQL  => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
                 Bind => [ \$Number, \$Data{ItemID} ],
             );
 
@@ -361,8 +359,7 @@ sub FAQGet {
     }
 
     # get number of decimal places from config
-    my $DecimalPlaces
-        = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultDecimalPlaces') || 0;
+    my $DecimalPlaces = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultDecimalPlaces') || 0;
 
     # format the vote result
     my $VoteResult = sprintf( "%0." . $DecimalPlaces . "f", $VoteData->{Result} || 0 );
@@ -690,7 +687,7 @@ sub FAQAdd {
     # update number
     my $Number = $Self->{ConfigObject}->Get('SystemID') . '00' . $ID;
     return if !$Self->{DBObject}->Do(
-        SQL => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
+        SQL  => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
         Bind => [ \$Number, \$ID ],
     );
 
@@ -1025,7 +1022,7 @@ sub AttachmentGet {
             . 'ORDER BY created',
         Bind => [ \$Param{FileID}, \$Param{ItemID} ],
         Encode => [ 1, 1, 1, 0 ],
-        Limit => 1,
+        Limit  => 1,
     );
 
     my %File;
@@ -1076,7 +1073,7 @@ sub AttachmentDelete {
     }
 
     return if !$Self->{DBObject}->Do(
-        SQL => 'DELETE FROM faq_attachment WHERE id = ? AND faq_id = ? ',
+        SQL  => 'DELETE FROM faq_attachment WHERE id = ? AND faq_id = ? ',
         Bind => [ \$Param{FileID}, \$Param{ItemID} ],
     );
 
@@ -2940,7 +2937,7 @@ sub StateUpdate {
 
     # sql
     return if !$Self->{DBObject}->Do(
-        SQL => 'UPDATE faq_state SET name = ?, type_id = ?, WHERE id = ?',
+        SQL  => 'UPDATE faq_state SET name = ?, type_id = ?, WHERE id = ?',
         Bind => [ \$Param{Name}, \$Param{TypeID}, \$Param{StateID} ],
     );
 
@@ -2978,7 +2975,7 @@ sub StateAdd {
     }
 
     return if !$Self->{DBObject}->Do(
-        SQL => 'INSERT INTO faq_state (name, type_id) VALUES ( ?, ? )',
+        SQL  => 'INSERT INTO faq_state (name, type_id) VALUES ( ?, ? )',
         Bind => [ \$Param{Name}, \$Param{TypeID} ],
     );
 
@@ -3190,7 +3187,7 @@ sub LanguageUpdate {
 
     # build sql
     return if !$Self->{DBObject}->Do(
-        SQL => 'UPDATE faq_language SET name = ? WHERE id = ?',
+        SQL  => 'UPDATE faq_language SET name = ? WHERE id = ?',
         Bind => [ \$Param{Name}, \$Param{LanguageID} ],
     );
 
@@ -3876,7 +3873,7 @@ sub FAQSearch {
 
     # ask database
     return if !$Self->{DBObject}->Prepare(
-        SQL => $SQL,
+        SQL   => $SQL,
         Limit => $Param{Limit} || 500
     );
 
@@ -4808,7 +4805,7 @@ sub FAQLogAdd {
         SQL => 'SELECT id FROM faq_log '
             . 'WHERE item_id = ? AND ip = ? '
             . 'AND user_agent = ? AND created >= ? ',
-        Bind => [ \$Param{ItemID}, \$IP, \$UserAgent, \$TimeStamp ],
+        Bind  => [ \$Param{ItemID}, \$IP, \$UserAgent, \$TimeStamp ],
         Limit => 1,
     );
 
@@ -5369,7 +5366,10 @@ sub _DeleteFromFAQCache {
     # check needed stuff
     for my $Needed (qw(ItemID)) {
         if ( !$Param{$Needed} ) {
-            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $Needed!" );
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
             return;
         }
     }
@@ -5399,7 +5399,7 @@ sub _DeleteFromFAQCache {
 
 =head1 TERMS AND CONDITIONS
 
-This software is part of the OTRS project (http://otrs.org/).
+This software is part of the OTRS project (L<http://otrs.org/>).
 
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you

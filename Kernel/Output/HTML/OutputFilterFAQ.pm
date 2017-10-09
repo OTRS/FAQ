@@ -1,6 +1,5 @@
 # --
-# Kernel/Output/HTML/OutputFilterFAQ.pm - Output filter for FAQ module
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -40,8 +39,7 @@ sub Run {
     return if !$Self->{LayoutObject}->{EnvRef}->{'UserIsGroupRo[faq]'};
 
     # get allowed template names
-    my $ValidTemplates
-        = $Self->{ConfigObject}->Get('Frontend::Output::FilterElementPost')->{FAQ}->{Templates};
+    my $ValidTemplates = $Self->{ConfigObject}->Get('Frontend::Output::FilterElementPost')->{FAQ}->{Templates};
 
     # check template name
     return if !$ValidTemplates->{ $Param{TemplateFile} };
@@ -49,8 +47,7 @@ sub Run {
     # if no session cookies are used we attach the session as URL parameter
     my $SessionString = '';
     if ( !$Self->{ConfigObject}->Get('SessionUseCookie') ) {
-        my $SessionID
-            = $Param{SessionID}
+        my $SessionID = $Param{SessionID}
             || $Self->{ParamObject}->GetParam( Param => $Self->{ConfigObject}->Get('SessionName') )
             || '';
         $SessionString = $Self->{ConfigObject}->Get('SessionName') . '=' . $SessionID . ';';

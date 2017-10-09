@@ -1,6 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQPrint.pm - print layout for agent interface
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -183,14 +182,13 @@ sub Run {
             $Title .= ' / ' . $FAQData{Title};
         }
 
-        $Page{MarginTop}    = 30;
-        $Page{MarginRight}  = 40;
-        $Page{MarginBottom} = 40;
-        $Page{MarginLeft}   = 40;
-        $Page{HeaderRight}  = $HeaderRight;
-        $Page{HeadlineLeft} = $HeadlineLeft;
-        $Page{HeadlineRight}
-            = $PrintedBy . ' '
+        $Page{MarginTop}     = 30;
+        $Page{MarginRight}   = 40;
+        $Page{MarginBottom}  = 40;
+        $Page{MarginLeft}    = 40;
+        $Page{HeaderRight}   = $HeaderRight;
+        $Page{HeadlineLeft}  = $HeadlineLeft;
+        $Page{HeadlineRight} = $PrintedBy . ' '
             . $Self->{UserFirstname} . ' '
             . $Self->{UserLastname} . ' ('
             . $Self->{UserEmail} . ') '
@@ -207,7 +205,8 @@ sub Run {
 
         # create first pdf page
         $Self->{PDFObject}->PageNew(
-            %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+            %Page,
+            FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
         );
         $Page{PageCount}++;
 
@@ -350,7 +349,10 @@ sub _PDFOutputFAQHeaderInfo {
     # check needed stuff
     for my $Needed (qw(PageData FAQData)) {
         if ( !defined( $Param{$Needed} ) ) {
-            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $Needed!" );
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
             return;
         }
     }
@@ -459,7 +461,8 @@ sub _PDFOutputFAQHeaderInfo {
         }
         else {
             $Self->{PDFObject}->PageNew(
-                %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                %Page,
+                FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
             );
             $Page{PageCount}++;
         }
@@ -473,7 +476,10 @@ sub _PDFOutputLinkedObjects {
     # check needed stuff
     for my $Needed (qw(PageData LinkData LinkTypeList)) {
         if ( !defined( $Param{$Needed} ) ) {
-            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $Needed!" );
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
             return;
         }
     }
@@ -557,7 +563,8 @@ sub _PDFOutputLinkedObjects {
         }
         else {
             $Self->{PDFObject}->PageNew(
-                %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                %Page,
+                FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
             );
             $Page{PageCount}++;
         }
@@ -571,7 +578,10 @@ sub _PDFOutputKeywords {
     # check needed stuff
     for my $Needed (qw(PageData FAQData)) {
         if ( !defined( $Param{$Needed} ) ) {
-            $Self->{LogObject}->Log( Priority => 'error', Message => "Need $Needed!" );
+            $Self->{LogObject}->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
             return;
         }
     }
@@ -625,7 +635,8 @@ sub _PDFOutputKeywords {
         }
         else {
             $Self->{PDFObject}->PageNew(
-                %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                %Page,
+                FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
             );
             $Page{PageCount}++;
         }
@@ -732,7 +743,8 @@ sub _PDFOuputFAQContent {
             }
             else {
                 $Self->{PDFObject}->PageNew(
-                    %Page, FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
+                    %Page,
+                    FooterRight => $Page{PageText} . ' ' . $Page{PageCount},
                 );
                 $Page{PageCount}++;
             }

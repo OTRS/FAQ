@@ -1,6 +1,5 @@
 # --
-# Kernel/Language/ja_FAQ.pm - translation file
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # Copyright (C) 2011/12/08 Kaoru Hayama TIS Inc.
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see

@@ -1,7 +1,6 @@
 # --
-# Kernel/Language/ru_FAQ.pm - translation file
 # Copyright (C) 2011 Alex Savvin <savvin at mail.ru>
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

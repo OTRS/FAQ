@@ -1,6 +1,5 @@
 # --
-# Kernel/Language/es_FAQ.pm - translation file
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # Copyright (C) 2013 Enrique Matías Sánchez <quique@unizar.es>
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see

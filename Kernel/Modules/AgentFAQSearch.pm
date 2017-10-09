@@ -1,6 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQSearch.pm - module for FAQ search
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -167,8 +166,7 @@ sub Run {
         }
 
         # store last overview screen
-        my $URL
-            = "Action=AgentFAQSearch;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
+        my $URL = "Action=AgentFAQSearch;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
             . ";OrderBy=$Self->{OrderBy};TakeLastSearch=1;StartHit=$Self->{StartHit}";
         $Self->{SessionObject}->UpdateSessionID(
             SessionID => $Self->{SessionID},
@@ -299,8 +297,7 @@ sub Run {
         # "Map" copy from one array to another, while "grep" will only let pass the categories
         #    that are defined in the %AllowedCategoryIDs hash
         if ( IsArrayRefWithData( $GetParam{CategoryIDs} ) ) {
-            @{ $GetParam{CategoryIDs} }
-                = map {$_} grep { $AllowedCategoryIDs{$_} } @{ $GetParam{CategoryIDs} };
+            @{ $GetParam{CategoryIDs} } = map {$_} grep { $AllowedCategoryIDs{$_} } @{ $GetParam{CategoryIDs} };
         }
 
         # Just search if we do have categories, we have access to.
@@ -492,8 +489,7 @@ sub Run {
                 my $Time      = $Self->{LayoutObject}->Output( Template => '$Env{"Time"}' );
                 my $Url       = '';
                 if ( $ENV{REQUEST_URI} ) {
-                    $Url
-                        = $Self->{ConfigObject}->Get('HttpType') . '://'
+                    $Url = $Self->{ConfigObject}->Get('HttpType') . '://'
                         . $Self->{ConfigObject}->Get('FQDN')
                         . $ENV{REQUEST_URI};
                 }
@@ -508,27 +504,23 @@ sub Run {
                 my $CellData;
                 $CellData->[0]->[0]->{Content} = $Self->{ConfigObject}->Get('FAQ::FAQHook');
                 $CellData->[0]->[0]->{Font}    = 'ProportionalBold';
-                $CellData->[0]->[1]->{Content}
-                    = $Self->{LayoutObject}->{LanguageObject}->Get('Title');
-                $CellData->[0]->[1]->{Font} = 'ProportionalBold';
-                $CellData->[0]->[2]->{Content}
-                    = $Self->{LayoutObject}->{LanguageObject}->Get('Category');
-                $CellData->[0]->[2]->{Font} = 'ProportionalBold';
+                $CellData->[0]->[1]->{Content} = $Self->{LayoutObject}->{LanguageObject}->Get('Title');
+                $CellData->[0]->[1]->{Font}    = 'ProportionalBold';
+                $CellData->[0]->[2]->{Content} = $Self->{LayoutObject}->{LanguageObject}->Get('Category');
+                $CellData->[0]->[2]->{Font}    = 'ProportionalBold';
 
                 # store the correct header index
                 my $NextHeaderIndex = 3;
 
                 # add language header
                 if ( $Self->{MultiLanguage} ) {
-                    $CellData->[0]->[3]->{Content}
-                        = $Self->{LayoutObject}->{LanguageObject}->Get('Language');
-                    $CellData->[0]->[3]->{Font} = 'ProportionalBold';
-                    $NextHeaderIndex = 4;
+                    $CellData->[0]->[3]->{Content} = $Self->{LayoutObject}->{LanguageObject}->Get('Language');
+                    $CellData->[0]->[3]->{Font}    = 'ProportionalBold';
+                    $NextHeaderIndex               = 4;
                 }
 
-                $CellData->[0]->[$NextHeaderIndex]->{Content}
-                    = $Self->{LayoutObject}->{LanguageObject}->Get('State');
-                $CellData->[0]->[$NextHeaderIndex]->{Font} = 'ProportionalBold';
+                $CellData->[0]->[$NextHeaderIndex]->{Content} = $Self->{LayoutObject}->{LanguageObject}->Get('State');
+                $CellData->[0]->[$NextHeaderIndex]->{Font}    = 'ProportionalBold';
 
                 $CellData->[0]->[ $NextHeaderIndex + 1 ]->{Content}
                     = $Self->{LayoutObject}->{LanguageObject}->Get('Changed');
@@ -547,8 +539,7 @@ sub Run {
 
                 # output 'No Result', if no content was given
                 if ( !$CellData->[0]->[0] ) {
-                    $CellData->[0]->[0]->{Content}
-                        = $Self->{LayoutObject}->{LanguageObject}->Get('No Result!');
+                    $CellData->[0]->[0]->{Content} = $Self->{LayoutObject}->{LanguageObject}->Get('No Result!');
                 }
 
                 # page params
@@ -586,7 +577,10 @@ sub Run {
                 );
 
                 # start table output
-                $Self->{PDFObject}->PageNew( %PageParam, FooterRight => $Page . ' 1', );
+                $Self->{PDFObject}->PageNew(
+                    %PageParam,
+                    FooterRight => $Page . ' 1',
+                );
                 for ( 2 .. $MaxPages ) {
 
                     # output table (or a fragment of it)
@@ -597,16 +591,18 @@ sub Run {
                         last;
                     }
                     else {
-                        $Self->{PDFObject}->PageNew( %PageParam, FooterRight => $Page . ' ' . $_, );
+                        $Self->{PDFObject}->PageNew(
+                            %PageParam,
+                            FooterRight => $Page . ' ' . $_,
+                        );
                     }
                 }
 
                 # return the pdf document
                 my $Filename = 'FAQ_search';
-                my ( $s, $m, $h, $D, $M, $Y )
-                    = $Self->{TimeObject}->SystemTime2Date(
+                my ( $s, $m, $h, $D, $M, $Y ) = $Self->{TimeObject}->SystemTime2Date(
                     SystemTime => $Self->{TimeObject}->SystemTime(),
-                    );
+                );
                 $M = sprintf( "%02d", $M );
                 $D = sprintf( "%02d", $D );
                 $h = sprintf( "%02d", $h );
@@ -677,8 +673,7 @@ sub Run {
                 . $Self->{LayoutObject}->LinkEncode( $Self->{Profile} )
                 . ';TakeLastSearch=1;';
 
-            my $FilterLink
-                = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
+            my $FilterLink = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
                 . ';OrderBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
                 . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
                 . ';Profile=' . $Self->{Profile} . ';TakeLastSearch=1;Subaction=Search'
@@ -934,7 +929,7 @@ sub _MaskForm {
             Print  => 'Print',
             CSV    => 'CSV',
         },
-        Name => 'ResultForm',
+        Name       => 'ResultForm',
         SelectedID => $GetParam{ResultForm} || 'Normal',
     );
 

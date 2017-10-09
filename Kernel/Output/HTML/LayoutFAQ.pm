@@ -1,6 +1,5 @@
 # --
-# Kernel/Output/HTML/LayoutFAQ.pm - provides generic agent HTML output
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -18,9 +17,8 @@ sub GetFAQItemVotingRateColor {
     if ( !defined $Param{Rate} ) {
         return $Self->FatalError( Message => 'Need rate!' );
     }
-    my $CssTmp = '';
-    my $VotingResultColors
-        = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultColors');
+    my $CssTmp             = '';
+    my $VotingResultColors = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultColors');
 
     for my $Key ( sort { $b <=> $a } keys %{$VotingResultColors} ) {
         if ( $Param{Rate} <= $Key ) {
@@ -774,8 +772,8 @@ sub FAQShowLatestNewsBox {
             OrderBy          => [$OrderBy],
             OrderByDirection => ['Down'],
             Interface        => $Param{Interface},
-            Limit  => $Self->{ConfigObject}->Get("FAQ::Explorer::$Param{Type}::Limit") || 5,
-            UserID => $Param{UserID},
+            Limit            => $Self->{ConfigObject}->Get("FAQ::Explorer::$Param{Type}::Limit") || 5,
+            UserID           => $Param{UserID},
             %CategorySearchParam,
         );
 
@@ -1048,7 +1046,7 @@ sub FAQShowQuickSearch {
             Name => 'QuickSearch',
             Data => {
                 Action => $Action,
-                Nav => $Param{Nav} || '',
+                Nav    => $Param{Nav} || '',
             },
         );
     }

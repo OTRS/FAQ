@@ -1,6 +1,5 @@
 # --
-# Kernel/Output/HTML/FAQOverviewSmall.pm.pm
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -88,8 +87,7 @@ sub Run {
 
                 # remove ID if necesary
                 if ( $Param{SortBy} ) {
-                    $Param{SortBy}
-                        = $Param{SortBy} eq 'PriorityID'
+                    $Param{SortBy} = $Param{SortBy} eq 'PriorityID'
                         ? 'Priority'
                         : $Param{SortBy} eq 'CategoryID' ? 'Category'
                         : $Param{SortBy} eq 'LanguageID' ? 'Language'

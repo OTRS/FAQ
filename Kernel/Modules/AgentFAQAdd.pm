@@ -1,6 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQAdd.pm - agent frontend to add faq articles
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -430,8 +429,7 @@ sub _MaskNew {
     else {
 
         # get default language
-        my $DefaultLanguage
-            = $Self->{ConfigObject}->Get('FAQ::Default::Language') || 'en';
+        my $DefaultLanguage = $Self->{ConfigObject}->Get('FAQ::Default::Language') || 'en';
 
         # get default language ID
         my $LanguageID = $Self->{FAQObject}->LanguageLookup(

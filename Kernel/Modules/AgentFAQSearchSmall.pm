@@ -1,6 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQSearchSmall.pm - module for FAQ search
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -138,8 +137,7 @@ sub Run {
         }
 
         # store last queue screen
-        my $URL
-            = "Action=AgentFAQSearchSmall;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
+        my $URL = "Action=AgentFAQSearchSmall;Subaction=Search;Profile=$Self->{Profile};SortBy=$Self->{SortBy}"
             . ";OrderBy=$Self->{OrderBy};TakeLastSearch=1;StartHit=$Self->{StartHit};Nav=$Nav";
         $Self->{SessionObject}->UpdateSessionID(
             SessionID => $Self->{SessionID},
@@ -266,8 +264,7 @@ sub Run {
         # "Map" copy from one array to another, while "grep" will only let pass the categories
         #    that are defined in the %AllowedCategoryIDs hash
         if ( IsArrayRefWithData( $GetParam{CategoryIDs} ) ) {
-            @{ $GetParam{CategoryIDs} }
-                = map {$_} grep { $AllowedCategoryIDs{$_} } @{ $GetParam{CategoryIDs} };
+            @{ $GetParam{CategoryIDs} } = map {$_} grep { $AllowedCategoryIDs{$_} } @{ $GetParam{CategoryIDs} };
         }
 
         # Just search if we do have categories, we have access to.
@@ -329,8 +326,7 @@ sub Run {
             . ';Nav=' . $Nav
             . ';TakeLastSearch=1;';
 
-        my $FilterLink
-            = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
+        my $FilterLink = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
             . ';OrderBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
             . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
             . ';Profile=' . $Self->{Profile} . ';TakeLastSearch=1;Subaction=Search'

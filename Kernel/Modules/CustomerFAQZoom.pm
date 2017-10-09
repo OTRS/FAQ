@@ -1,6 +1,5 @@
 # --
-# Kernel/Modules/CustomerFAQZoom.pm - to get a closer view
-# Copyright (C) 2001-2014 OTRS AG, http://otrs.com/
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -450,7 +449,7 @@ sub Run {
 
     # log access to this FAQ item
     $Self->{FAQObject}->FAQLogAdd(
-        ItemID => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
+        ItemID    => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
         Interface => $Self->{Interface}->{Name},
         UserID    => $Self->{UserID},
     );
