@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQZoom.pm - to get a closer view
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQZoom.pm,v 1.31 2012-04-20 00:18:27 ep Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -16,9 +13,6 @@ use warnings;
 
 use Kernel::System::LinkObject;
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.31 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -496,7 +490,7 @@ sub Run {
 
     # log access to this FAQ item
     $Self->{FAQObject}->FAQLogAdd(
-        ItemID => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
+        ItemID    => $Self->{ParamObject}->GetParam( Param => 'ItemID' ),
         Interface => $Self->{Interface}->{Name},
         UserID    => $Self->{UserID},
     );

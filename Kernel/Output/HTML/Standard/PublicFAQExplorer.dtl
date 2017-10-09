@@ -1,8 +1,5 @@
 # --
-# PublicFAQExplorer.dtl.dtl - provides HTML for PublicFAQExplorer.pm
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: PublicFAQExplorer.dtl,v 1.11 2012-05-08 20:31:37 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

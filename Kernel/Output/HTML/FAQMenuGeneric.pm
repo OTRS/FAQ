@@ -1,8 +1,5 @@
 # --
-# Kernel/Output/HTML/FAQMenuGeneric.pm
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQMenuGeneric.pm,v 1.3 2010-11-24 21:55:09 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -13,9 +10,6 @@ package Kernel::Output::HTML::FAQMenuGeneric;
 
 use strict;
 use warnings;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.3 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

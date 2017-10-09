@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/PublicFAQ.pm - This module redirects to PublicFAQZoom
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: PublicFAQ.pm,v 1.16 2012-05-10 12:17:41 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -13,9 +10,6 @@ package Kernel::Modules::PublicFAQ;
 
 use strict;
 use warnings;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.16 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQExplorer.pm - show the faq explorer
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQExplorer.pm,v 1.17.2.1 2012-12-19 14:44:13 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +12,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.17.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -100,8 +94,7 @@ sub Run {
     # but only if the FAQ explorer is not shown as overlay
     if ( !$Nav || $Nav ne 'None' ) {
 
-        my $URL
-            = "Action=AgentFAQExplorer;SortBy=$Self->{SortBy}"
+        my $URL = "Action=AgentFAQExplorer;SortBy=$Self->{SortBy}"
             . ";CategoryID=$CategoryID;Nav=$Nav"
             . ";OrderBy=$Self->{OrderBy};StartHit=$Self->{StartHit}";
         $Self->{SessionObject}->UpdateSessionID(
@@ -248,8 +241,7 @@ sub Run {
         . ';Nav=' . $Nav
         . ';CategoryID=' . $CategoryID
         . ';';
-    my $FilterLink
-        = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
+    my $FilterLink = 'SortBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{SortBy} )
         . ';OrderBy=' . $Self->{LayoutObject}->LinkEncode( $Self->{OrderBy} )
         . ';View=' . $Self->{LayoutObject}->LinkEncode( $Self->{View} )
         . ';Nav=' . $Nav
@@ -277,8 +269,7 @@ sub Run {
     }
 
     # build the title value (on top of the article list)
-    my $Title
-        = $CategoryData{Name}
+    my $Title = $CategoryData{Name}
         || $Self->{ConfigObject}->Get('FAQ::Default::RootCategoryName')
         || '';
 
@@ -378,9 +369,9 @@ sub Run {
 
     # check if all InfoBoxes are empty and hide the Sidebar
     if (
-        $InfoBoxResults{LastCreate}    eq -1
+        $InfoBoxResults{LastCreate} eq -1
         && $InfoBoxResults{LastChange} eq -1
-        && $InfoBoxResults{Top10}      eq -1
+        && $InfoBoxResults{Top10} eq -1
         )
     {
         $SidebarClass = 'Hidden';

@@ -1,8 +1,5 @@
 # --
-# Kernel/System/FAQ.pm - all faq functions
-# Copyright (C) 2001-2013 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQ.pm,v 1.157.2.1 2013-05-20 18:13:05 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -22,9 +19,6 @@ use Kernel::System::CustomerGroup;
 use Kernel::System::LinkObject;
 use Kernel::System::Ticket;
 use Kernel::System::Web::UploadCache;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.157.2.1 $) [1];
 
 =head1 NAME
 
@@ -192,8 +186,7 @@ sub FAQGet {
     }
 
     # get number of decimal places from config
-    my $DecimalPlaces
-        = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultDecimalPlaces') || 0;
+    my $DecimalPlaces = $Self->{ConfigObject}->Get('FAQ::Explorer::ItemList::VotingResultDecimalPlaces') || 0;
 
     # format the vote result
     my $VoteResult = sprintf( "%0." . $DecimalPlaces . "f", $VoteData->{Result} || 0 );
@@ -266,7 +259,7 @@ sub FAQGet {
     if ( !$Data{Number} ) {
         my $Number = $Self->{ConfigObject}->Get('SystemID') . '00' . $Data{ItemID};
         return if !$Self->{DBObject}->Do(
-            SQL => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
+            SQL  => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
             Bind => [ \$Number, \$Data{ItemID} ],
         );
         $Data{Number} = $Number;
@@ -502,7 +495,7 @@ sub FAQAdd {
     # update number
     my $Number = $Self->{ConfigObject}->Get('SystemID') . '00' . $ID;
     return if !$Self->{DBObject}->Do(
-        SQL => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
+        SQL  => 'UPDATE faq_item SET f_number = ? WHERE id = ?',
         Bind => [ \$Number, \$ID ],
     );
 
@@ -826,7 +819,7 @@ sub AttachmentGet {
             . 'ORDER BY created',
         Bind => [ \$Param{FileID}, \$Param{ItemID} ],
         Encode => [ 1, 1, 1, 0 ],
-        Limit => 1,
+        Limit  => 1,
     );
 
     my %File;
@@ -877,7 +870,7 @@ sub AttachmentDelete {
     }
 
     return if !$Self->{DBObject}->Do(
-        SQL => 'DELETE FROM faq_attachment WHERE id = ? AND faq_id = ? ',
+        SQL  => 'DELETE FROM faq_attachment WHERE id = ? AND faq_id = ? ',
         Bind => [ \$Param{FileID}, \$Param{ItemID} ],
     );
 
@@ -2673,7 +2666,7 @@ sub StateUpdate {
 
     # sql
     return if !$Self->{DBObject}->Do(
-        SQL => 'UPDATE faq_state SET name = ?, type_id = ?, WHERE id = ?',
+        SQL  => 'UPDATE faq_state SET name = ?, type_id = ?, WHERE id = ?',
         Bind => [ \$Param{Name}, \$Param{TypeID}, \$Param{StateID} ],
     );
 
@@ -2711,7 +2704,7 @@ sub StateAdd {
     }
 
     return if !$Self->{DBObject}->Do(
-        SQL => 'INSERT INTO faq_state (name, type_id) VALUES ( ?, ? )',
+        SQL  => 'INSERT INTO faq_state (name, type_id) VALUES ( ?, ? )',
         Bind => [ \$Param{Name}, \$Param{TypeID} ],
     );
 
@@ -2919,7 +2912,7 @@ sub LanguageUpdate {
 
     # build sql
     return if !$Self->{DBObject}->Do(
-        SQL => 'UPDATE faq_language SET name = ? WHERE id = ?',
+        SQL  => 'UPDATE faq_language SET name = ? WHERE id = ?',
         Bind => [ \$Param{Name}, \$Param{LanguageID} ],
     );
 
@@ -3379,7 +3372,7 @@ sub FAQSearch {
 
                 # add all internal, external and public fields
                 if (
-                    $FieldState    eq 'internal'
+                    $FieldState eq 'internal'
                     || $FieldState eq 'external'
                     || $FieldState eq 'public'
                     )
@@ -3557,7 +3550,7 @@ sub FAQSearch {
 
     # ask database
     return if !$Self->{DBObject}->Prepare(
-        SQL => $SQL,
+        SQL   => $SQL,
         Limit => $Param{Limit} || 500
     );
 
@@ -4476,7 +4469,7 @@ sub FAQLogAdd {
         SQL => 'SELECT id FROM faq_log '
             . 'WHERE item_id = ? AND ip = ? '
             . 'AND user_agent = ? AND created >= ? ',
-        Bind => [ \$Param{ItemID}, \$IP, \$UserAgent, \$TimeStamp ],
+        Bind  => [ \$Param{ItemID}, \$IP, \$UserAgent, \$TimeStamp ],
         Limit => 1,
     );
 
@@ -5015,16 +5008,12 @@ sub _FAQApprovalTicketCreate {
 
 =head1 TERMS AND CONDITIONS
 
-This software is part of the OTRS project (http://otrs.org/).
+This software is part of the OTRS project (L<http://otrs.org/>).
 
 This software comes with ABSOLUTELY NO WARRANTY. For details, see
 the enclosed file COPYING for license information (AGPL). If you
 did not receive this file, see L<http://www.gnu.org/licenses/agpl.txt>.
 
 =cut
-
-=head1 VERSION
-
-$Revision: 1.157.2.1 $ $Date: 2013-05-20 18:13:05 $
 
 =cut

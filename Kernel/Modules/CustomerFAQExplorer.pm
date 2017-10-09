@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/CustomerFAQExplorer.pm - customer FAQ explorer
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: CustomerFAQExplorer.pm,v 1.11 2011-05-25 14:46:26 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +12,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.11 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

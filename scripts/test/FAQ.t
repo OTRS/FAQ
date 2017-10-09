@@ -1,8 +1,5 @@
 # --
-# FAQ.t - FAQ tests
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQ.t,v 1.17 2010-12-14 15:04:34 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

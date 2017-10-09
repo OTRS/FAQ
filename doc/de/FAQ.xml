@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
     "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-<!-- $Id: FAQ.xml,v 1.7 2012-03-22 11:56:02 ub Exp $ -->
 
 <book lang='de'>
 
@@ -18,7 +17,7 @@
 
 <legalnotice>
     <para>$License</para>
-    <para>This work is copyrighted by $Vendor, Norsk-Data-Str. 1, 61352 Bad Homburg, Germany.</para>
+    <para>This work is copyrighted by $Vendor, Zimmersmühlenweg 11, 61440 Oberursel, Germany.</para>
     <para>Build Date: $DateStamp</para>
 </legalnotice>
 
@@ -175,19 +174,6 @@
     <para>In der SysConfig im Admin-Bereich gibt es eine Gruppe "FAQ".
         Hier finden sich einige Konfigurations-Optionen zum FAQ-Modul, die weitestgehend selbsterklärend sind.
     </para>
-</chapter>
-
-<chapter>
-    <title>Kontakt</title>
-    <para>
-        Kontakt für Fragen rund um das FAQ-Modul.
-    </para>
-    <sect1>
-        <title>OTRS AG/OTRS Inc.</title>
-        <para>
-        E-Mail: enjoy@otrs.com
-        </para>
-    </sect1>
 </chapter>
 
 <chapter>

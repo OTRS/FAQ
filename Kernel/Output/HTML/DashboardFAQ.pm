@@ -1,8 +1,5 @@
 # --
-# Kernel/Output/HTML/DashboardFAQ.pm
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: DashboardFAQ.pm,v 1.2 2012-06-06 11:32:46 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -15,9 +12,6 @@ use strict;
 use warnings;
 
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

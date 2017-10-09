@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQAdd.pm - agent frontend to add faq articles
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQAdd.pm,v 1.20 2011-05-16 15:57:53 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -17,9 +14,6 @@ use warnings;
 use Kernel::System::FAQ;
 use Kernel::System::Web::UploadCache;
 use Kernel::System::Valid;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.20 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -435,8 +429,7 @@ sub _MaskNew {
     else {
 
         # get default language
-        my $DefaultLanguage
-            = $Self->{ConfigObject}->Get('FAQ::Default::Language') || 'en';
+        my $DefaultLanguage = $Self->{ConfigObject}->Get('FAQ::Default::Language') || 'en';
 
         # get default language ID
         my $LanguageID = $Self->{FAQObject}->LanguageLookup(

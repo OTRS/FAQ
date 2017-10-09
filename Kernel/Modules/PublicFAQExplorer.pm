@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/PublicFAQExplorer.pm - public FAQ explorer
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: PublicFAQExplorer.pm,v 1.10.2.1 2012-11-23 00:15:58 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -16,9 +13,6 @@ use warnings;
 
 use MIME::Base64 qw();
 use Kernel::System::FAQ;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.10.2.1 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

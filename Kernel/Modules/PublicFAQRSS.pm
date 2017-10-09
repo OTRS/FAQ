@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/PublicFAQRSS.pm - public FAQ explorer
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: PublicFAQRSS.pm,v 1.5 2012-02-09 18:50:01 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -17,9 +14,6 @@ use warnings;
 use Kernel::System::FAQ;
 use Kernel::System::HTMLUtils;
 use XML::RSS::SimpleGen qw();
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.5 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -120,8 +114,7 @@ sub Run {
             $Title = $Self->{LayoutObject}->{LanguageObject}->Get('FAQ Articles (new created)');
         }
         elsif ( $Type eq 'Changed' ) {
-            $Title
-                = $Self->{LayoutObject}->{LanguageObject}->Get('FAQ Articles (recently changed)');
+            $Title = $Self->{LayoutObject}->{LanguageObject}->Get('FAQ Articles (recently changed)');
         }
     }
 

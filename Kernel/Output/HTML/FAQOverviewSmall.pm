@@ -1,8 +1,5 @@
 # --
-# Kernel/Output/HTML/FAQOverviewSmall.pm.pm
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: FAQOverviewSmall.pm,v 1.13 2010-12-27 16:50:57 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -13,9 +10,6 @@ package Kernel::Output::HTML::FAQOverviewSmall;
 
 use strict;
 use warnings;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.13 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -93,8 +87,7 @@ sub Run {
 
                 # remove ID if necesary
                 if ( $Param{SortBy} ) {
-                    $Param{SortBy}
-                        = $Param{SortBy} eq 'PriorityID'
+                    $Param{SortBy} = $Param{SortBy} eq 'PriorityID'
                         ? 'Priority'
                         : $Param{SortBy} eq 'CategoryID' ? 'Category'
                         : $Param{SortBy} eq 'LanguageID' ? 'Language'

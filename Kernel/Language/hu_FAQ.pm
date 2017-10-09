@@ -1,8 +1,5 @@
 # --
-# Kernel/Language/hu_FAQ.pm - translation file
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: hu_FAQ.pm,v 1.4 2012-01-26 16:37:39 mh Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

@@ -1,8 +1,5 @@
 # --
-# Kernel/Output/HTML/CustomerHeaderMetaFAQSearch.pm
-# Copyright (C) 2001-2011 OTRS AG, http://otrs.org/
-# --
-# $Id: CustomerHeaderMetaFAQSearch.pm,v 1.2 2011-10-08 17:55:21 cr Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -13,9 +10,6 @@ package Kernel::Output::HTML::CustomerHeaderMetaFAQSearch;
 
 use strict;
 use warnings;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.2 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;

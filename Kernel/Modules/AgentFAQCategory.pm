@@ -1,8 +1,5 @@
 # --
-# Kernel/Modules/AgentFAQCategory.pm - the faq language management module
-# Copyright (C) 2001-2010 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQCategory.pm,v 1.24 2010-12-09 02:29:44 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -16,9 +13,6 @@ use warnings;
 
 use Kernel::System::FAQ;
 use Kernel::System::Valid;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.24 $) [1];
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -65,8 +59,7 @@ sub Run {
     $GetParam{ParentID} ||= 0;
 
     # get array parameters
-    @{ $GetParam{PermissionGroups} }
-        = $Self->{ParamObject}->GetArray( Param => 'PermissionGroups' );
+    @{ $GetParam{PermissionGroups} } = $Self->{ParamObject}->GetArray( Param => 'PermissionGroups' );
 
     # ------------------------------------------------------------ #
     # change
@@ -711,8 +704,7 @@ sub _Overview {
         my %ValidList = $Self->{ValidObject}->ValidList();
 
         # sort the category ids by the long category name
-        my @CategoryIDsSorted
-            = sort { $CategoryTree->{$a} cmp $CategoryTree->{$b} } keys %{$CategoryTree};
+        my @CategoryIDsSorted = sort { $CategoryTree->{$a} cmp $CategoryTree->{$b} } keys %{$CategoryTree};
 
         # show all categories
         for my $CategoryID (@CategoryIDsSorted) {

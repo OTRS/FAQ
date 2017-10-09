@@ -1,8 +1,5 @@
 // --
-// FAQ.Agent.TicketCompose.js - provides the special module functions for AgentFAQZoom
-// Copyright (C) 2001-2012 OTRS AG, http://otrs.org/\n";
-// --
-// $Id: FAQ.Agent.TicketCompose.js,v 1.8 2012-03-12 06:39:08 ep Exp $
+// Copyright (C) 2001-2017 OTRS AG, http://otrs.com/\n";
 // --
 // This software comes with ABSOLUTELY NO WARRANTY. For details, see
 // the enclosed file COPYING for license information (AGPL). If you

@@ -1,8 +1,5 @@
 # --
-# AgentFAQOverviewSmall.dtl - html for change overview table
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQOverviewSmall.dtl,v 1.20 2012-02-08 11:07:37 mb Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you

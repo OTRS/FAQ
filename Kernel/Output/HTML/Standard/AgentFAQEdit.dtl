@@ -1,8 +1,5 @@
 # --
-# AgentFAQEdit.dtl - provides HTML form for AgentFAQEdit
-# Copyright (C) 2001-2012 OTRS AG, http://otrs.org/
-# --
-# $Id: AgentFAQEdit.dtl,v 1.12.2.1 2012-12-06 09:40:49 ub Exp $
+# Copyright (C) 2001-2017 OTRS AG, http://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
