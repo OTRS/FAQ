@@ -1,4 +1,6 @@
-#4.0.6 - 2017-??-??
+#4.0.7 - 2017-??-??
+
+#4.0.6 - 2017-10-17
  - 2017-08-31 Fixed bug#[12433](https://bugs.otrs.org/show_bug.cgi?id=12433)(PR#67) - Dynamic Fields for FAQ don't work as Link.
  - 2017-07-24 Fixed bug#[12935](https://bugs.otrs.org/show_bug.cgi?id=12935) - SQL Error in Systemlog "Server gone away" and "you have an error ".
  - 2017-07-01 Fixed bug#[11478](https://bugs.otrs.org/show_bug.cgi?id=11478) - Editing and Deleting of articles possible with RO-Permission.
