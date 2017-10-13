@@ -1149,9 +1149,7 @@ sub CustomerCategorySearch {
     }
 
     # set default parent id
-    if ( !defined $Param{ParentID} ) {
-        $Param{ParentID} = 0;
-    }
+    my $ParentID = $Param{ParentID} ? $Param{ParentID} : 0;
 
     my $Categories = $Self->GetCustomerCategories(
         CustomerUser => $Param{CustomerUser},
@@ -1159,7 +1157,7 @@ sub CustomerCategorySearch {
         UserID       => $Param{UserID},
     );
 
-    my %Category = %{ $Categories->{ $Param{ParentID} } };
+    my %Category = %{ $Categories->{$ParentID} };
     my @CategoryIDs = sort { $Category{$a} cmp $Category{$b} } ( keys %Category );
 
     my @AllowedCategoryIDs;
@@ -1215,8 +1213,8 @@ sub CustomerCategorySearch {
         ID:
         for my $ID (@IDs) {
             next ID if !$Articles{$ID};
-            push @AllowedCategoryIDs, $CategoryID;
-            last ID;
+            push @AllowedCategoryIDs, $ID;
+            last ID if defined $Param{ParentID};
         }
     }
 
