@@ -1,4 +1,6 @@
-#5.0.11 2017-??-??
+#5.0.12 2017-??-??
+
+#5.0.11 2017-11-21
  - 2017-10-13 Fixed bug#[12900](https://bugs.otrs.org/show_bug.cgi?id=12900) - Widget "This might be helpful" does not show FAQ in subcategories.
 
 #5.0.10 2017-10-17
