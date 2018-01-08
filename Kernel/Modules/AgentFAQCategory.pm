@@ -52,7 +52,7 @@ sub Run {
     $GetParam{CategoryID} ||= 0;
 
     # set default parent id
-    $GetParam{ParentID} ||= 0;
+    $GetParam{ParentID}   ||= 0;
 
     # get array parameters
     @{ $GetParam{PermissionGroups} } = $ParamObject->GetArray( Param => 'PermissionGroups' );
@@ -164,15 +164,15 @@ sub Run {
         }
 
         # check for duplicate category name with the same parent category
-        my $CategoryExistsAlready = $FAQObject->CategoryDuplicateCheck(
-            CategoryID => $GetParam{CategoryID},
-            Name       => $GetParam{Name},
-            ParentID   => $GetParam{ParentID},
-            UserID     => $Self->{UserID},
-        );
+            my $CategoryExistsAlready = $FAQObject->CategoryDuplicateCheck(
+                CategoryID => $GetParam{CategoryID},
+                Name       => $GetParam{Name},
+                ParentID   => $GetParam{ParentID},
+                UserID     => $Self->{UserID},
+            );
 
         # show the edit screen again
-        if ($CategoryExistsAlready) {
+            if ($CategoryExistsAlready) {
 
             # set server errors
             $GetParam{NameServerError}        = 'ServerError';
@@ -212,22 +212,7 @@ sub Run {
             UserID     => $Self->{UserID},
         );
 
-        # show notification
-        $Output .= $LayoutObject->Notify(
-            Info => Translatable('FAQ category updated!'),
-        );
-
-        # show overview
-        $Self->_Overview();
-        $Output .= $LayoutObject->Output(
-            TemplateFile => 'AgentFAQCategory',
-            Data         => \%Param,
-        );
-
-        # footer
-        $Output .= $LayoutObject->Footer();
-
-        return $Output;
+        return $LayoutObject->Redirect( OP => "Action=$Self->{Action};Notification=Update" );
     }
 
     # ------------------------------------------------------------ #
@@ -285,7 +270,7 @@ sub Run {
 
                 # add validation class and server error error class
                 if ( $ParamName eq 'PermissionGroups' ) {
-                    $Error{ $ParamName . 'ServerError' } = 'ServerError';
+                $Error{ $ParamName . 'ServerError' } = 'ServerError';
                 }
 
                 # add server error string for category name field
@@ -316,15 +301,15 @@ sub Run {
         }
 
         # check for duplicate category name with the same parent category
-        my $CategoryExistsAlready = $FAQObject->CategoryDuplicateCheck(
-            CategoryID => $GetParam{CategoryID},
-            Name       => $GetParam{Name},
-            ParentID   => $GetParam{ParentID},
-            UserID     => $Self->{UserID},
-        );
+            my $CategoryExistsAlready = $FAQObject->CategoryDuplicateCheck(
+                CategoryID => $GetParam{CategoryID},
+                Name       => $GetParam{Name},
+                ParentID   => $GetParam{ParentID},
+                UserID     => $Self->{UserID},
+            );
 
         # show the edit screen again
-        if ($CategoryExistsAlready) {
+            if ($CategoryExistsAlready) {
 
             # set server errors
             $GetParam{NameServerError}        = 'ServerError';
@@ -364,22 +349,7 @@ sub Run {
             UserID     => $Self->{UserID},
         );
 
-        # show notification
-        $Output .= $LayoutObject->Notify(
-            Info => Translatable('FAQ category added!'),
-        );
-
-        # show overview
-        $Self->_Overview();
-        $Output .= $LayoutObject->Output(
-            TemplateFile => 'AgentFAQCategory',
-            Data         => \%Param,
-        );
-
-        # footer
-        $Output .= $LayoutObject->Footer();
-
-        return $Output;
+        return $LayoutObject->Redirect( OP => "Action=$Self->{Action};Notification=Add" );
     }
 
     # ------------------------------------------------------------ #
@@ -601,7 +571,15 @@ sub Run {
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
 
-        # HTML output
+        my $Notification = $ParamObject->GetParam( Param => 'Notification' ) || '';
+        my %NotificationText = (
+            Update => Translatable('FAQ category updated!'),
+            Add    => Translatable('FAQ category added!'),
+        );
+        if ($Notification && $NotificationText{$Notification} ) {
+            $Output .= $LayoutObject->Notify( Info => $NotificationText{$Notification} );
+        }
+
         $Self->_Overview();
         $Output .= $LayoutObject->Output(
             TemplateFile => 'AgentFAQCategory',

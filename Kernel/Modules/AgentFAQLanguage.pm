@@ -128,22 +128,22 @@ sub Run {
                 $Output .= $LayoutObject->Footer();
 
                 return $Output;
+                }
             }
-        }
 
-        # check for duplicate language name
-        my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
-            Name       => $GetParam{Name},
-            LanguageID => $GetParam{LanguageID},
-            UserID     => $Self->{UserID},
-        );
+            # check for duplicate language name
+            my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
+                Name       => $GetParam{Name},
+                LanguageID => $GetParam{LanguageID},
+                UserID     => $Self->{UserID},
+            );
 
         # show the edit screen again
-        if ($LanguageExistsAlready) {
+            if ($LanguageExistsAlready) {
 
             # HTML output
             $Self->_Edit(
-                Action                 => 'Change',
+                Action => 'Change',
                 NameServerError        => 'ServerError',
                 NameServerErrorMessage => Translatable('This language already exists!'),
                 %GetParam,
@@ -170,20 +170,7 @@ sub Run {
             return $LayoutObject->ErrorScreen();
         }
 
-        # show overview
-        $Self->_Overview();
-        $Output .= $LayoutObject->Notify(
-            Info => Translatable('FAQ language updated!'),
-        );
-        $Output .= $LayoutObject->Output(
-            TemplateFile => 'AgentFAQLanguage',
-            Data         => \%Param,
-        );
-
-        # footer
-        $Output .= $LayoutObject->Footer();
-
-        return $Output;
+        return $LayoutObject->Redirect( OP => "Action=$Self->{Action};Notification=Update" );
     }
 
     # ------------------------------------------------------------ #
@@ -253,15 +240,15 @@ sub Run {
         }
 
         # check for duplicate language name
-        my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
-            Name   => $GetParam{Name},
-            UserID => $Self->{UserID},
-        );
+            my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
+                Name       => $GetParam{Name},
+                UserID     => $Self->{UserID},
+            );
 
         # show the edit screen again
-        if ($LanguageExistsAlready) {
+            if ($LanguageExistsAlready) {
             $Self->_Edit(
-                Action                 => 'Add',
+                Action => 'Add',
                 NameServerError        => 'ServerError',
                 NameServerErrorMessage => Translatable('This language already exists!'),
                 %GetParam,
@@ -288,22 +275,7 @@ sub Run {
             return $LayoutObject->ErrorScreen();
         }
 
-        # show overview
-        $Output .= $LayoutObject->Notify(
-            Info => Translatable('FAQ language added!'),
-        );
-        $Self->_Overview();
-        $Output .= $LayoutObject->Output(
-            TemplateFile => 'AgentFAQLanguage',
-            Data         => {
-                %Param,
-            },
-        );
-
-        # footer
-        $Output .= $LayoutObject->Footer();
-
-        return $Output;
+        return $LayoutObject->Redirect( OP => "Action=$Self->{Action};Notification=Add" );
     }
 
     # ------------------------------------------------------------ #
@@ -470,7 +442,15 @@ sub Run {
         my $Output = $LayoutObject->Header();
         $Output .= $LayoutObject->NavigationBar();
 
-        # HTML output
+        my $Notification = $ParamObject->GetParam( Param => 'Notification' ) || '';
+        my %NotificationText = (
+            Update => Translatable('FAQ language updated!'),
+            Add    => Translatable('FAQ language added!'),
+        );
+        if ($Notification && $NotificationText{$Notification} ) {
+            $Output .= $LayoutObject->Notify( Info => $NotificationText{$Notification} );
+        }
+
         $Self->_Overview();
         $Output .= $LayoutObject->Output(
             TemplateFile => 'AgentFAQLanguage',

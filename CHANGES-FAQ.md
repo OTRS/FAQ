@@ -1,4 +1,5 @@
 #5.0.12 2017-??-??
+ - 2018-01-08 Fixed bug#[11446](https://bugs.otrs.org/show_bug.cgi?id=11446) - Refresh after language is added tries to add the language again.
 
 #5.0.11 2017-11-21
  - 2017-10-13 Fixed bug#[12900](https://bugs.otrs.org/show_bug.cgi?id=12900) - Widget "This might be helpful" does not show FAQ in subcategories.
