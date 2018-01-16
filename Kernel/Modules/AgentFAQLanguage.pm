@@ -128,22 +128,22 @@ sub Run {
                 $Output .= $LayoutObject->Footer();
 
                 return $Output;
-                }
             }
+        }
 
-            # check for duplicate language name
-            my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
-                Name       => $GetParam{Name},
-                LanguageID => $GetParam{LanguageID},
-                UserID     => $Self->{UserID},
-            );
+        # check for duplicate language name
+        my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
+            Name       => $GetParam{Name},
+            LanguageID => $GetParam{LanguageID},
+            UserID     => $Self->{UserID},
+        );
 
         # show the edit screen again
-            if ($LanguageExistsAlready) {
+        if ($LanguageExistsAlready) {
 
             # HTML output
             $Self->_Edit(
-                Action => 'Change',
+                Action                 => 'Change',
                 NameServerError        => 'ServerError',
                 NameServerErrorMessage => Translatable('This language already exists!'),
                 %GetParam,
@@ -240,15 +240,15 @@ sub Run {
         }
 
         # check for duplicate language name
-            my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
-                Name       => $GetParam{Name},
-                UserID     => $Self->{UserID},
-            );
+        my $LanguageExistsAlready = $FAQObject->LanguageDuplicateCheck(
+            Name   => $GetParam{Name},
+            UserID => $Self->{UserID},
+        );
 
         # show the edit screen again
-            if ($LanguageExistsAlready) {
+        if ($LanguageExistsAlready) {
             $Self->_Edit(
-                Action => 'Add',
+                Action                 => 'Add',
                 NameServerError        => 'ServerError',
                 NameServerErrorMessage => Translatable('This language already exists!'),
                 %GetParam,
@@ -447,7 +447,7 @@ sub Run {
             Update => Translatable('FAQ language updated!'),
             Add    => Translatable('FAQ language added!'),
         );
-        if ($Notification && $NotificationText{$Notification} ) {
+        if ( $Notification && $NotificationText{$Notification} ) {
             $Output .= $LayoutObject->Notify( Info => $NotificationText{$Notification} );
         }
 
