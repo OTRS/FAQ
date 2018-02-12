@@ -42,8 +42,8 @@ add a category
 
     my $CategoryID = $FAQObject->CategoryAdd(
         Name     => 'CategoryA',
-        Comment  => 'Some comment',
-        ParentID => 2,
+        Comment  => 'Some comment',     # Optional
+        ParentID => 2,                  # Mandatory, but could be 0
         ValidID  => 1,
         UserID   => 1,
     );
@@ -58,7 +58,7 @@ sub CategoryAdd {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for my $Argument (qw(Name UserID)) {
+    for my $Argument (qw(Name UserID ValidID)) {
         if ( !$Param{$Argument} ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
@@ -109,8 +109,8 @@ sub CategoryAdd {
         SQL => '
             SELECT id
             FROM faq_category
-            WHERE name = ?',
-        Bind  => [ \$Param{Name} ],
+            WHERE name = ? AND parent_id = ?',
+        Bind  => [ \$Param{Name}, \$Param{ParentID} ],
         Limit => 1,
     );
 

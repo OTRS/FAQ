@@ -1,4 +1,5 @@
 #5.0.12 2017-??-??
+ - 2018-02-12 Fixed bug#[11889](https://bugs.otrs.org/show_bug.cgi?id=11889) - CategoryAdd returns wrong CategoryID if subcategory name already exists.
  - 2018-02-12 Fixed bug#[10650](https://bugs.otrs.org/show_bug.cgi?id=10650) - Navigation broken when keyword search result opened in CSS overlay.
  - 2018-01-08 Fixed bug#[11446](https://bugs.otrs.org/show_bug.cgi?id=11446) - Refresh after language is added tries to add the language again.
 
