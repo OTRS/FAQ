@@ -1,4 +1,7 @@
-#4.0.7 - 2017-??-??
+#4.0.8 - 20??-??-??
+
+#4.0.7 - 2018-03-13
+ - 2018-03-06 Code cleanup.
 
 #4.0.6 - 2017-10-17
  - 2017-08-31 Fixed bug#[12433](https://bugs.otrs.org/show_bug.cgi?id=12433)(PR#67) - Dynamic Fields for FAQ don't work as Link.
