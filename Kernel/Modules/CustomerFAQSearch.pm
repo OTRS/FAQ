@@ -1250,7 +1250,7 @@ sub Run {
                                 LanguageID => $LanguageID,
                             );
                             next LANGUAGEID if !$LanguageName;
-                            push @LanguageNames, $LanguageName
+                            push @LanguageNames, $LanguageName;
                         }
 
                         # create a string with all selected language names
@@ -1260,7 +1260,7 @@ sub Run {
 
                 # otherwise is an scalar and can be set directly
                 else {
-                    $AttributeValue = $GetParam{$Attribute}
+                    $AttributeValue = $GetParam{$Attribute};
                 }
                 if ( $Attribute eq 'TimeSearchType' ) {
 

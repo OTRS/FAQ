@@ -818,7 +818,7 @@ sub Run {
                         Data => {},
                     );
                 }
-                $ShowOrBlock = 1
+                $ShowOrBlock = 1;
             }
         }
 
