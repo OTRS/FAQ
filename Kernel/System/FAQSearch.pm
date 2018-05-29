@@ -15,6 +15,7 @@ use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
     'Kernel::Config',
+    'Kernel::System::Cache',
     'Kernel::System::DB',
     'Kernel::System::DynamicField',
     'Kernel::System::DynamicField::Backend',
@@ -1030,6 +1031,16 @@ sub FAQSearch {
     # add extended SQL
     $SQL .= $Ext;
 
+    # get cache
+    my $CacheObject = $Kernel::OM->Get('Kernel::System::Cache');
+    my $CacheData   = $CacheObject->Get(
+        Type => 'FAQSearch',
+        Key  => $SQL . $Param{Limit},
+    );
+    if ( ref $CacheData eq 'ARRAY' ) {
+        return @{$CacheData};
+    }
+
     # ask database
     return if !$DBObject->Prepare(
         SQL   => $SQL,
@@ -1041,6 +1052,14 @@ sub FAQSearch {
     while ( my @Row = $DBObject->FetchrowArray() ) {
         push @List, $Row[0];
     }
+
+    # set cache
+    $CacheObject->Set(
+        Type  => 'FAQSearch',
+        Key   => $SQL . $Param{Limit},
+        Value => \@List,
+        TTL   => 60 * 5,                 # 5 minutes
+    );
 
     return @List;
 }
