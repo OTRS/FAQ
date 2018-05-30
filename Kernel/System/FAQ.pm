@@ -2073,9 +2073,6 @@ sub FAQTop10Get {
         }
     }
 
-    # build cache key
-    my $CacheKey;
-
     # build valid id string
     my $ValidIDsString = join ', ', $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet();
 
@@ -2111,9 +2108,6 @@ sub FAQTop10Get {
 
             my $IDString = join ',', @SortedIDsPart;
 
-            # build cache key
-            $CacheKey .= $IDString;
-
             push @SQLStrings, " faq_item.category_id IN ($IDString) ";
         }
 
@@ -2139,9 +2133,6 @@ sub FAQTop10Get {
         $SQL .= ') ';
     }
 
-    # build cache key
-    $CacheKey .= '-' . $Param{Interface};
-
     # filter results for defined time period
     if ( $Param{StartDate} && $Param{EndDate} ) {
         $SQL .= 'AND faq_log.created >= ? AND faq_log.created <= ? ';
@@ -2151,13 +2142,6 @@ sub FAQTop10Get {
     # complete SQL statement
     $SQL .= 'GROUP BY item_id, faq_state_type.name, approved '
         . 'ORDER BY itemcount DESC';
-
-    # get cache
-    my $Cache = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-        Type => 'FAQTop10',
-        Key  => $CacheKey,
-    );
-    return $Cache if defined $Cache;
 
     # get the top 10 article ids from database
     return [] if !$DBObject->Prepare(
@@ -2174,14 +2158,6 @@ sub FAQTop10Get {
             Interface => $Row[2],
         };
     }
-
-    # set cache
-    $Kernel::OM->Get('Kernel::System::Cache')->Set(
-        Type  => 'FAQTop10',
-        TTL   => $Self->{CacheTTL},
-        Key   => $CacheKey,
-        Value => \@Result,
-    );
 
     return \@Result;
 }

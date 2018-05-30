@@ -235,9 +235,6 @@ $Selenium->RunTest(
         # Wait until form has loaded, if necessary.
         $Selenium->WaitFor( JavaScript => "return \$('#SearchProfile').length" );
 
-        my $CacheObject = $Kernel::OM->Get('Kernel::System::Cache');
-        $CacheObject->CleanUp( Type => "FAQSearch" );
-
         $Selenium->find_element( "Title",             'name' )->clear();
         $Selenium->find_element( "Title",             'name' )->send_keys('FAQChangeSearch*');
         $Selenium->find_element( "#SearchFormSubmit", 'css' )->VerifiedClick();
@@ -261,9 +258,7 @@ $Selenium->RunTest(
         );
 
         # Make sure the cache is correct.
-        for my $Cache (qw(FAQ FAQSearch)) {
-            $CacheObject->CleanUp( Type => $Cache );
-        }
+        $Kernel::OM->Get('Kernel::System::Cache')->CleanUp( Type => "FAQ" );
     }
 );
 

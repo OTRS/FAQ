@@ -1,5 +1,4 @@
 #5.0.13 20??-??-??
- - 2018-05-29 Fixed bug#[13863](https://bugs.otrs.org/show_bug.cgi?id=13863) - FAQ actions may have bad influence on a systems performance.
 
 #5.0.12 2018-03-13
  - 2018-02-12 Fixed bug#[11646](https://bugs.otrs.org/show_bug.cgi?id=11646) - SQL quoting of category IDs ineffective.
