@@ -1,4 +1,7 @@
-#5.0.13 20??-??-??
+#5.0.14 20??-??-??
+
+#5.0.13 2018-06-12
+ - 2018-06-05 Code cleanup.
 
 #5.0.12 2018-03-13
  - 2018-02-12 Fixed bug#[11646](https://bugs.otrs.org/show_bug.cgi?id=11646) - SQL quoting of category IDs ineffective.
