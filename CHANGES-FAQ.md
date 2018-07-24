@@ -1,4 +1,6 @@
-#5.0.14 20??-??-??
+#5.0.15 20??-??-??
+
+#5.0.14 2018-07-31
  - 2018-07-03 Fixed bug#[13885](https://bugs.otrs.org/show_bug.cgi?id=13885) - CustomerFAQExplorer does not show pagination if configured SearchLimit is reached.
 
 #5.0.13 2018-06-12
