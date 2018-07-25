@@ -40,7 +40,7 @@ sub Run {
 
     # check needed stuff
     if ( !$Type ) {
-        return $LayoutObject->ErrorScreen(
+        return $LayoutObject->CustomerErrorScreen(
             Message => Translatable('No Type is given!'),
             Comment => Translatable('Please contact the administrator.'),
         );
@@ -48,7 +48,7 @@ sub Run {
 
     # check type
     if ( $Type !~ m{ Created | Changed | Top10 }xms ) {
-        return $LayoutObject->FatalError(
+        return $LayoutObject->CustomerFatalError(
             Message => Translatable('Type must be either LastCreate or LastChange or Top10!'),
         );
     }
@@ -164,7 +164,7 @@ sub Run {
 
     # check error
     if ( !$Output ) {
-        return $LayoutObject->FatalError(
+        return $LayoutObject->CustomerFatalError(
             Message => Translatable('Can\'t create RSS file!'),
         );
     }
