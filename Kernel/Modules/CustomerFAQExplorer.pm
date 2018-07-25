@@ -26,7 +26,7 @@ sub new {
         )
     {
         if ( !$Self->{$Object} ) {
-            $Self->{LayoutObject}->FatalError( Message => "Got no $Object!" );
+            $Self->{LayoutObject}->CustomerFatalError( Message => "Got no $Object!" );
         }
     }
 

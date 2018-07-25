@@ -28,7 +28,7 @@ sub new {
     # check needed objects
     for (qw(ParamObject DBObject LayoutObject LogObject ConfigObject)) {
         if ( !$Self->{$_} ) {
-            $Self->{LayoutObject}->FatalError( Message => "Got no $_!" );
+            $Self->{LayoutObject}->CustomerFatalError( Message => "Got no $_!" );
         }
     }
 

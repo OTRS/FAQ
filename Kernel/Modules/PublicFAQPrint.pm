@@ -31,7 +31,7 @@ sub new {
         )
     {
         if ( !$Self->{$Needed} ) {
-            $Self->{LayoutObject}->FatalError( Message => "Got no $Needed!" );
+            $Self->{LayoutObject}->CustomerFatalError( Message => "Got no $Needed!" );
         }
     }
 

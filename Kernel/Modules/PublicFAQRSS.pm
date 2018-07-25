@@ -28,7 +28,7 @@ sub new {
         )
     {
         if ( !$Self->{$Object} ) {
-            $Self->{LayoutObject}->FatalError( Message => "Got no $Object!" );
+            $Self->{LayoutObject}->CustomerFatalError( Message => "Got no $Object!" );
         }
     }
 
@@ -76,7 +76,7 @@ sub Run {
 
     # check type
     if ( $Type !~ m{ Created | Changed | Top10 }xms ) {
-        return $Self->{LayoutObject}->FatalError(
+        return $Self->{LayoutObject}->CustomerFatalError(
             Message => "Type must be either LastCreate or LastChange or Top10!"
         );
     }
@@ -168,7 +168,7 @@ sub Run {
 
     # check error
     if ( !$Output ) {
-        return $Self->{LayoutObject}->FatalError( Message => "Can't create RSS file!" );
+        return $Self->{LayoutObject}->CustomerFatalError( Message => "Can't create RSS file!" );
     }
 
     # return the RSS feed
