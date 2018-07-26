@@ -68,7 +68,7 @@ sub Run {
 
     # check needed stuff
     if ( !$Type ) {
-        return $Self->{LayoutObject}->ErrorScreen(
+        return $Self->{LayoutObject}->CustomerErrorScreen(
             Message => 'No Type is given!',
             Comment => 'Please contact the admin.',
         );
