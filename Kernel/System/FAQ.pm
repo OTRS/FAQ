@@ -1305,7 +1305,7 @@ sub FAQCount {
 
     my $Count = 0;
     while ( my @Row = $DBObject->FetchrowArray() ) {
-        $Count = $Row[0];
+        $Count += $Row[0];
     }
 
     return $Count;

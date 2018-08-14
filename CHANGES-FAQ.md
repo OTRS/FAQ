@@ -1,4 +1,5 @@
 #5.0.15 20??-??-??
+ - 2018-08-14 Fixed bug#[7980](https://bugs.otrs.org/show_bug.cgi?id=7980) - FAQCount() does not count but returns the count of the last category.
 
 #5.0.14 2018-07-31
  - 2018-07-11 Follow up: In agent FAQ search is not modernized (bug#12698).
