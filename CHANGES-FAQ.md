@@ -1,4 +1,6 @@
-#5.0.15 20??-??-??
+#5.0.16 20??-??-??
+
+#5.0.15 2018-09-21
  - 2018-08-14 Fixed bug#[7980](https://bugs.otrs.org/show_bug.cgi?id=7980) - FAQCount() does not count but returns the count of the last category.
 
 #5.0.14 2018-07-31
