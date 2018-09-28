@@ -146,12 +146,16 @@ sub Run {
     # get FAQ object
     my $FAQObject = $Kernel::OM->Get('Kernel::System::FAQ');
 
+    my $ConfigObject        = $Kernel::OM->Get('Kernel::Config');
+    my $FAQTop10LimitConfig = $ConfigObject->Get('FAQ::Explorer::Top10::Limit');
+
     # get a count of all FAQ articles
     my $Top10ItemIDsRef = $FAQObject->FAQTop10Get(
         Interface => 'internal',
         StartDate => $StartDate,
         EndDate   => $EndDate,
         UserID    => 1,
+        Limit     => $FAQTop10LimitConfig,
     ) || [];
 
     # build result table
@@ -172,7 +176,7 @@ sub Run {
         );
         my $VoteResult = sprintf(
             "%0."
-                . $Kernel::OM->Get('Kernel::Config')->Get(
+                . $ConfigObject->Get(
                 "FAQ::Explorer::ItemList::VotingResultDecimalPlaces"
                 )
                 . "f",

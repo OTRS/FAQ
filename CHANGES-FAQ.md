@@ -1,4 +1,5 @@
 #5.0.16 20??-??-??
+ - 2018-09-28 Fixed bug#[11041](https://bugs.otrs.org/show_bug.cgi?id=11041) - FAQ CSV Stats always 10 lines long.
 
 #5.0.15 2018-09-21
  - 2018-08-14 Fixed bug#[7980](https://bugs.otrs.org/show_bug.cgi?id=7980) - FAQCount() does not count but returns the count of the last category.
