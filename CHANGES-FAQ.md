@@ -1,4 +1,5 @@
 #5.0.16 20??-??-??
+ - 2018-10-23 Fixed bug#[13871](https://bugs.otrs.org/show_bug.cgi?id=13871) - After deleting image from the FAQ article, it's still stored in the DB.
  - 2018-09-28 Fixed bug#[11041](https://bugs.otrs.org/show_bug.cgi?id=11041) - FAQ CSV Stats always 10 lines long.
 
 #5.0.15 2018-09-21
