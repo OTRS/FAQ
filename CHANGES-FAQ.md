@@ -1,4 +1,5 @@
 #5.0.17 20??-??-??
+ - 2018-11-27 Fixed bug#[14232](https://bugs.otrs.org/show_bug.cgi?id=14232) - Editing FAQ article deletes before stored inline picture.
 
 #5.0.16 2018-11-09
  - 2018-10-23 Fixed bug#[13871](https://bugs.otrs.org/show_bug.cgi?id=13871) - After deleting image from the FAQ article, it's still stored in the DB.

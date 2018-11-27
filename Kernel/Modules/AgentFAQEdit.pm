@@ -549,7 +549,51 @@ sub Run {
             FormID => $FormID,
         );
 
-        # build a lookup lookup hash of the new attachments
+        # Get all existing attachments.
+        my @ExistingAttachments = $FAQObject->AttachmentIndex(
+            ItemID     => $GetParam{ItemID},
+            ShowInline => 1,
+            UserID     => $Self->{UserID},
+        );
+
+        # Lookup old inline attachments (initially loaded to AgentFAQEdit.pm screen)
+        # and push to Attachments array if they still exist in the form.
+        ATTACHMENT:
+        for my $Attachment (@ExistingAttachments) {
+
+            next ATTACHMENT if !$Attachment->{Inline};
+
+            NUMBER:
+            for my $Number ( 1 .. 6 ) {
+
+                if (
+                    $FAQData{ 'Field' . $Number }
+                    =~ m{ Action=AgentFAQZoom;Subaction=DownloadAttachment;ItemID=$GetParam{ItemID};FileID=$Attachment->{FileID} }msx
+                    )
+                {
+
+                    # Get the existing inline attachment data.
+                    my %File = $FAQObject->AttachmentGet(
+                        ItemID => $GetParam{ItemID},
+                        FileID => $Attachment->{FileID},
+                        UserID => $Self->{UserID},
+                    );
+
+                    push @Attachments, {
+                        Content     => $File{Content},
+                        ContentType => $File{ContentType},
+                        Filename    => $File{Filename},
+                        Filesize    => $File{Filesize},
+                        Disposition => 'inline',
+                        FileID      => $Attachment->{FileID},
+                    };
+
+                    last NUMBER;
+                }
+            }
+        }
+
+        # Build a lookup hash of the new attachments.
         my %NewAttachment;
         for my $Attachment (@Attachments) {
 
@@ -567,21 +611,13 @@ sub Run {
             $NewAttachment{$Key} = $Attachment;
         }
 
-        # Get all existing attachments.
-        my @ExistingAttachments = $FAQObject->AttachmentIndex(
-            ItemID     => $GetParam{ItemID},
-            ShowInline => 1,
-            UserID     => $Self->{UserID},
-        );
-
-        # check the existing attachments
+        # Check the existing attachments.
         ATTACHMENT:
         for my $Attachment (@ExistingAttachments) {
 
-            # the key is the filename + filesize + content type
-            # (no content id, as existing attachments don't have it)
+          # The key is the filename + filesizeraw + content type (no content id, as existing attachments don't have it).
             my $Key = $Attachment->{Filename}
-                . $Attachment->{Filesize}
+                . $Attachment->{FilesizeRaw}
                 . $Attachment->{ContentType};
 
             # attachment is already existing, we can delete it from the new attachment hash
@@ -612,15 +648,15 @@ sub Run {
 
             # check if attachment is an inline attachment
             my $Inline = 0;
-            if ( $Attachment->{ContentID} ) {
+            if ( $Attachment->{Disposition} eq 'inline' ) {
 
                 # remember that it is inline
                 $Inline = 1;
 
-                # remember if this inline attachment is used in any FAQ article
-                my $ContentIDFound;
+                # Remember if this inline attachment is already used in any FAQ item.
+                my $InlineAttachmentFound;
 
-                # check all fields for content id
+                # Check all fields for the inline attachment.
                 NUMBER:
                 for my $Number ( 1 .. 6 ) {
 
@@ -630,19 +666,25 @@ sub Run {
                     # skip empty fields
                     next NUMBER if !$Field;
 
-                    # skip fields that do not contain the content id
-                    next NUMBER if $Field !~ m{ $Attachment->{ContentID} }xms;
+                    # Skip if the field is not new (added) or old (initially loaded) inline attachment.
+                    if (
+                        $Field !~ m{ $Attachment->{ContentID} }xms
+                        && $Field
+                        !~ m{ Action=AgentFAQZoom;Subaction=DownloadAttachment;ItemID=$GetParam{ItemID};FileID=$Attachment->{FileID} }xms
+                        )
+                    {
+                        next NUMBER;
+                    }
 
-                    # found the content id
-                    $ContentIDFound = 1;
+                    # Found the inline attachment.
+                    $InlineAttachmentFound = 1;
 
                     # we do not need to search further
                     last NUMBER;
                 }
 
-                # we do not want to keep this attachment,
-                # because it was deleted in the rich-text editor
-                next ATTACHMENT if !$ContentIDFound;
+                # We do not want to keep this attachment, because it was deleted in the rich-text editor.
+                next ATTACHMENT if !$InlineAttachmentFound;
             }
 
             # add attachment
@@ -789,7 +831,7 @@ sub _MaskNew {
             Name => $SelectedLanguage,
         );
 
-        # check if LanduageID does not exists
+        # Check if LanguageID does not exists.
         if ( !$SelectedLanguageID ) {
 
             # get the lowest language ID
