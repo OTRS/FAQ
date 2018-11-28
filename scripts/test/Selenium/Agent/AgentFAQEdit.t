@@ -240,14 +240,12 @@ $Selenium->RunTest(
         # Submit and switch back window.
         $Selenium->find_element( "#FAQSubmit", 'css' )->VerifiedClick();
         $Selenium->WaitFor(
-            JavaScript => "return typeof(\$) === 'function' && \$('a[href*=\"Action=AgentFAQEdit;ItemID=\"]').length"
+            JavaScript => "return typeof(\$) === 'function' && \$('a[href*=\"Action=AgentFAQEdit;ItemID=\"]').length;"
         );
 
         # Get ItemID.
         my @FAQ = split( 'ItemID=', $Selenium->get_current_url() );
         push @ItemIDs, $FAQ[1];
-
-        sleep 20;
 
         # Get attachments before Edit screen.
         my @ExistingAttachments = $FAQObject->AttachmentIndex(
@@ -275,7 +273,7 @@ $Selenium->RunTest(
         $Selenium->switch_to_window( $Handles->[1] );
 
         # Wait until page has loaded, if necessary.
-        $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $("#FAQSubmit").length' );
+        $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $("#FAQSubmit").length;' );
         sleep 1;
 
         # Submit and switch back main window.
