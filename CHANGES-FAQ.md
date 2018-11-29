@@ -1,3 +1,6 @@
+#5.0.18 20??-??-??
+ - 2018-11-28 Set minimum framework version back to 5.0.31.
+
 #5.0.17 20??-??-??
  - 2018-11-27 Fixed bug#[14232](https://bugs.otrs.org/show_bug.cgi?id=14232) - Editing FAQ article deletes before stored inline picture.
 
