@@ -100,7 +100,7 @@ sub Run {
     }
 
     # get the valid ids
-    my @ValidIDs = $Self->{ValidObject}->ValidIDsGet();
+    my @ValidIDs      = $Self->{ValidObject}->ValidIDsGet();
     my %ValidIDLookup = map { $_ => 1 } @ValidIDs;
 
     # permission check

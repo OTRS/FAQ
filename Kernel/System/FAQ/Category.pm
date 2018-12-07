@@ -1107,7 +1107,7 @@ sub AgentCategorySearch {
 
     return [] if !IsHashRefWithData($Categories);
 
-    my %Category = %{ $Categories->{ $Param{ParentID} } };
+    my %Category    = %{ $Categories->{ $Param{ParentID} } };
     my @CategoryIDs = sort { $Category{$a} cmp $Category{$b} } ( keys %Category );
 
     return \@CategoryIDs;
@@ -1159,7 +1159,7 @@ sub CustomerCategorySearch {
         UserID       => $Param{UserID},
     );
 
-    my %Category = %{ $Categories->{ $Param{ParentID} } };
+    my %Category    = %{ $Categories->{ $Param{ParentID} } };
     my @CategoryIDs = sort { $Category{$a} cmp $Category{$b} } ( keys %Category );
 
     my @AllowedCategoryIDs;
@@ -1268,7 +1268,7 @@ sub PublicCategorySearch {
 
     return [] if !$CategoryListCategories->{ $Param{ParentID} };
 
-    my %Category = %{ $CategoryListCategories->{ $Param{ParentID} } };
+    my %Category    = %{ $CategoryListCategories->{ $Param{ParentID} } };
     my @CategoryIDs = sort { $Category{$a} cmp $Category{$b} } ( keys %Category );
     my @AllowedCategoryIDs;
 
@@ -1607,7 +1607,7 @@ sub GetCustomerCategoriesLongNames {
                 CustomerUser => $Param{CustomerUser},
                 Mode         => 'Customer',
                 UserID       => $Param{UserID},
-                )
+            )
         };
     }
 
@@ -1700,7 +1700,7 @@ sub GetPublicCategoriesLongNames {
                 ParentID => $CategoryID,
                 Mode     => 'Public',
                 UserID   => $Param{UserID},
-                )
+            )
         };
     }
 

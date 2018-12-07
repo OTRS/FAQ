@@ -842,7 +842,7 @@ sub _MaskForm {
     my %GroupUsers;
     for my $Group (qw(faq faq_admin)) {
         my $GroupID = $Self->{GroupObject}->GroupLookup( Group => $Group );
-        my %Users = $Self->{GroupObject}->GroupMemberList(
+        my %Users   = $Self->{GroupObject}->GroupMemberList(
             GroupID => $GroupID,
             Type    => 'rw',
             Result  => 'HASH',

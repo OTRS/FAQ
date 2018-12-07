@@ -150,7 +150,7 @@ sub FAQListShow {
     }
 
     # set page limit and build page nav
-    my $Limit = $Param{Limit} || 20_000;
+    my $Limit   = $Param{Limit} || 20_000;
     my %PageNav = $Env->{LayoutObject}->PageNavBar(
         Limit     => $Limit,
         StartHit  => $StartHit,

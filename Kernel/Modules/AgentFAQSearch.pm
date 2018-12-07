@@ -1125,7 +1125,7 @@ sub _MaskForm {
         $TreeView = 1;
     }
 
-    my $Profile = $Self->{Profile};
+    my $Profile     = $Self->{Profile};
     my $EmptySearch = $Self->{ParamObject}->GetParam( Param => 'EmptySearch' );
     if ( !$Profile ) {
         $EmptySearch = 1;
@@ -1473,7 +1473,7 @@ sub _MaskForm {
     my %GroupUsers;
     for my $Group (qw(faq faq_admin)) {
         my $GroupID = $Self->{GroupObject}->GroupLookup( Group => $Group );
-        my %Users = $Self->{GroupObject}->GroupMemberList(
+        my %Users   = $Self->{GroupObject}->GroupMemberList(
             GroupID => $GroupID,
             Type    => 'rw',
             Result  => 'HASH',

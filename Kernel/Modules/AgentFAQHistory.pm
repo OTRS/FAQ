@@ -108,7 +108,7 @@ sub Run {
             Name => 'Row',
             Data => {
                 %{$HistoryEntry},
-                }
+            }
         );
     }
 
