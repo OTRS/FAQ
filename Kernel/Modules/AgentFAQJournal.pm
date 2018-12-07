@@ -165,7 +165,7 @@ sub _FAQJournalShow {
     }
 
     # set page limit and build page navigation
-    my $Limit = $Param{Limit} || 20_000;
+    my $Limit   = $Param{Limit} || 20_000;
     my %PageNav = $LayoutObject->PageNavBar(
         Limit     => $Limit,
         StartHit  => $StartHit,

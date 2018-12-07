@@ -360,7 +360,7 @@ sub FAQGet {
 
     # add voting information to FAQ item
     $Data{VoteResult} = $VoteResult;
-    $Data{Votes} = $VoteData->{Votes} || 0;
+    $Data{Votes}      = $VoteData->{Votes} || 0;
 
     # check if need to return DynamicFields
     if ( $Param{DynamicFields} ) {
@@ -1028,7 +1028,7 @@ sub AttachmentGet {
             . 'FROM faq_attachment '
             . 'WHERE id = ? AND faq_id = ? '
             . 'ORDER BY created',
-        Bind => [ \$Param{FileID}, \$Param{ItemID} ],
+        Bind   => [ \$Param{FileID}, \$Param{ItemID} ],
         Encode => [ 1, 1, 1, 0 ],
         Limit  => 1,
     );

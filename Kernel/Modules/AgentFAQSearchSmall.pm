@@ -868,7 +868,7 @@ sub _MaskForm {
         my $GroupObject = $Kernel::OM->Get('Kernel::System::Group');
 
         my $GroupID = $GroupObject->GroupLookup( Group => $Group );
-        my %Users = $GroupObject->GroupMemberList(
+        my %Users   = $GroupObject->GroupMemberList(
             GroupID => $GroupID,
             Type    => 'rw',
             Result  => 'HASH',

@@ -682,7 +682,7 @@ sub _MaskNew {
                     1 => Translatable('Yes'),
                 },
                 SelectedID => $Param{Approved} || 0,
-                Class => 'Modernize',
+                Class      => 'Modernize',
             );
             $LayoutObject->Block(
                 Name => 'Approval',
