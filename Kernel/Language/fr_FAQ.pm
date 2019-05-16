@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '';
     $Self->{Translation}->{'A category should have a name!'} = 'Une catégorie devrait avoir un nom!';
     $Self->{Translation}->{'This category already exists'} = 'Cette catégorie existe déjà!';
-    $Self->{Translation}->{'FAQ category updated!'} = 'Catégorie de FAQ mise à jour!';
     $Self->{Translation}->{'This category already exists!'} = '';
-    $Self->{Translation}->{'FAQ category added!'} = 'Catégorie de FAQ ajoutée!';
     $Self->{Translation}->{'No CategoryID is given!'} = '';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = 'Catégorie de FAQ mise à jour!';
+    $Self->{Translation}->{'FAQ category added!'} = 'Catégorie de FAQ ajoutée!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = 'Le nom est requis!';
     $Self->{Translation}->{'This language already exists!'} = 'Cette langue existe déjà!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = 'Langue de FAQ mise à jour!';
     $Self->{Translation}->{'FAQ language added!'} = 'Langue de FAQ ajouté!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Dernière mise à jour';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = '';
     $Self->{Translation}->{'Field4'} = '';
     $Self->{Translation}->{'Field5'} = '';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = '';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = '';
     $Self->{Translation}->{'History of this FAQ'} = 'Historique de cette FAQ';

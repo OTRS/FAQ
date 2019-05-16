@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = 'Потребан ИД Категорије!';
     $Self->{Translation}->{'A category should have a name!'} = 'Категорија треба да има име!';
     $Self->{Translation}->{'This category already exists'} = 'Ова категорија већ постоји';
-    $Self->{Translation}->{'FAQ category updated!'} = 'ЧПП категорија ажурирана!';
     $Self->{Translation}->{'This category already exists!'} = 'Ова категорија већ постоји!';
-    $Self->{Translation}->{'FAQ category added!'} = 'ЧПП категорија додата!';
     $Self->{Translation}->{'No CategoryID is given!'} = 'Није дат ИД Категорије!';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = 'Није било могуће обрисати категорију %s!';
+    $Self->{Translation}->{'FAQ category updated!'} = 'ЧПП категорија ажурирана!';
+    $Self->{Translation}->{'FAQ category added!'} = 'ЧПП категорија додата!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = 'Није дат ИД Ставке!';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = 'Није дат ИД Језика!';
     $Self->{Translation}->{'The name is required!'} = 'Име је обавезно!';
     $Self->{Translation}->{'This language already exists!'} = 'Овај језик већ постоји!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Није било могуће обрисати језик %s!';
     $Self->{Translation}->{'FAQ language updated!'} = 'Ажуриран ЧПП језик!';
     $Self->{Translation}->{'FAQ language added!'} = 'Додат ЧПП језик!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Није било могуће обрисати језик %s!';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Последње ажурирање';
@@ -279,6 +279,9 @@ sub Data {
     $Self->{Translation}->{'A filter for HTML output to add links behind a defined string. The element Image allows two input kinds. First the name of an image (e.g. faq.png). In this case the OTRS image path will be used. The second possibility is to insert the link to the image.'} =
         'Филтер за „HTML” излаз за додавање везе иза дефинисаног низа знакова. Елемент Слика дозвољава два начина уноса. Први је назив слике (нпр faq.png). у овом случају биће коришћена „OTRS” путања до слике.  Друга могућност је унос везе до слике.';
     $Self->{Translation}->{'Add FAQ article'} = 'Додај ЧПП чланак';
+    $Self->{Translation}->{'Allows generic agent to execute custom command line scripts.'} =
+        '';
+    $Self->{Translation}->{'Allows generic agent to execute custom modules.'} = '';
     $Self->{Translation}->{'CSS color for the voting result.'} = '„CSS” боја за резултат гласања.';
     $Self->{Translation}->{'Cache Time To Leave for FAQ items.'} = 'Време ослобађања кеша за ЧПП ставке.';
     $Self->{Translation}->{'Category Management'} = 'Управљање категоријама';
@@ -396,7 +399,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'ЧППпретрага позадинског рутера у интерфејсу оператера.';
     $Self->{Translation}->{'Field4'} = 'Поље4';
     $Self->{Translation}->{'Field5'} = 'Поље5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Регистрација приступног модула за јавни интерфејс.';
     $Self->{Translation}->{'Full FAQ'} = 'Kомплетан ЧПП';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Група за одобравање ЧПП чланака.';
     $Self->{Translation}->{'History of this FAQ'} = 'Историјат овог ЧПП';

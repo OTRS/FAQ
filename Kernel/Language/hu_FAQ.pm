@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = 'Kategória-azonosító szükséges!';
     $Self->{Translation}->{'A category should have a name!'} = 'Egy kategóriának rendelkeznie kell névvel!';
     $Self->{Translation}->{'This category already exists'} = 'Ez a kategória már létezik';
-    $Self->{Translation}->{'FAQ category updated!'} = 'GyIK kategória frissítve!';
     $Self->{Translation}->{'This category already exists!'} = 'Ez a kategória már létezik!';
-    $Self->{Translation}->{'FAQ category added!'} = 'GyIK kategória hozzáadva!';
     $Self->{Translation}->{'No CategoryID is given!'} = 'Nincs kategória-azonosító megadva!';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = 'Nem sikerült a(z) %s kategória törlése!';
+    $Self->{Translation}->{'FAQ category updated!'} = 'GyIK kategória frissítve!';
+    $Self->{Translation}->{'FAQ category added!'} = 'GyIK kategória hozzáadva!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = 'Nincs elemazonosító megadva!';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = 'Nincs nyelvazonosító megadva!';
     $Self->{Translation}->{'The name is required!'} = 'A név kötelező!';
     $Self->{Translation}->{'This language already exists!'} = 'Ez a nyelv már létezik!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Nem sikerült a(z) %s nyelv törlése!';
     $Self->{Translation}->{'FAQ language updated!'} = 'GyIK nyelv frissítve!';
     $Self->{Translation}->{'FAQ language added!'} = 'GyIK nyelv hozzáadva!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Nem sikerült a(z) %s nyelv törlése!';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Utolsó frissítés';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'Az ügyintézői felület GyIK keresési háttérprogram útválasztója.';
     $Self->{Translation}->{'Field4'} = '4. mező';
     $Self->{Translation}->{'Field5'} = '5. mező';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Előtétprogram modul regisztráció a nyilvános felülethez.';
     $Self->{Translation}->{'Full FAQ'} = 'Teljes GyIK';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Csoport a GyIK bejegyzések jóváhagyáshoz.';
     $Self->{Translation}->{'History of this FAQ'} = 'A GyIK előzményei';

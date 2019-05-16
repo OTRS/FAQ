@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '';
     $Self->{Translation}->{'A category should have a name!'} = '目錄分類必須有名稱!';
     $Self->{Translation}->{'This category already exists'} = '此目錄分類已經存在';
-    $Self->{Translation}->{'FAQ category updated!'} = '常見問題目錄分類已更新!';
     $Self->{Translation}->{'This category already exists!'} = '';
-    $Self->{Translation}->{'FAQ category added!'} = '常見問題目錄分類已添加!';
     $Self->{Translation}->{'No CategoryID is given!'} = '';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = '常見問題目錄分類已更新!';
+    $Self->{Translation}->{'FAQ category added!'} = '常見問題目錄分類已添加!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = '名稱為必須的!';
     $Self->{Translation}->{'This language already exists!'} = '此語言已存在!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = '常見問題語言已更新!';
     $Self->{Translation}->{'FAQ language added!'} = '常見問題語言已添加!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = '最後更新';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = '';
     $Self->{Translation}->{'Field4'} = '欄位4';
     $Self->{Translation}->{'Field5'} = '欄位5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = '公開介面的前台模組登記';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = '常見問題文章審批用戶組';
     $Self->{Translation}->{'History of this FAQ'} = '此常見問題歷史';

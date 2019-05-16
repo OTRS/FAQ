@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = 'Perlukan CategoryID!';
     $Self->{Translation}->{'A category should have a name!'} = 'Kategori perlu mempunyai nama!';
     $Self->{Translation}->{'This category already exists'} = 'kategori ini sudah wujud!';
-    $Self->{Translation}->{'FAQ category updated!'} = 'Kategori FAQ dikemaskini!';
     $Self->{Translation}->{'This category already exists!'} = 'Kategori ini telah wujud!';
-    $Self->{Translation}->{'FAQ category added!'} = 'kategori FAQ ditambah!';
     $Self->{Translation}->{'No CategoryID is given!'} = 'Tiada CategoryID yang diberikan!';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = 'Tidak mampu untuk membuang kategori %s!';
+    $Self->{Translation}->{'FAQ category updated!'} = 'Kategori FAQ dikemaskini!';
+    $Self->{Translation}->{'FAQ category added!'} = 'kategori FAQ ditambah!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = 'Tiada ItemID diberikan!';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = 'Tiada LanguageID diberikan!';
     $Self->{Translation}->{'The name is required!'} = 'Nama diperlukan!';
     $Self->{Translation}->{'This language already exists!'} = 'Bahasa ini sudah wujud!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Tidak mampu untuk membuang bahasa %s itu!';
     $Self->{Translation}->{'FAQ language updated!'} = 'Bahasa FAQ dikemaskini!';
     $Self->{Translation}->{'FAQ language added!'} = 'Bahasa FAQ ditambah!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Tidak mampu untuk membuang bahasa %s itu!';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Kemaskini kali terakhir';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'Carian Soalan Lazim backend router muka ejen.';
     $Self->{Translation}->{'Field4'} = 'Medan4';
     $Self->{Translation}->{'Field5'} = 'Medan5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Frontend pendaftaran modul untuk antara muka awam.';
     $Self->{Translation}->{'Full FAQ'} = 'FAQ penuh';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Kumpulan bagi kelulusan artikel FAQ.';
     $Self->{Translation}->{'History of this FAQ'} = 'Sejarah FAQ ini';

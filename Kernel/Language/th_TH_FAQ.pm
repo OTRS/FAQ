@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '';
     $Self->{Translation}->{'A category should have a name!'} = 'ต้องระบุชื่อหมวดหมู่!';
     $Self->{Translation}->{'This category already exists'} = 'หมวดหมู่นี้มีอยู่แล้ว!';
-    $Self->{Translation}->{'FAQ category updated!'} = 'อัปเดตหมวดหมู่ FAQ แล้ว!';
     $Self->{Translation}->{'This category already exists!'} = '';
-    $Self->{Translation}->{'FAQ category added!'} = 'เพิ่มหมวดหมู่ FAQ แล้ว!';
     $Self->{Translation}->{'No CategoryID is given!'} = '';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = 'อัปเดตหมวดหมู่ FAQ แล้ว!';
+    $Self->{Translation}->{'FAQ category added!'} = 'เพิ่มหมวดหมู่ FAQ แล้ว!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = 'ต้องระบุชื่อ!';
     $Self->{Translation}->{'This language already exists!'} = 'ภาษานี้มีอยู่แล้ว!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = 'อัปเดตภาษา FAQ แล้ว!';
     $Self->{Translation}->{'FAQ language added!'} = 'เพิ่มภาษา FAQ แล้ว!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'อัปเดตล่าสุด';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'backend router ค้นหา FAQ ของอินเตอร์เฟซเอเย่นต์';
     $Self->{Translation}->{'Field4'} = 'ฟิลด์4';
     $Self->{Translation}->{'Field5'} = 'ฟิลด์5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'การลงทะเบียนโมดูล Frontend สำหรับอินเตอร์เฟซสาธารณะ';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'กลุ่มสำหรับการอนุมัติบทความ FAQ.';
     $Self->{Translation}->{'History of this FAQ'} = 'ประวัติของ FAQ นี้';

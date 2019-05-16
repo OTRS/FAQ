@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '需要CategoryID！';
     $Self->{Translation}->{'A category should have a name!'} = '必须输入类别名称!';
     $Self->{Translation}->{'This category already exists'} = '类别已存在';
-    $Self->{Translation}->{'FAQ category updated!'} = 'FAQ类别已更新!';
     $Self->{Translation}->{'This category already exists!'} = '该类别已存在！';
-    $Self->{Translation}->{'FAQ category added!'} = 'FAQ类别已添加!';
     $Self->{Translation}->{'No CategoryID is given!'} = '没有指定CategoryID ！';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '不能删除类别%s！';
+    $Self->{Translation}->{'FAQ category updated!'} = 'FAQ类别已更新!';
+    $Self->{Translation}->{'FAQ category added!'} = 'FAQ类别已添加!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '没有指定ItemID！';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '没有指定LanguageID！';
     $Self->{Translation}->{'The name is required!'} = '名称是必需的!';
     $Self->{Translation}->{'This language already exists!'} = '该语言已经存在!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '不能删除语言%s！';
     $Self->{Translation}->{'FAQ language updated!'} = 'FAQ语言已更新!';
     $Self->{Translation}->{'FAQ language added!'} = 'FAQ语言已添加!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '不能删除语言%s！';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = '上次更新';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = '服务人员界面中，FAQ搜索的后台选项。';
     $Self->{Translation}->{'Field4'} = '字段4';
     $Self->{Translation}->{'Field5'} = '字段5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = '公共界面的前端模块注册';
     $Self->{Translation}->{'Full FAQ'} = '完整FAQ';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = '批准 FAQ 文章请求的群组。';
     $Self->{Translation}->{'History of this FAQ'} = 'FAQ文章的历史信息';

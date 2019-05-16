@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = 'カテゴリIDの入力が必要です！';
     $Self->{Translation}->{'A category should have a name!'} = '「名前」は必須項目です。';
     $Self->{Translation}->{'This category already exists'} = 'このカテゴリはすでに存在しています。';
-    $Self->{Translation}->{'FAQ category updated!'} = 'カテゴリが更新されました。';
     $Self->{Translation}->{'This category already exists!'} = 'このカテゴリはすでに存在しています！';
-    $Self->{Translation}->{'FAQ category added!'} = '新しいカテゴリが追加されました。';
     $Self->{Translation}->{'No CategoryID is given!'} = 'カテゴリID が指定されていません！';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = 'カテゴリが更新されました。';
+    $Self->{Translation}->{'FAQ category added!'} = '新しいカテゴリが追加されました。';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = 'アイテムID が指定されていません！';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '言語IDが指定されていません！';
     $Self->{Translation}->{'The name is required!'} = '「名前」は必須項目です。';
     $Self->{Translation}->{'This language already exists!'} = 'この言語は設定済です。';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = '言語が更新されました。';
     $Self->{Translation}->{'FAQ language added!'} = '言語が追加されました。';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = '最終更新日';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = '担当者インターフェイスにおける、FAQ検索のバックエンドルータ';
     $Self->{Translation}->{'Field4'} = 'Field4';
     $Self->{Translation}->{'Field5'} = 'Field5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = '公開画面のフロントエンドモジュールの定義';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'FAQの記事の承認のためのグループ';
     $Self->{Translation}->{'History of this FAQ'} = 'この記事の履歴';

@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '';
     $Self->{Translation}->{'A category should have a name!'} = 'En kategori må ha et navn!';
     $Self->{Translation}->{'This category already exists'} = 'Denne kategorien eksisterer allerede';
-    $Self->{Translation}->{'FAQ category updated!'} = 'OSS-kategori oppdatert!';
     $Self->{Translation}->{'This category already exists!'} = '';
-    $Self->{Translation}->{'FAQ category added!'} = 'OSS-kategori lagt til';
     $Self->{Translation}->{'No CategoryID is given!'} = '';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = 'OSS-kategori oppdatert!';
+    $Self->{Translation}->{'FAQ category added!'} = 'OSS-kategori lagt til';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = 'Navn er påkrevd!';
     $Self->{Translation}->{'This language already exists!'} = 'Dette språket finnes allerede!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = 'OSS-språk oppdatert!';
     $Self->{Translation}->{'FAQ language added!'} = 'OSS-språk lagt til!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Sist oppdatert';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = '';
     $Self->{Translation}->{'Field4'} = 'Felt 4';
     $Self->{Translation}->{'Field5'} = 'Felt 5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Modulregistrering for den offentlige delen';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Gruppe som skal godkjenne OSS-artikler.';
     $Self->{Translation}->{'History of this FAQ'} = 'Historikk over denne artikkelen';

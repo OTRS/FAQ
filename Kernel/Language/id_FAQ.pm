@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '';
     $Self->{Translation}->{'A category should have a name!'} = 'Sebuah kategori harus memiliki nama!';
     $Self->{Translation}->{'This category already exists'} = 'Kategori ini sudah ada';
-    $Self->{Translation}->{'FAQ category updated!'} = 'Kategori FAQ diupdate!';
     $Self->{Translation}->{'This category already exists!'} = '';
-    $Self->{Translation}->{'FAQ category added!'} = 'Kategori FAQ ditambahkan!';
     $Self->{Translation}->{'No CategoryID is given!'} = '';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = 'Kategori FAQ diupdate!';
+    $Self->{Translation}->{'FAQ category added!'} = 'Kategori FAQ ditambahkan!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = 'Nama dibutuhkan!';
     $Self->{Translation}->{'This language already exists!'} = 'Bahasa ini sudah ada!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = 'Bahasa FAQ diperbarui!';
     $Self->{Translation}->{'FAQ language added!'} = 'Bahasa FAQ ditambahkan!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Perbaruan terakhir';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'Pencarian penerus backend FAQ pada antarmuka agen';
     $Self->{Translation}->{'Field4'} = 'Field4';
     $Self->{Translation}->{'Field5'} = 'Field5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Pendaftaran modul Halamandepan untuk antarmuka umum.';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Grup untuk persetujuan artikel FAQ';
     $Self->{Translation}->{'History of this FAQ'} = 'Sejarah dari FAQ ini';

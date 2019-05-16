@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = 'Benötige KategorieID!';
     $Self->{Translation}->{'A category should have a name!'} = 'Eine Kategorie benötigt einen Namen!';
     $Self->{Translation}->{'This category already exists'} = 'Diese Kategorie existiert bereits!';
-    $Self->{Translation}->{'FAQ category updated!'} = 'FAQ-Kategorie aktualisiert!';
     $Self->{Translation}->{'This category already exists!'} = 'Diese Kategorie existiert bereits!';
-    $Self->{Translation}->{'FAQ category added!'} = 'FAQ-Kategorie hinzugefügt!';
     $Self->{Translation}->{'No CategoryID is given!'} = 'Es wurde keine KategorieID vergeben!';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = 'Kategorie %s konnte nicht gelöscht werden!';
+    $Self->{Translation}->{'FAQ category updated!'} = 'FAQ-Kategorie aktualisiert!';
+    $Self->{Translation}->{'FAQ category added!'} = 'FAQ-Kategorie hinzugefügt!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = 'Es wurde keine ItemID vergeben!';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = 'Der Name ist erforderlich!';
     $Self->{Translation}->{'This language already exists!'} = 'Diese Sprache existiert bereits!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Sprache %s konnte nicht gelöscht werden!';
     $Self->{Translation}->{'FAQ language updated!'} = 'FAQ-Sprache aktualisiert!';
     $Self->{Translation}->{'FAQ language added!'} = 'FAQ-Sprache hinzugefügt!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Sprache %s konnte nicht gelöscht werden!';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Letzte Aktualisierung';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'Such-Backend-Router für die FAQ-Suche im Agenten-Interface.';
     $Self->{Translation}->{'Field4'} = 'Feld4';
     $Self->{Translation}->{'Field5'} = 'Feld5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Frontend-Modul-Registrierung für das Public-Interface';
     $Self->{Translation}->{'Full FAQ'} = 'Vollständiges FAQ';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Gruppe für die Freigabe von FAQ-Artikeln.';
     $Self->{Translation}->{'History of this FAQ'} = 'FAQ-Historie';

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FAQ\n"
-"POT-Creation-Date: 2017-09-25 09:18+0000\n"
+"POT-Creation-Date: 2019-05-16 01:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -419,15 +419,7 @@ msgid "This category already exists"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQCategory.pm
-msgid "FAQ category updated!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AgentFAQCategory.pm
 msgid "This category already exists!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AgentFAQCategory.pm
-msgid "FAQ category added!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQCategory.pm
@@ -436,6 +428,14 @@ msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQCategory.pm
 msgid "Was not able to delete the category %s!"
+msgstr ""
+
+#. Perl Module: Kernel/Modules/AgentFAQCategory.pm
+msgid "FAQ category updated!"
+msgstr ""
+
+#. Perl Module: Kernel/Modules/AgentFAQCategory.pm
+msgid "FAQ category added!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQDelete.pm
@@ -491,15 +491,15 @@ msgid "This language already exists!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQLanguage.pm
+msgid "Was not able to delete the language %s!"
+msgstr ""
+
+#. Perl Module: Kernel/Modules/AgentFAQLanguage.pm
 msgid "FAQ language updated!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQLanguage.pm
 msgid "FAQ language added!"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AgentFAQLanguage.pm
-msgid "Was not able to delete the language %s!"
 msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentFAQPrint.pm
@@ -992,10 +992,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Field5"
-msgstr ""
-
-#. SysConfig
-msgid "Frontend module registration for the public interface."
 msgstr ""
 
 #. SysConfig

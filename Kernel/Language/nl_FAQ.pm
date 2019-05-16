@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = '';
     $Self->{Translation}->{'A category should have a name!'} = 'Geef een naam op voor de categorie.';
     $Self->{Translation}->{'This category already exists'} = 'Deze categorie bestaat al';
-    $Self->{Translation}->{'FAQ category updated!'} = 'FAQ categorie bijgewerkt.';
     $Self->{Translation}->{'This category already exists!'} = '';
-    $Self->{Translation}->{'FAQ category added!'} = 'FAQ categorie toegevoegd.';
     $Self->{Translation}->{'No CategoryID is given!'} = '';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = '';
+    $Self->{Translation}->{'FAQ category updated!'} = 'FAQ categorie bijgewerkt.';
+    $Self->{Translation}->{'FAQ category added!'} = 'FAQ categorie toegevoegd.';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = '';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = '';
     $Self->{Translation}->{'The name is required!'} = 'De naam is verplicht.';
     $Self->{Translation}->{'This language already exists!'} = 'Deze taal bestaat al.';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
     $Self->{Translation}->{'FAQ language updated!'} = 'Taal bijgewerkt';
     $Self->{Translation}->{'FAQ language added!'} = 'Taal toegevoegd.';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = '';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Laatste update';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = '';
     $Self->{Translation}->{'Field4'} = 'Veld4';
     $Self->{Translation}->{'Field5'} = 'Veld5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = '';
     $Self->{Translation}->{'Full FAQ'} = '';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Groep voor de goedkeuring van FAQ items';
     $Self->{Translation}->{'History of this FAQ'} = 'Geschiedenis';

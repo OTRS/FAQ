@@ -167,11 +167,11 @@ sub Data {
     $Self->{Translation}->{'Need CategoryID!'} = 'Требуется CategoryID!';
     $Self->{Translation}->{'A category should have a name!'} = 'У категории должно быть название!';
     $Self->{Translation}->{'This category already exists'} = 'Такая категория уже существует!';
-    $Self->{Translation}->{'FAQ category updated!'} = 'Категория FAQ изменена!';
     $Self->{Translation}->{'This category already exists!'} = 'Такая категория уже существует!';
-    $Self->{Translation}->{'FAQ category added!'} = 'Категория FAQ добавлена!';
     $Self->{Translation}->{'No CategoryID is given!'} = 'CategoryID не задан!';
     $Self->{Translation}->{'Was not able to delete the category %s!'} = 'Не удалось удалить категорию %s!';
+    $Self->{Translation}->{'FAQ category updated!'} = 'Категория FAQ изменена!';
+    $Self->{Translation}->{'FAQ category added!'} = 'Категория FAQ добавлена!';
 
     # Perl Module: Kernel/Modules/AgentFAQDelete.pm
     $Self->{Translation}->{'No ItemID is given!'} = 'Не указан ItemID!';
@@ -196,9 +196,9 @@ sub Data {
     $Self->{Translation}->{'No LanguageID is given!'} = 'LanguageID не задан!';
     $Self->{Translation}->{'The name is required!'} = 'Необходимо задать название!';
     $Self->{Translation}->{'This language already exists!'} = 'Такой язык уже существует!';
+    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Не удалось удалить язык %s!';
     $Self->{Translation}->{'FAQ language updated!'} = 'Язык для FAQ изменён!';
     $Self->{Translation}->{'FAQ language added!'} = 'Язык для FAQ добавлен!';
-    $Self->{Translation}->{'Was not able to delete the language %s!'} = 'Не удалось удалить язык %s!';
 
     # Perl Module: Kernel/Modules/AgentFAQPrint.pm
     $Self->{Translation}->{'Last update'} = 'Последнее обновление';
@@ -396,7 +396,6 @@ sub Data {
     $Self->{Translation}->{'FAQ search backend router of the agent interface.'} = 'Включить и настроить модуль поиска FAQ для интерфейса агента.';
     $Self->{Translation}->{'Field4'} = 'Поле4';
     $Self->{Translation}->{'Field5'} = 'Поле5';
-    $Self->{Translation}->{'Frontend module registration for the public interface.'} = 'Frontend module registration для публичного/общедоступного интерфейса.';
     $Self->{Translation}->{'Full FAQ'} = 'Полный FAQ';
     $Self->{Translation}->{'Group for the approval of FAQ articles.'} = 'Группа для одобрения статей FAQ.';
     $Self->{Translation}->{'History of this FAQ'} = 'История этого FAQ';

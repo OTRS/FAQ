@@ -39,6 +39,7 @@
         <File Permission="644" Location="Kernel/Language/pt_BR_FAQ.pm" />
         <File Permission="644" Location="Kernel/Language/ru_FAQ.pm" />
         <File Permission="644" Location="Kernel/Language/sr_Cyrl_FAQ.pm" />
+        <File Permission="644" Location="Kernel/Language/sr_Latn_FAQ.pm" />
         <File Permission="644" Location="Kernel/Language/sv_FAQ.pm" />
         <File Permission="644" Location="Kernel/Language/sw_FAQ.pm" />
         <File Permission="644" Location="Kernel/Language/th_TH_FAQ.pm" />
