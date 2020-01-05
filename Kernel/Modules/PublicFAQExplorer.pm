@@ -1,5 +1,5 @@
 # --
-# Copyright (C) 2001-2019 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -59,10 +59,10 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # get config data
-    $Self->{StartHit} = int( $Self->{ParamObject}->GetParam( Param => 'StartHit' ) || 1 );
-    $Self->{SearchLimit}     = $Self->{Config}->{SearchLimit}     || 200;
+    $Self->{StartHit}        = int( $Self->{ParamObject}->GetParam( Param => 'StartHit' ) || 1 );
+    $Self->{SearchLimit}     = $Self->{Config}->{SearchLimit} || 200;
     $Self->{SearchPageShown} = $Self->{Config}->{SearchPageShown} || 3;
-    $Self->{SortBy} = $Self->{ParamObject}->GetParam( Param => 'SortBy' )
+    $Self->{SortBy}          = $Self->{ParamObject}->GetParam( Param => 'SortBy' )
         || $Self->{Config}->{'SortBy::Default'}
         || 'FAQID';
     $Self->{OrderBy} = $Self->{ParamObject}->GetParam( Param => 'Order' )

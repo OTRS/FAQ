@@ -1,5 +1,5 @@
 # --
-# Copyright (C) 2001-2019 OTRS AG, https://otrs.com/
+# Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -43,7 +43,7 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # get config data
-    $Self->{StartHit} = int( $Self->{ParamObject}->GetParam( Param => 'StartHit' ) || 1 );
+    $Self->{StartHit}     = int( $Self->{ParamObject}->GetParam( Param => 'StartHit' ) || 1 );
     $Self->{JournalLimit} = $Self->{Config}->{JournalLimit} || 500;
 
     # permission check
